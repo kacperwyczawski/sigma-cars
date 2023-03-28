@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\SigmaCars.Domain\SigmaCars.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
