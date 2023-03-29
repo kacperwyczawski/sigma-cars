@@ -6,58 +6,8 @@
     <projectFile profileName="https">SigmaCars.WebApi/SigmaCars.WebApi.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4313494-abb2-4ad0-aabf-1fc51cce4021" name="Changes" comment="feat(backend): update gitignore">
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/bin/Debug/net7.0/Microsoft.AspNetCore.OpenApi.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/bin/Debug/net7.0/Microsoft.OpenApi.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/bin/Debug/net7.0/SigmaCars.WebApi.deps.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/bin/Debug/net7.0/SigmaCars.WebApi.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/bin/Debug/net7.0/SigmaCars.WebApi.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/bin/Debug/net7.0/SigmaCars.WebApi.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/bin/Debug/net7.0/SigmaCars.WebApi.runtimeconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/bin/Debug/net7.0/Swashbuckle.AspNetCore.Swagger.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerGen.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerUI.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/bin/Debug/net7.0/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/bin/Debug/net7.0/appsettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/SigmaCars.WebApi.MvcApplicationPartsAssemblyInfo.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/SigmaCars.WebApi.MvcApplicationPartsAssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/SigmaCars.WebApi.csproj.CopyComplete" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/SigmaCars.WebApi.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/SigmaCars.WebApi.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/SigmaCars.WebApi.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/SigmaCars.WebApi.genruntimeconfig.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/SigmaCars.WebApi.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/apphost.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/project.razor.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/ref/SigmaCars.WebApi.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/refint/SigmaCars.WebApi.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/staticwebassets.build.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/staticwebassets/msbuild.build.SigmaCars.WebApi.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.SigmaCars.WebApi.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/staticwebassets/msbuild.buildTransitive.SigmaCars.WebApi.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="f4313494-abb2-4ad0-aabf-1fc51cce4021" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/SigmaCars.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/SigmaCars.Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/obj/SigmaCars.Application.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/obj/SigmaCars.Application.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Infrastructure/SigmaCars.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Infrastructure/SigmaCars.Infrastructure.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Infrastructure/obj/Debug/net7.0/SigmaCars.Infrastructure.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Infrastructure/obj/Debug/net7.0/SigmaCars.Infrastructure.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Infrastructure/obj/SigmaCars.Infrastructure.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Infrastructure/obj/SigmaCars.Infrastructure.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Infrastructure/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Infrastructure/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Infrastructure/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Infrastructure/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Infrastructure/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Infrastructure/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Infrastructure/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Infrastructure/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/SigmaCars.WebApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/SigmaCars.WebApi.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/SigmaCars.WebApi.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/Debug/net7.0/SigmaCars.WebApi.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/obj/SigmaCars.WebApi.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/SigmaCars.WebApi.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/obj/project.packagespec.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +104,8 @@
       <workItem from="1680018461350" duration="216000" />
       <workItem from="1680018712067" duration="160000" />
       <workItem from="1680018992916" duration="4000" />
-      <workItem from="1680019371000" duration="356000" />
+      <workItem from="1680019371000" duration="719000" />
+      <workItem from="1680022678975" duration="93000" />
     </task>
     <task id="LOCAL-00001" summary="feat(backend): update gitignore">
       <created>1680019559319</created>
@@ -163,7 +114,28 @@
       <option name="project" value="LOCAL" />
       <updated>1680019559319</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat(backend): remove some files from git">
+      <created>1680020087455</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1680020087455</updated>
+    </task>
+    <task id="LOCAL-00003" summary="build(backend): add .dockerignore">
+      <created>1680022737847</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1680022737847</updated>
+    </task>
+    <task id="LOCAL-00004" summary="build(backend): update dockerfile">
+      <created>1680022763433</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680022763433</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +147,9 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="feat(backend): update gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(backend): update gitignore" />
+    <MESSAGE value="feat(backend): remove some files from git" />
+    <MESSAGE value="build(backend): add .dockerignore" />
+    <MESSAGE value="build(backend): update dockerfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="build(backend): update dockerfile" />
   </component>
 </project>
