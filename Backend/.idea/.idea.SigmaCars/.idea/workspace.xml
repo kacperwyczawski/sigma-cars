@@ -7,7 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4313494-abb2-4ad0-aabf-1fc51cce4021" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/SigmaCars.Database/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SigmaCars.Database/init.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Domain/CarModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Domain/CarModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Domain/Department.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Domain/Department.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,24 +31,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "SQL Dialects",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Kacper\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Kacper\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Kacper\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ],
+    "rider.external.source.directories": [
+      "C:\\Users\\Kacper\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Kacper\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\Kacper\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.SigmaCars.WebApi: https">
     <configuration name="SigmaCars.WebApi: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SigmaCars.WebApi/SigmaCars.WebApi.csproj" />
@@ -106,6 +114,8 @@
       <workItem from="1680018992916" duration="4000" />
       <workItem from="1680019371000" duration="719000" />
       <workItem from="1680022678975" duration="93000" />
+      <workItem from="1680103905217" duration="2810000" />
+      <workItem from="1680201134435" duration="2058000" />
     </task>
     <task id="LOCAL-00001" summary="feat(backend): update gitignore">
       <created>1680019559319</created>
@@ -135,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680022763433</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat(backend): add domain models">
+      <created>1680106134132</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680106134132</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +167,11 @@
     <MESSAGE value="feat(backend): remove some files from git" />
     <MESSAGE value="build(backend): add .dockerignore" />
     <MESSAGE value="build(backend): update dockerfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="build(backend): update dockerfile" />
+    <MESSAGE value="feat(backend): add domain models" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(backend): add domain models" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
