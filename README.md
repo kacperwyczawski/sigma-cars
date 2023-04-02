@@ -28,7 +28,7 @@ This project uses 3 docker files:
 2. Api [Dockerfile](Backend/Dockerfile)
 3. Database [Dockerfile](Backend/SigmaCars.Database/Dockerfile)
 
-To apply changes to the codebase, please append --build to the Docker Compose command.
+To apply changes to the codebase, please append `--build` to the docker dompose command.
 
 ## 📫 Feedback
 
