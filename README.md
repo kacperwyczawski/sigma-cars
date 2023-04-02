@@ -3,7 +3,7 @@
 ## How to run
 
 1. Install [Docker](https://www.docker.com/)
-2. Clone repository: `git clone https://github.com/kacperwyczawski/sigma-cars.git` SigmaCars
+2. Clone repository: `git clone https://github.com/kacperwyczawski/sigma-cars.git SigmaCars`
 3. Run backend with `docker compose up -f SigmaCars/Backend/docker-compose.yml`. Add `--build` if you changed code. It uses [this](Backend/docker-compose.yml), [this](Backend/Dockerfile) and
 
 ## Technologies used in this project
