@@ -1,9 +1,16 @@
+using System.Data;
+using Npgsql;
+using SigmaCars.Application;
+using SigmaCars.Domain;
+using SigmaCars.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddTransient<IDbConnection>(_ =>
+    new NpgsqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<ICarModelsDataService, CarModelsDataService>();
 
 var app = builder.Build();
 
@@ -16,29 +23,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+app.MapGet("/", () => "Hello World!");
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+app.MapGet("/car-models", async (ICarModelsDataService carModelsDataService) => 
+    await carModelsDataService.GetAllAsync());
+
+app.MapPost("/car-models", async (ICarModelsDataService carModelsDataService, CarModel carModel) =>
+        await carModelsDataService.AddAsync(carModel));
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

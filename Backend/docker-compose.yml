@@ -1,0 +1,13 @@
+﻿services:
+  database:
+    build:
+      context: ./SigmaCars.Database
+    ports:
+      - "5432:5432"
+  api:
+    build:
+      context: .
+    ports:
+      - "5000:80"
+    depends_on:
+      - database
