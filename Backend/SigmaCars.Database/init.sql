@@ -12,7 +12,8 @@ create table car_models (
     model varchar(50) not null,
     production_year smallint not null,
     color varchar(50) not null,
-    price real not null
+    price real not null,
+    seatCount smallint not null
 );
 
 create table departments (

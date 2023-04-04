@@ -12,10 +12,12 @@ public class CarModel
     [MaxLength(50)]
     public string Model { get; set; }
     
-    public int Year { get; set; }
+    public int ProductionYear { get; set; }
     
     [MaxLength(50)]
     public string Color { get; set; }
     
     public float PricePerDay { get; set; }
+    
+    public int SeatsCount { get; set; }
 }
