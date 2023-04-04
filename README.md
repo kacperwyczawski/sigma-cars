@@ -2,7 +2,7 @@
 
 > **Note**
 >
-> Currently, the frontend is not yet available, but it will most likely be developed using React and Tailwind CSS. Stay tuned for updates!
+> Currently, the frontend is not yet available, but it will most likely be developed using React, Tailwind CSS, Next.js and TypeScript. Stay tuned for updates!
 
 ## 📝 Description
 
