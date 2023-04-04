@@ -14,8 +14,6 @@ Sigma Cars is a car rental application that allows users to rent cars for person
 2. Clone this repository by running `git clone https://github.com/kacperwyczawski/sigma-cars.git SigmaCars`
 3. Run backend with `docker compose up -f SigmaCars/Backend/docker-compose.yml`.
 
-
-
 ## ℹ️ Other info
 
 ### 💻 Technologies
