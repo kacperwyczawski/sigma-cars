@@ -4,9 +4,15 @@
     <projectFile profileName="IIS Express">SigmaCars.WebApi/SigmaCars.WebApi.csproj</projectFile>
     <projectFile profileName="http">SigmaCars.WebApi/SigmaCars.WebApi.csproj</projectFile>
     <projectFile profileName="https">SigmaCars.WebApi/SigmaCars.WebApi.csproj</projectFile>
+    <projectFile profileName="IIS Express">WebApi/WebApi.csproj</projectFile>
+    <projectFile profileName="http">WebApi/WebApi.csproj</projectFile>
+    <projectFile profileName="https">WebApi/WebApi.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4313494-abb2-4ad0-aabf-1fc51cce4021" name="Changes" comment="" />
+    <list default="true" id="f4313494-abb2-4ad0-aabf-1fc51cce4021" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/Program.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,6 +99,51 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="WebApi: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApi/WebApi.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net7.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="WebApi: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApi/WebApi.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net7.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="http" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="WebApi: https" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApi/WebApi.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net7.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="https" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
     <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
       <deployment type="dockerfile">
         <settings>
@@ -145,6 +196,9 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue=".NET Launch Settings Profile.WebApi: IIS Express" />
+      <item itemvalue=".NET Launch Settings Profile.WebApi: http" />
+      <item itemvalue=".NET Launch Settings Profile.WebApi: https" />
       <item itemvalue=".NET Launch Settings Profile.SigmaCars.WebApi: http" />
       <item itemvalue=".NET Launch Settings Profile.SigmaCars.WebApi: https" />
       <item itemvalue=".NET Launch Settings Profile.SigmaCars.WebApi: IIS Express" />
@@ -182,6 +236,8 @@
       <workItem from="1680365107750" duration="98000" />
       <workItem from="1680371157422" duration="2108000" />
       <workItem from="1680440909778" duration="4053000" />
+      <workItem from="1680627050004" duration="3290000" />
+      <workItem from="1680708031265" duration="2004000" />
     </task>
     <task id="LOCAL-00001" summary="feat(backend): update gitignore">
       <created>1680019559319</created>
@@ -260,7 +316,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680445980315</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat(backend): extend car model and add filtering to CarModelsDataService">
+      <created>1680627695211</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1680627695211</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat(backend): replace minimal api with controller based one">
+      <created>1680631785623</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1680631785623</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,7 +354,9 @@
     <MESSAGE value="create init.sql for database initialization" />
     <MESSAGE value="rider stuff" />
     <MESSAGE value="feat(backend): set up docker compose and basic crud" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(backend): set up docker compose and basic crud" />
+    <MESSAGE value="feat(backend): extend car model and add filtering to CarModelsDataService" />
+    <MESSAGE value="feat(backend): replace minimal api with controller based one" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(backend): replace minimal api with controller based one" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
