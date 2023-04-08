@@ -25,7 +25,7 @@ Sigma Cars is a car rental application that allows users to rent cars for person
 
 The following technologies were used in the development of this project:
 
-- Backend: Docker, Asp.Net Core, Dapper, PostgreSQL
+- Backend: Docker, Asp.Net Core, Dapper, PostgreSQL, Postman, OpenAPI
 
 ### 🐋 Docker
 
