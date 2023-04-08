@@ -2,9 +2,13 @@ using System.Data;
 using Microsoft.OpenApi.Models;
 using Npgsql;
 using SigmaCars.Application;
+using SigmaCars.Application.Features.CarModel;
 using SigmaCars.Infrastructure;
+using SigmaCars.WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -25,20 +29,17 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddTransient<IDbConnection>(_ =>
     new NpgsqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddScoped<ICarModelsDataService, CarModelsDataService>();
+builder.Services.AddScoped<ICarModelsDataService, CarModelsService>();
+
+builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 
 
 var app = builder.Build();
 
-app.UseSwagger(options =>
-{
-    options.RouteTemplate = "schema/{documentName}";
-});
-
+app.UseSwagger(options => options.RouteTemplate = "schema/{documentName}");
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

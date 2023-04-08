@@ -1,4 +1,4 @@
-﻿namespace SigmaCars.Domain;
+﻿namespace SigmaCars.Domain.Models;
 
 public enum UserRole
 {

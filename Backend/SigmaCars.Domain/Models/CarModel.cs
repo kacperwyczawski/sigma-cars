@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SigmaCars.Domain;
+namespace SigmaCars.Domain.Models;
 
 public class CarModel
 {
@@ -17,7 +17,14 @@ public class CarModel
     [MaxLength(50)]
     public string Color { get; set; }
     
+    [Range(0, float.MaxValue)]
     public float PricePerDay { get; set; }
     
-    public int SeatsCount { get; set; }
+    [Range(0, int.MaxValue)]
+    public int SeatCount { get; set; }
+
+    public override string ToString()
+    {
+        return $"{nameof(CarModel)}: {Color} {Make} {Model} from {ProductionYear} with {SeatCount} seats and price {PricePerDay} per day";
+    }
 }

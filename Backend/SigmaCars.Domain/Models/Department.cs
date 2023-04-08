@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SigmaCars.Domain;
+namespace SigmaCars.Domain.Models;
 
 public class Department
 {

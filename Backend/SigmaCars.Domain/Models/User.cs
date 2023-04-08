@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SigmaCars.Domain;
+namespace SigmaCars.Domain.Models;
 
 public class User
 {
@@ -13,6 +13,7 @@ public class User
     public string LastName { get; set; }
     
     [MaxLength(100)]
+    [EmailAddress]
     public string Email { get; set; }
     
     [MaxLength(100)]
