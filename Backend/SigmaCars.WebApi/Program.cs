@@ -1,7 +1,6 @@
 using System.Data;
 using Microsoft.OpenApi.Models;
 using Npgsql;
-using SigmaCars.Application;
 using SigmaCars.Application.Features.CarModel;
 using SigmaCars.Infrastructure;
 using SigmaCars.WebApi.Middlewares;
@@ -27,10 +26,14 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+// Database
 builder.Services.AddTransient<IDbConnection>(_ =>
     new NpgsqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Services
 builder.Services.AddScoped<ICarModelsDataService, CarModelsService>();
 
+// Middlewares
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 
 

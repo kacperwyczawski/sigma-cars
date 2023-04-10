@@ -30,19 +30,12 @@ public class CarModelsService : ICarModelsDataService
         return carModel ?? throw new NotFoundException(nameof(CarModel), "get");
     }
 
-    public Task<IEnumerable<CarModel>> GetAsync(
-        int? minYear, int? maxYear,
-        float? minPrice, float? maxPrice,
-        int? minSeats, int? maxSeats,
-        string? make,
-        string? model,
-        string? orderByPropertyName,
-        bool ascending = true)
+    public Task<IEnumerable<CarModel>> GetAsync(GetCarModelRequest request)
     {
         _logger.LogInformation("Attempting to get car models");
 
-        if (orderByPropertyName is not (null or "production_year" or "price_per_day"))
-            throw new ValidationException($"{orderByPropertyName} is not a valid property name");
+        if (request.OrderByPropertyName is not (null or "production_year" or "price_per_day"))
+            throw new ValidationException($"{request.OrderByPropertyName} is not a valid property name");
 
         var sqlBuilder = new SqlBuilder();
         var template = sqlBuilder.AddTemplate(@"
@@ -50,29 +43,29 @@ public class CarModelsService : ICarModelsDataService
             /**where**/
             /**orderby**/");
 
-        if (minYear != null)
-            sqlBuilder.Where("production_year >= @MinYear", new { MinYear = minYear });
-        if (maxYear != null)
-            sqlBuilder.Where("production_year <= @MaxYear", new { MaxYear = maxYear });
-        if (minPrice != null)
-            sqlBuilder.Where("price_per_day >= @MinPrice", new { MinPrice = minPrice });
-        if (maxPrice != null)
-            sqlBuilder.Where("price_per_day <= @MaxPrice", new { MaxPrice = maxPrice });
-        if (minSeats != null)
-            sqlBuilder.Where("seat_count >= @MinSeats", new { MinSeats = minSeats });
-        if (maxSeats != null)
-            sqlBuilder.Where("seat_count <= @MaxSeats", new { MaxSeats = maxSeats });
-        if (make != null)
-            sqlBuilder.Where("make = @Make", new { Make = make });
-        if (model != null)
-            sqlBuilder.Where("model = @Model", new { Model = model });
-        if (orderByPropertyName is "production_year" or "price_per_day") // seems to be safe from SQL injection
-            sqlBuilder.OrderBy(orderByPropertyName + (ascending ? " asc" : " desc"));
+        if (request.MinYear != null)
+            sqlBuilder.Where("production_year >= @MinYear", new { request.MinYear });
+        if (request.MaxYear != null)
+            sqlBuilder.Where("production_year <= @MaxYear", new { request.MaxYear });
+        if (request.MinPrice != null)
+            sqlBuilder.Where("price_per_day >= @MinPrice", new { request.MinPrice });
+        if (request.MaxPrice != null)
+            sqlBuilder.Where("price_per_day <= @MaxPrice", new { request.MaxPrice });
+        if (request.MinSeats != null)
+            sqlBuilder.Where("seat_count >= @MinSeats", new { request.MinSeats });
+        if (request.MaxSeats != null)
+            sqlBuilder.Where("seat_count <= @MaxSeats", new { request.MaxSeats });
+        if (request.Make != null)
+            sqlBuilder.Where("make = @Make", new { request.Make });
+        if (request.Model != null)
+            sqlBuilder.Where("model = @Model", new { request.Model });
+        if (request.OrderByPropertyName is "production_year" or "price_per_day") // seems to be safe from SQL injection
+            sqlBuilder.OrderBy(request.OrderByPropertyName + (request.Ascending ? " asc" : " desc"));
 
         return _connection.QueryAsync<CarModel>(template.RawSql, template.Parameters);
     }
 
-    public Task<CarModel> AddAsync(AddCarModelRequest request)
+    public Task<CarModel> CreateAsync(CreateCarModelRequest request)
     {
         _logger.LogInformation("Attempting to add car model with request: {@CarModel}", request);
         return _connection.QueryFirstAsync<CarModel>("""
@@ -82,11 +75,11 @@ public class CarModelsService : ICarModelsDataService
             """, request);
     }
 
-    public async Task UpdateAsync(CarModel carModel)
+    public async Task UpdateAsync(UpdateCarModelRequest request)
     {
-        _logger.LogInformation("Attempting to update car model {@CarModel}", carModel);
+        _logger.LogInformation("Attempting to update car model {@Request}", request);
         var exists = await _connection.QueryFirstAsync<bool>(
-            "select exists (select 1 from car_models where id = @Id)", new { carModel.Id });
+            "select exists (select 1 from car_models where id = @Id)", new { request.Id });
 
         if (!exists)
             throw new NotFoundException(nameof(CarModel), "update");
@@ -100,7 +93,7 @@ public class CarModelsService : ICarModelsDataService
                 price_per_day = @PricePerDay,
                 seat_count = @SeatCount
             where id = @Id
-            """, carModel);
+            """, request);
     }
 
     public async Task DeleteAsync(int id)

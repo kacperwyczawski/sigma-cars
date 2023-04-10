@@ -3,7 +3,7 @@ using SigmaCars.Application.Features.CarModel;
 using SigmaCars.Application.Features.CarModel.Requests;
 using SigmaCars.Domain.Models;
 
-namespace SigmaCars.WebApi.Controllers;
+namespace SigmaCars.WebApi.Endpoints.CarModels;
 
 [ApiController]
 [Route("car-models")]
@@ -21,7 +21,7 @@ public class CarModelsController : Controller
     {
         return Ok(await _carModelsDataService.GetAsync(id));
     }
-    
+
     [HttpGet]
     public async Task<IActionResult> Get(
         [FromQuery(Name = "min-year")] int? minYear,
@@ -35,28 +35,30 @@ public class CarModelsController : Controller
         [FromQuery(Name = "order-by")] string? orderByPropertyName,
         [FromQuery(Name = "ascending")] bool ascending = true)
     {
-        return Ok(await _carModelsDataService.GetAsync(
+        var request = new GetCarModelRequest(
             minYear, maxYear,
             minPrice, maxPrice,
             minSeats, maxSeats,
             make,
             model,
             orderByPropertyName,
-            ascending));
+            ascending);
+
+        return Ok(await _carModelsDataService.GetAsync(request));
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] AddCarModelRequest request)
+    public async Task<IActionResult> Post([FromBody] CreateCarModelRequest request)
     {
-        var created = await _carModelsDataService.AddAsync(request);
+        var created = await _carModelsDataService.CreateAsync(request);
 
         return Created($"car-models/{created.Id}", created);
     }
 
     [HttpPut]
-    public async Task<IActionResult> Put([FromBody] CarModel carModel)
+    public async Task<IActionResult> Put([FromBody] UpdateCarModelRequest request)
     {
-        await _carModelsDataService.UpdateAsync(carModel);
+        await _carModelsDataService.UpdateAsync(request);
         return NoContent();
     }
 
