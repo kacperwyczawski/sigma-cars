@@ -17,7 +17,7 @@ Sigma Cars is a car rental application that allows users to rent cars for person
 ## 🚀 How to use
 
 - After running the application, open `http://localhost:6000` in your preferred web browser. *(not working yet)*
-- You can access OpenAPI schema at `http://localhost:5000/schema/v1`.
+- You can access OpenAPI schema at `http://localhost:5000/schema/v1` (can be imported into Postman).
 
 ## ℹ️ Other info
 
@@ -25,7 +25,7 @@ Sigma Cars is a car rental application that allows users to rent cars for person
 
 The following technologies were used in the development of this project:
 
-- Backend: Docker, Asp.Net Core, Dapper, PostgreSQL
+- Backend: Docker, Asp.Net Core, Dapper, PostgreSQL, Postman, OpenAPI
 
 ### 🐋 Docker
 
