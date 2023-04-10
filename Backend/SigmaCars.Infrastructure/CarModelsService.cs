@@ -1,7 +1,7 @@
-﻿using System.Data;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data;
 using Dapper;
 using Microsoft.Extensions.Logging;
-using SigmaCars.Application;
 using SigmaCars.Application.Features.CarModel;
 using SigmaCars.Application.Features.CarModel.Requests;
 using SigmaCars.Domain.Exceptions;
@@ -24,55 +24,52 @@ public class CarModelsService : ICarModelsDataService
     public async Task<CarModel> GetAsync(int id)
     {
         _logger.LogInformation("Attempting to get car model with id {Id}", id);
-        var carModel = await _connection.QueryFirstOrDefaultAsync<CarModel?>("select * from car_models where id = @Id",
+        var carModel = await _connection.QueryFirstOrDefaultAsync<CarModel?>(
+            "select * from car_models where id = @Id",
             new { Id = id });
         return carModel ?? throw new NotFoundException(nameof(CarModel), "get");
     }
 
-    public Task<IEnumerable<CarModel>> GetAllAsync()
+    public Task<IEnumerable<CarModel>> GetAsync(
+        int? minYear, int? maxYear,
+        float? minPrice, float? maxPrice,
+        int? minSeats, int? maxSeats,
+        string? make,
+        string? model,
+        string? orderByPropertyName,
+        bool ascending = true)
     {
-        _logger.LogInformation("Attempting to get all car models");
-        return _connection.QueryAsync<CarModel>("select * from car_models");
-    }
+        _logger.LogInformation("Attempting to get car models");
 
-    public Task<IEnumerable<CarModel>> GetFilteredAsync(GetFilteredCarModelsRequest request)
-    {
-        var make = request.Make ?? "";
-        var model = request.Model ?? "";
-        var minYear = request.MinYear ?? 0;
-        var maxYear = request.MaxYear ?? int.MaxValue;
-        var minPrice = request.MinPrice ?? 0;
-        var maxPrice = request.MaxPrice ?? float.MaxValue;
-        var minSeats = request.MinSeats ?? 0;
-        var maxSeats = request.MaxSeats ?? int.MaxValue;
-        
-        _logger.LogInformation(
-            "Attempting to get car models with filters: " +
-            "make = {Make}, model = {Model}, " +
-            "production year = {MinYear}-{MaxYear}, " +
-            "price per day = {MinPrice}-{MaxPrice}, " +
-            "seat count = {MinSeats}-{MaxSeats}",
-            make, model, minYear, maxYear, minPrice, maxPrice, minSeats, maxSeats);
+        if (orderByPropertyName is not (null or "production_year" or "price_per_day"))
+            throw new ValidationException($"{orderByPropertyName} is not a valid property name");
 
-        return _connection.QueryAsync<CarModel>("""
+        var sqlBuilder = new SqlBuilder();
+        var template = sqlBuilder.AddTemplate(@"
             select * from car_models
-            where
-                make like @Make
-                and model like @Model
-                and production_year between @MinYear and @MaxYear
-                and price_per_day between @MinPrice and @MaxPrice
-                and seat_count between @MinSeats and @MaxSeats
-            """, new
-        {
-            Make = $"%{make}%",
-            Model = $"%{model}%",
-            MinYear = minYear,
-            MaxYear = maxYear,
-            MinPrice = minPrice,
-            MaxPrice = maxPrice,
-            MinSeats = minSeats,
-            MaxSeats = maxSeats
-        });
+            /**where**/
+            /**orderby**/");
+
+        if (minYear != null)
+            sqlBuilder.Where("production_year >= @MinYear", new { MinYear = minYear });
+        if (maxYear != null)
+            sqlBuilder.Where("production_year <= @MaxYear", new { MaxYear = maxYear });
+        if (minPrice != null)
+            sqlBuilder.Where("price_per_day >= @MinPrice", new { MinPrice = minPrice });
+        if (maxPrice != null)
+            sqlBuilder.Where("price_per_day <= @MaxPrice", new { MaxPrice = maxPrice });
+        if (minSeats != null)
+            sqlBuilder.Where("seat_count >= @MinSeats", new { MinSeats = minSeats });
+        if (maxSeats != null)
+            sqlBuilder.Where("seat_count <= @MaxSeats", new { MaxSeats = maxSeats });
+        if (make != null)
+            sqlBuilder.Where("make = @Make", new { Make = make });
+        if (model != null)
+            sqlBuilder.Where("model = @Model", new { Model = model });
+        if (orderByPropertyName is "production_year" or "price_per_day") // seems to be safe from SQL injection
+            sqlBuilder.OrderBy(orderByPropertyName + (ascending ? " asc" : " desc"));
+
+        return _connection.QueryAsync<CarModel>(template.RawSql, template.Parameters);
     }
 
     public Task<CarModel> AddAsync(AddCarModelRequest request)

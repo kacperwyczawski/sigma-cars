@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SigmaCars.Application;
 using SigmaCars.Application.Features.CarModel;
 using SigmaCars.Application.Features.CarModel.Requests;
 using SigmaCars.Domain.Models;
@@ -17,23 +16,33 @@ public class CarModelsController : Controller
         _carModelsDataService = carModelsDataService;
     }
 
-    [HttpGet]
-    public async Task<IActionResult> Get()
-    {
-        var carModels = await _carModelsDataService.GetAllAsync();
-        return Ok(carModels);
-    }
-
     [HttpGet("{id:int}")]
     public async Task<IActionResult> Get(int id)
     {
         return Ok(await _carModelsDataService.GetAsync(id));
     }
     
-    [HttpGet("filtered")]
-    public async Task<IActionResult> GetFiltered([FromQuery] GetFilteredCarModelsRequest request)
+    [HttpGet]
+    public async Task<IActionResult> Get(
+        [FromQuery(Name = "min-year")] int? minYear,
+        [FromQuery(Name = "max-year")] int? maxYear,
+        [FromQuery(Name = "min-price")] float? minPrice,
+        [FromQuery(Name = "max-price")] float? maxPrice,
+        [FromQuery(Name = "min-seats")] int? minSeats,
+        [FromQuery(Name = "max-seats")] int? maxSeats,
+        [FromQuery(Name = "make")] string? make,
+        [FromQuery(Name = "model")] string? model,
+        [FromQuery(Name = "order-by")] string? orderByPropertyName,
+        [FromQuery(Name = "ascending")] bool ascending = true)
     {
-        return Ok(await _carModelsDataService.GetFilteredAsync(request));
+        return Ok(await _carModelsDataService.GetAsync(
+            minYear, maxYear,
+            minPrice, maxPrice,
+            minSeats, maxSeats,
+            make,
+            model,
+            orderByPropertyName,
+            ascending));
     }
 
     [HttpPost]

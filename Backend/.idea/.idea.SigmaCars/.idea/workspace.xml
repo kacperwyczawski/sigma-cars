@@ -13,27 +13,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4313494-abb2-4ad0-aabf-1fc51cce4021" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.SigmaCars/Docker/docker-compose.generated.override.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/AddCarModelRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/GetFilteredCarModelsRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.Domain/Exceptions/NotFoundException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.Infrastructure/CarModelsService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/Controllers/CarModelsController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SigmaCars.WebApi/Middlewares/ExceptionHandlingMiddleware.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/ICarModelsDataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/ICarModelsDataService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Database/init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Database/init.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Domain/Car.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Domain/Models/Car.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Domain/CarModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Domain/Models/CarModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Domain/Department.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Domain/Models/Department.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Domain/Rental.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Domain/Models/Rental.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Domain/ScheduledMaintenance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Domain/Models/ScheduledMaintenance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Domain/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Domain/Models/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Domain/UserRole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Domain/Models/UserRole.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Infrastructure/CarModelsDataService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/Controllers/WeatherForecastController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/WeatherForecast.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SigmaCars/Docker/docker-compose.generated.override.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SigmaCars/Docker/docker-compose.generated.override.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/ICarModelsDataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/ICarModelsDataService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/GetFilteredCarModelsRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Infrastructure/CarModelsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Infrastructure/CarModelsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Infrastructure/SigmaCars.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Infrastructure/SigmaCars.Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/Controllers/CarModelsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/Controllers/CarModelsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/Middlewares/ExceptionHandlingMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/Middlewares/ExceptionHandlingMiddleware.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/SigmaCars.WebApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/SigmaCars.WebApi.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,16 +32,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/22efe895cfcdc441cc9e14722e20437fcf7013e6e869636733169ad499b7bb28/NoContentResult.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SigmaCars.WebApi/Controllers/ErrorsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9a6b1457cbcf17db31a383ba49ef9bcc786cf3ef77146d997eee499b27a46d/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Kacper/Desktop/Projects/SigmaCars/Backend/SigmaCars.WebApi/Controllers/CarModelsController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -67,35 +48,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ],
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Kacper\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Kacper\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Kacper\\AppData\\Local\\Symbols\\src&quot;
+    "rider.external.source.directories": [
+      "C:\\Users\\Kacper\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Kacper\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\Kacper\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="?" />
@@ -294,7 +275,9 @@
       <workItem from="1680871418927" duration="6000" />
       <workItem from="1680875998520" duration="649000" />
       <workItem from="1680948530032" duration="5203000" />
-      <workItem from="1680964933749" duration="3906000" />
+      <workItem from="1680964933749" duration="4284000" />
+      <workItem from="1681118026969" duration="13000" />
+      <workItem from="1681118056185" duration="3137000" />
     </task>
     <task id="LOCAL-00001" summary="feat(backend): update gitignore">
       <created>1680019559319</created>
@@ -394,7 +377,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680711605827</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feat(backend): add controller + data access for car model and add exception handling middleware">
+      <created>1680969266155</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1680969266155</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,7 +411,8 @@
     <MESSAGE value="feat(backend): extend car model and add filtering to CarModelsDataService" />
     <MESSAGE value="feat(backend): replace minimal api with controller based one" />
     <MESSAGE value="feat(backend): update openapi support" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(backend): update openapi support" />
+    <MESSAGE value="feat(backend): add controller + data access for car model and add exception handling middleware" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(backend): add controller + data access for car model and add exception handling middleware" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -431,6 +422,19 @@
           <line>15</line>
           <properties documentPath="C:\Users\Kacper\Desktop\Projects\SigmaCars\Backend\SigmaCars.WebApi\Filters\HttpResponseExceptionFilter.cs" initialLine="15" containingFunctionPresentation="Method 'OnActionExecuted'" />
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/SigmaCars.WebApi/Middlewares/ExceptionHandlingMiddleware.cs</url>
+          <line>46</line>
+          <properties documentPath="C:\Users\Kacper\Desktop\Projects\SigmaCars\Backend\SigmaCars.WebApi\Middlewares\ExceptionHandlingMiddleware.cs" initialLine="46" containingFunctionPresentation="Method 'InvokeAsync'">
+            <startOffsets>
+              <option value="1436" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1475" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Net;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using SigmaCars.Domain.Exceptions;
@@ -31,8 +32,7 @@ public class ExceptionHandlingMiddleware
             var problemDetails = new ProblemDetails
             {
                 Title = "Unexpected server error",
-                Detail = exception.Message,
-                Status = (int)statusCode
+                Detail = exception.Message
             };
 
             switch (exception)
@@ -42,8 +42,14 @@ public class ExceptionHandlingMiddleware
                     problemDetails.Title = "Not found";
                     problemDetails.Detail = e.Details;
                     break;
+                case ValidationException e:
+                    statusCode = HttpStatusCode.BadRequest;
+                    problemDetails.Title = "Validation error";
+                    problemDetails.Detail = e.Message;
+                    break;
             }
 
+            problemDetails.Status = (int)statusCode;
             context.Response.ContentType = "application/problem+json";
             context.Response.StatusCode = (int)statusCode;
             await context.Response.WriteAsync(JsonSerializer.Serialize(problemDetails));
