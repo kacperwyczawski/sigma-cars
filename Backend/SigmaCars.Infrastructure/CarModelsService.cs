@@ -55,10 +55,7 @@ public class CarModelsService : ICarModelsDataService
             throw new ValidationException($"{request.OrderByPropertyName} is not a valid property name");
 
         var sqlBuilder = new SqlBuilder();
-        var template = sqlBuilder.AddTemplate(@"
-            select * from car_models
-            /**where**/
-            /**orderby**/");
+        var template = sqlBuilder.AddTemplate(@"select * from car_models /**where**/ /**orderby**/");
 
         if (request.MinYear != null)
             sqlBuilder.Where("production_year >= @MinYear", new { request.MinYear });
@@ -102,7 +99,6 @@ public class CarModelsService : ICarModelsDataService
         // ReSharper disable once MethodHasAsyncOverload
         _updateRequestValidator.ValidateAndThrow(request);
         
-        // TODO: this should go in the validator
         var exists = await _connection.QueryFirstAsync<bool>(
             "select exists (select 1 from car_models where id = @Id)", new { request.Id });
 
