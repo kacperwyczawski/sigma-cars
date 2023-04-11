@@ -26,7 +26,7 @@ public class ExceptionHandlingMiddleware
         }
         catch (Exception exception)
         {
-            _logger.LogInformation("Handling exception: {Exception}", exception.GetType().Name);
+            _logger.LogInformation("Handling {Exception}", exception.GetType());
             
             var statusCode = HttpStatusCode.InternalServerError;
             var problemDetails = new ProblemDetails
