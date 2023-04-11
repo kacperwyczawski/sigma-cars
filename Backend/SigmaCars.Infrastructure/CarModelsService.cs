@@ -6,7 +6,6 @@ using SigmaCars.Application.Features.CarModel;
 using SigmaCars.Application.Features.CarModel.Requests;
 using SigmaCars.Domain.Exceptions;
 using SigmaCars.Domain.Models;
-using ValidationException = System.ComponentModel.DataAnnotations.ValidationException;
 
 namespace SigmaCars.Infrastructure;
 
@@ -51,9 +50,6 @@ public class CarModelsService : ICarModelsDataService
 
         _getRequestValidator.ValidateAndThrow(request);
 
-        if (request.OrderByPropertyName is not (null or "production_year" or "price_per_day"))
-            throw new ValidationException($"{request.OrderByPropertyName} is not a valid property name");
-
         var sqlBuilder = new SqlBuilder();
         var template = sqlBuilder.AddTemplate(@"select * from car_models /**where**/ /**orderby**/");
 
@@ -82,9 +78,9 @@ public class CarModelsService : ICarModelsDataService
     public Task<CarModel> CreateAsync(CreateCarModelRequest request)
     {
         _logger.LogInformation("Attempting to add car model with request: {@CarModel}", request);
-        
+
         _createRequestValidator.ValidateAndThrow(request);
-        
+
         return _connection.QueryFirstAsync<CarModel>("""
             insert into car_models (make, model, production_year, color, price_per_day, seat_count)
             values (@Make, @Model, @ProductionYear, @Color, @PricePerDay, @SeatCount)
@@ -95,7 +91,7 @@ public class CarModelsService : ICarModelsDataService
     public async Task UpdateAsync(UpdateCarModelRequest request)
     {
         _logger.LogInformation("Attempting to update car model {@Request}", request);
-        
+
         // ReSharper disable once MethodHasAsyncOverload
         _updateRequestValidator.ValidateAndThrow(request);
         
