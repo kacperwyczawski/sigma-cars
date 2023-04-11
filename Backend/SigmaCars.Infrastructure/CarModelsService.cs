@@ -94,11 +94,8 @@ public class CarModelsService : ICarModelsDataService
 
         // ReSharper disable once MethodHasAsyncOverload
         _updateRequestValidator.ValidateAndThrow(request);
-        
-        var exists = await _connection.QueryFirstAsync<bool>(
-            "select exists (select 1 from car_models where id = @Id)", new { request.Id });
 
-        if (!exists)
+        if (!await ExistsAsync(request.Id))
             throw new NotFoundException(nameof(CarModel), "update");
 
         await _connection.ExecuteAsync("""
@@ -116,12 +113,13 @@ public class CarModelsService : ICarModelsDataService
     public async Task DeleteAsync(int id)
     {
         _logger.LogInformation("Attempting to delete car model with id {Id}", id);
-        var exists = await _connection.QueryFirstAsync<bool>(
-            "select exists (select 1 from car_models where id = @Id)", new { Id = id });
 
-        if (!exists)
+        if (!await ExistsAsync(id))
             throw new NotFoundException(nameof(CarModel), "delete");
 
         await _connection.ExecuteAsync("delete from car_models where id = @Id", new { Id = id });
     }
+
+    private Task<bool> ExistsAsync(int id) => _connection.QueryFirstAsync<bool>(
+        "select exists (select 1 from car_models where id = @Id)", new { Id = id });
 }
