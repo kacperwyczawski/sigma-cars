@@ -9,17 +9,17 @@ namespace SigmaCars.WebApi.Endpoints.CarModels;
 [Route("car-models")]
 public class CarModelsController : Controller
 {
-    private readonly ICarModelsDataService _carModelsDataService;
+    private readonly ICarModelsService _carModelsService;
 
-    public CarModelsController(ICarModelsDataService carModelsDataService)
+    public CarModelsController(ICarModelsService carModelsService)
     {
-        _carModelsDataService = carModelsDataService;
+        _carModelsService = carModelsService;
     }
 
     [HttpGet("{id:int}")]
     public async Task<IActionResult> Get(int id)
     {
-        return Ok(await _carModelsDataService.GetAsync(id));
+        return Ok(await _carModelsService.GetAsync(id));
     }
 
     [HttpGet]
@@ -44,13 +44,13 @@ public class CarModelsController : Controller
             orderByPropertyName,
             ascending);
 
-        return Ok(await _carModelsDataService.GetAsync(request));
+        return Ok(await _carModelsService.GetAsync(request));
     }
 
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] CreateCarModelRequest request)
     {
-        var created = await _carModelsDataService.CreateAsync(request);
+        var created = await _carModelsService.CreateAsync(request);
 
         return Created($"car-models/{created.Id}", created);
     }
@@ -58,14 +58,14 @@ public class CarModelsController : Controller
     [HttpPut]
     public async Task<IActionResult> Put([FromBody] UpdateCarModelRequest request)
     {
-        await _carModelsDataService.UpdateAsync(request);
+        await _carModelsService.UpdateAsync(request);
         return NoContent();
     }
 
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {
-        await _carModelsDataService.DeleteAsync(id);
+        await _carModelsService.DeleteAsync(id);
         return NoContent();
     }
 }

@@ -2,7 +2,7 @@
 
 namespace SigmaCars.Application.Features.CarModel;
 
-public interface ICarModelsDataService
+public interface ICarModelsService
 {
     public Task<Domain.Models.CarModel> GetAsync(int id);
 

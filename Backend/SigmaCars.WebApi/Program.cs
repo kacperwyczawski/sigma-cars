@@ -33,7 +33,7 @@ builder.Services.AddTransient<IDbConnection>(_ =>
     new NpgsqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Services
-builder.Services.AddScoped<ICarModelsDataService, CarModelsService>();
+builder.Services.AddScoped<ICarModelsService, CarModelsService>();
 
 // Middlewares
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();

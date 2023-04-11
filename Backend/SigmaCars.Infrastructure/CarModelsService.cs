@@ -9,7 +9,7 @@ using SigmaCars.Domain.Models;
 
 namespace SigmaCars.Infrastructure;
 
-public class CarModelsService : ICarModelsDataService
+public class CarModelsService : ICarModelsService
 {
     private readonly IDbConnection _connection;
 
