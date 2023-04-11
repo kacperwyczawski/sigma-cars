@@ -1,7 +1,9 @@
 using System.Data;
+using FluentValidation;
 using Microsoft.OpenApi.Models;
 using Npgsql;
 using SigmaCars.Application.Features.CarModel;
+using SigmaCars.Application.Features.CarModel.Requests;
 using SigmaCars.Infrastructure;
 using SigmaCars.WebApi.Middlewares;
 
@@ -35,6 +37,9 @@ builder.Services.AddScoped<ICarModelsDataService, CarModelsService>();
 
 // Middlewares
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
+
+// Fluent validation
+builder.Services.AddValidatorsFromAssemblyContaining<CreateCarModelRequestValidator>(ServiceLifetime.Transient);
 
 
 var app = builder.Build();

@@ -11,12 +11,12 @@ services:
       RIDER_DEBUGGER_LOG_DIR: "/riderLogs"
       RESHARPER_LOG_CONF: "/riderLogsConf/backend-log.xml"
     ports:
-    - "57001:57100"
-    - "57201:57300"
+    - "57000:57100"
+    - "57200:57300"
     volumes:
     - "C:\\Users\\Kacper\\AppData\\Local\\JetBrains\\RiderRemoteDebugger\\2023.1\\\
       Linux64:/riderDebugger"
     - "C:\\Users\\Kacper\\AppData\\Local\\JetBrains\\Toolbox\\apps\\Rider\\ch-0\\\
       231.8109.212/bin:/riderLogsConf"
     - "C:\\Users\\Kacper\\AppData\\Local\\JetBrains\\Rider2023.1\\log\\DebuggerWorker\\\
-      JetBrains.Debugger.Worker.2023_4_10_12_36_22:/riderLogs:rw"
+      JetBrains.Debugger.Worker.2023_4_11_15_05_39:/riderLogs:rw"

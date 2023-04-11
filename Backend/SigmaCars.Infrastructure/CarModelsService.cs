@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Data;
+﻿using System.Data;
 using Dapper;
+using FluentValidation;
 using Microsoft.Extensions.Logging;
 using SigmaCars.Application.Features.CarModel;
 using SigmaCars.Application.Features.CarModel.Requests;
 using SigmaCars.Domain.Exceptions;
 using SigmaCars.Domain.Models;
+using ValidationException = System.ComponentModel.DataAnnotations.ValidationException;
 
 namespace SigmaCars.Infrastructure;
 
@@ -15,10 +16,24 @@ public class CarModelsService : ICarModelsDataService
 
     private readonly ILogger<CarModelsService> _logger;
 
-    public CarModelsService(IDbConnection connection, ILogger<CarModelsService> logger)
+    private readonly IValidator<GetCarModelRequest> _getRequestValidator;
+
+    private readonly IValidator<CreateCarModelRequest> _createRequestValidator;
+
+    private readonly IValidator<UpdateCarModelRequest> _updateRequestValidator;
+
+    public CarModelsService(
+        IDbConnection connection,
+        ILogger<CarModelsService> logger,
+        IValidator<GetCarModelRequest> getRequestValidator,
+        IValidator<CreateCarModelRequest> createRequestValidator,
+        IValidator<UpdateCarModelRequest> updateRequestValidator)
     {
         _connection = connection;
         _logger = logger;
+        _getRequestValidator = getRequestValidator;
+        _createRequestValidator = createRequestValidator;
+        _updateRequestValidator = updateRequestValidator;
     }
 
     public async Task<CarModel> GetAsync(int id)
@@ -33,6 +48,8 @@ public class CarModelsService : ICarModelsDataService
     public Task<IEnumerable<CarModel>> GetAsync(GetCarModelRequest request)
     {
         _logger.LogInformation("Attempting to get car models");
+
+        _getRequestValidator.ValidateAndThrow(request);
 
         if (request.OrderByPropertyName is not (null or "production_year" or "price_per_day"))
             throw new ValidationException($"{request.OrderByPropertyName} is not a valid property name");
@@ -68,6 +85,9 @@ public class CarModelsService : ICarModelsDataService
     public Task<CarModel> CreateAsync(CreateCarModelRequest request)
     {
         _logger.LogInformation("Attempting to add car model with request: {@CarModel}", request);
+        
+        _createRequestValidator.ValidateAndThrow(request);
+        
         return _connection.QueryFirstAsync<CarModel>("""
             insert into car_models (make, model, production_year, color, price_per_day, seat_count)
             values (@Make, @Model, @ProductionYear, @Color, @PricePerDay, @SeatCount)
@@ -78,6 +98,11 @@ public class CarModelsService : ICarModelsDataService
     public async Task UpdateAsync(UpdateCarModelRequest request)
     {
         _logger.LogInformation("Attempting to update car model {@Request}", request);
+        
+        // ReSharper disable once MethodHasAsyncOverload
+        _updateRequestValidator.ValidateAndThrow(request);
+        
+        // TODO: this should go in the validator
         var exists = await _connection.QueryFirstAsync<bool>(
             "select exists (select 1 from car_models where id = @Id)", new { request.Id });
 
