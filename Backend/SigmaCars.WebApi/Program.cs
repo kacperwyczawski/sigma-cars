@@ -46,7 +46,6 @@ var app = builder.Build();
 
 app.UseSwagger(options => options.RouteTemplate = "schema/{documentName}");
 app.UseMiddleware<ExceptionHandlingMiddleware>();
-app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 

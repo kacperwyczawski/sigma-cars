@@ -12,9 +12,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4313494-abb2-4ad0-aabf-1fc51cce4021" name="Changes" comment="refactor(infrastructure): reduce amount of code in carModelsService">
+    <list default="true" id="f4313494-abb2-4ad0-aabf-1fc51cce4021" name="Changes" comment="feat(backend): change port from 5000 to 80">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -431,7 +431,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681228823849</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="feat(backend): change port from 5000 to 80">
+      <created>1681320407096</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1681320407096</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,7 +472,8 @@
     <MESSAGE value="style(backend): remove comment and join lines" />
     <MESSAGE value="refactor(infrastructure): remove redundant validation exception throw" />
     <MESSAGE value="refactor(infrastructure): reduce amount of code in carModelsService" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor(infrastructure): reduce amount of code in carModelsService" />
+    <MESSAGE value="feat(backend): change port from 5000 to 80" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(backend): change port from 5000 to 80" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
