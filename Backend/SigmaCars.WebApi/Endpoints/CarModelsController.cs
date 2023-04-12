@@ -6,7 +6,7 @@ using SigmaCars.Domain.Models;
 namespace SigmaCars.WebApi.Endpoints.CarModels;
 
 [ApiController]
-[Route("car-models")]
+[Route("api/car-models")]
 public class CarModelsController : Controller
 {
     private readonly ICarModelsService _carModelsService;
