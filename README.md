@@ -25,7 +25,9 @@ Sigma Cars is a car rental application that allows users to rent cars for person
 
 The following technologies were used in the development of this project:
 
-- Backend: Docker, Asp.Net Core, Dapper, PostgreSQL, Postman, OpenAPI
+- Backend: Asp.Net Core, Dapper, PostgreSQL, OpenAPI, FluentValidation
+- Fullstack: Docker
+- Tools: Postman, Rider
 
 ### 🐋 Docker
 
@@ -35,7 +37,7 @@ This project uses 3 docker files:
 2. Api [Dockerfile](Backend/Dockerfile)
 3. Database [Dockerfile](Backend/SigmaCars.Database/Dockerfile)
 
-To apply changes to the codebase, please append `--build` to the docker dompose command.
+To apply changes to the codebase, append `--build` to the docker dompose command.
 
 ## 📫 Feedback
 
