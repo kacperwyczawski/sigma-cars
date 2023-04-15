@@ -12,7 +12,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4313494-abb2-4ad0-aabf-1fc51cce4021" name="Changes" comment="" />
+    <list default="true" id="f4313494-abb2-4ad0-aabf-1fc51cce4021" name="Changes" comment="feat(webapi): return no content if there are no search results">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -280,6 +282,7 @@
       <workItem from="1681226663825" duration="230000" />
       <workItem from="1681226909021" duration="48000" />
       <workItem from="1681226971925" duration="1939000" />
+      <workItem from="1681544746463" duration="933000" />
     </task>
     <task id="LOCAL-00001" summary="feat(backend): update gitignore">
       <created>1680019559319</created>
@@ -449,7 +452,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681321845906</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="feat(webapi): return no content if there are no search results">
+      <created>1681544956730</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1681544956730</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -486,7 +496,8 @@
     <MESSAGE value="feat(backend): change port from 5000 to 80" />
     <MESSAGE value="feat(backend): remove https redirection" />
     <MESSAGE value="feat(backend): change path of CarModelsController.cs to `api/car-models`" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(backend): change path of CarModelsController.cs to `api/car-models`" />
+    <MESSAGE value="feat(webapi): return no content if there are no search results" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(webapi): return no content if there are no search results" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
