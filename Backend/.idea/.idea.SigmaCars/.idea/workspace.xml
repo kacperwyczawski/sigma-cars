@@ -12,10 +12,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4313494-abb2-4ad0-aabf-1fc51cce4021" name="Changes" comment="feat(backend): change port from 5000 to 80">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/Program.cs" afterDir="false" />
-    </list>
+    <list default="true" id="f4313494-abb2-4ad0-aabf-1fc51cce4021" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -438,7 +435,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681320407096</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="feat(backend): remove https redirection">
+      <created>1681321778718</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1681321778718</updated>
+    </task>
+    <task id="LOCAL-00024" summary="feat(backend): change path of CarModelsController.cs to `api/car-models`">
+      <created>1681321845906</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1681321845906</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -473,7 +484,9 @@
     <MESSAGE value="refactor(infrastructure): remove redundant validation exception throw" />
     <MESSAGE value="refactor(infrastructure): reduce amount of code in carModelsService" />
     <MESSAGE value="feat(backend): change port from 5000 to 80" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(backend): change port from 5000 to 80" />
+    <MESSAGE value="feat(backend): remove https redirection" />
+    <MESSAGE value="feat(backend): change path of CarModelsController.cs to `api/car-models`" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(backend): change path of CarModelsController.cs to `api/car-models`" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

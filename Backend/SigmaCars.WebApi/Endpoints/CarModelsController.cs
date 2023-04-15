@@ -44,7 +44,12 @@ public class CarModelsController : Controller
             orderByPropertyName,
             ascending);
 
-        return Ok(await _carModelsService.GetAsync(request));
+        var result = await _carModelsService.GetAsync(request);
+
+        if (result.Any())
+            return NoContent();
+        
+        return Ok(result);
     }
 
     [HttpPost]
