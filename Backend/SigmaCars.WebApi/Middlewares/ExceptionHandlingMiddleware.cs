@@ -31,8 +31,7 @@ public class ExceptionHandlingMiddleware
             var statusCode = HttpStatusCode.InternalServerError;
             var problemDetails = new ProblemDetails
             {
-                Title = "Unexpected server error",
-                Detail = exception.Message
+                Title = "Unexpected server error"
             };
 
             switch (exception)
@@ -48,6 +47,10 @@ public class ExceptionHandlingMiddleware
                     problemDetails.Detail = e.Message;
                     break;
             }
+
+            // if exception is not expected
+            if ((int)statusCode == 500)
+                _logger.LogError(exception, "Unexpected exception");
 
             problemDetails.Status = (int)statusCode;
             context.Response.ContentType = "application/problem+json";
