@@ -31,15 +31,6 @@ create table rentals (
     end_date timestamp not null
 );
 
-create table scheduled_maintenances (
-    id serial primary key,
-    car_id int not null,
-    employee_id int not null,
-    start_date timestamp not null,
-    end_date timestamp not null,
-    reason text not null
-);
-
 create table users (
     id serial primary key,
     first_name varchar(100) not null,

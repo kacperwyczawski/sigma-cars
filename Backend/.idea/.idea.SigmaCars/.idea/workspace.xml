@@ -13,15 +13,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4313494-abb2-4ad0-aabf-1fc51cce4021" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/Car/Persistence/ICarsService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Commands/CreateCarModelCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Commands/CreateCarModelHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Commands/CreateCarModelResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Commands/DeleteCarModelCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Commands/DeleteCarModelHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Queries/GetCarModelHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Queries/GetCarModelsQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Queries/GetCarModelsResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SigmaCars.Infrastructure/Persistence/CarsService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SigmaCars/Docker/docker-compose.generated.override.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SigmaCars/Docker/docker-compose.generated.override.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/ICarModelsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Persistence/ICarModelsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/CreateCarModelRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/CreateCarModelRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/UpdateCarModelRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/UpdateCarModelRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/SigmaCars.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/SigmaCars.Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Infrastructure/CarModelsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Infrastructure/Persistence/CarModelsService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/Endpoints/CarModelsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/Endpoints/CarModelsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/Middlewares/ExceptionHandlingMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/Middlewares/ExceptionHandlingMiddleware.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,12 +44,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/22efe895cfcdc441cc9e14722e20437fcf7013e6e869636733169ad499b7bb28/NoContentResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9a6b1457cbcf17db31a383ba49ef9bcc786cf3ef77146d997eee499b27a46d/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cec346245bb14a6be4680756ab58c14b0dded5f9bbd244daef6adff9432db3/Enums.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Kacper/Desktop/Projects/SigmaCars/Backend/SigmaCars.Application/Features/CarModel/ICarModelsDataService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Kacper/Desktop/Projects/SigmaCars/Backend/SigmaCars.Application/Features/CarModel/Requests/UpdateCarModelRequestValidator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Kacper/Desktop/Projects/SigmaCars/Backend/SigmaCars.Infrastructure/CarModelsService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Kacper/Desktop/Projects/SigmaCars/Backend/SigmaCars.Infrastructure/CarModelsService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Kacper/Desktop/Projects/SigmaCars/Backend/SigmaCars.Infrastructure/CarModelsService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Kacper/Desktop/Projects/SigmaCars/Backend/SigmaCars.Infrastructure/CarModelsService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Kacper/Desktop/Projects/SigmaCars/Backend/SigmaCars.WebApi/Middlewares/ExceptionHandlingMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -69,7 +73,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.General&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -292,6 +296,10 @@
       <workItem from="1681226971925" duration="1939000" />
       <workItem from="1681544746463" duration="1386000" />
       <workItem from="1681635798069" duration="805000" />
+      <workItem from="1681643845987" duration="162000" />
+      <workItem from="1681644021252" duration="76000" />
+      <workItem from="1681644114909" duration="160000" />
+      <workItem from="1681644289904" duration="4155000" />
     </task>
     <task id="LOCAL-00001" summary="feat(backend): update gitignore">
       <created>1680019559319</created>
