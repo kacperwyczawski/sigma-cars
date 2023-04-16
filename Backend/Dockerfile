@@ -8,5 +8,5 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0 as runtime
 
 WORKDIR /app
 COPY --from=build-env /app .
-EXPOSE 80
-ENTRYPOINT ["dotnet", "SigmaCars.WebApi.dll", "--urls", "http://+:80"]
+EXPOSE 5000
+ENTRYPOINT ["dotnet", "SigmaCars.WebApi.dll", "--urls", "http://+:5000"]

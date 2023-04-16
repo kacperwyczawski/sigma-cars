@@ -1,6 +1,6 @@
 # This is a generated file. Not intended for manual editing.
 services:
-  api:
+  backend:
     entrypoint:
     - "/riderDebugger/linux-x64/dotnet/dotnet"
     - "/riderDebugger/JetBrains.Debugger.Worker.exe"
@@ -19,4 +19,4 @@ services:
     - "C:\\Users\\Kacper\\AppData\\Local\\JetBrains\\Toolbox\\apps\\Rider\\ch-0\\\
       231.8109.212/bin:/riderLogsConf"
     - "C:\\Users\\Kacper\\AppData\\Local\\JetBrains\\Rider2023.1\\log\\DebuggerWorker\\\
-      JetBrains.Debugger.Worker.2023_4_11_15_05_39:/riderLogs:rw"
+      JetBrains.Debugger.Worker.2023_4_16_11_04_28:/riderLogs:rw"
