@@ -3,10 +3,10 @@ using SigmaCars.Application.Features.CarModel;
 using SigmaCars.Application.Features.CarModel.Requests;
 using SigmaCars.Domain.Models;
 
-namespace SigmaCars.WebApi.Endpoints.CarModels;
+namespace SigmaCars.WebApi.Endpoints;
 
 [ApiController]
-[Route("api/car-models")]
+[Route("car-models")]
 public class CarModelsController : Controller
 {
     private readonly ICarModelsService _carModelsService;
@@ -46,7 +46,7 @@ public class CarModelsController : Controller
 
         var result = await _carModelsService.GetAsync(request);
 
-        if (result.Any())
+        if (!result.Any())
             return NoContent();
         
         return Ok(result);
