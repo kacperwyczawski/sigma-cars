@@ -1,14 +1,15 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SigmaCars.Domain.Models;
+using SigmaCars.Infrastructure.Persistence;
 
 namespace SigmaCars.Application.Features.CarModel.Queries;
 
 public class GetCarModelHandler : IRequestHandler<GetCarModelsQuery, IEnumerable<GetCarModelResponse>>
 {
-    private readonly DbContext _dbContext;
+    private readonly SigmaCarsDbContext _dbContext;
 
-    public GetCarModelHandler(DbContext dbContext)
+    public GetCarModelHandler(SigmaCarsDbContext dbContext)
     {
         _dbContext = dbContext;
     }

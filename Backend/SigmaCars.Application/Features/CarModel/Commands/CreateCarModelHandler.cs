@@ -1,13 +1,13 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
+using SigmaCars.Infrastructure.Persistence;
 
 namespace SigmaCars.Application.Features.CarModel.Commands;
 
 public class CreateCarModelHandler : IRequestHandler<CreateCarModelCommand, CreateCarModelResponse>
 {
-    private readonly DbContext _dbContext;
+    private readonly SigmaCarsDbContext _dbContext;
 
-    public CreateCarModelHandler(DbContext dbContext)
+    public CreateCarModelHandler(SigmaCarsDbContext dbContext)
     {
         _dbContext = dbContext;
     }

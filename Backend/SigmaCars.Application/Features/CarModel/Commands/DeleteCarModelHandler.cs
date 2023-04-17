@@ -1,14 +1,14 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
 using SigmaCars.Domain.Exceptions;
+using SigmaCars.Infrastructure.Persistence;
 
 namespace SigmaCars.Application.Features.CarModel.Commands;
 
 public class DeleteCarModelHandler : IRequestHandler<DeleteCarModelCommand>
 {
-    private readonly DbContext _dbContext;
+    private readonly SigmaCarsDbContext _dbContext;
 
-    public DeleteCarModelHandler(DbContext dbContext)
+    public DeleteCarModelHandler(SigmaCarsDbContext dbContext)
     {
         _dbContext = dbContext;
     }
