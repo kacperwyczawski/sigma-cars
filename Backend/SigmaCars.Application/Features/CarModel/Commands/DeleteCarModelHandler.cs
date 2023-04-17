@@ -1,19 +1,26 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using SigmaCars.Application.Features.CarModel.Persistence;
+using SigmaCars.Domain.Exceptions;
 
 namespace SigmaCars.Application.Features.CarModel.Commands;
 
 public class DeleteCarModelHandler : IRequestHandler<DeleteCarModelCommand>
 {
-    private readonly ICarModelsService _carModelsService;
+    private readonly DbContext _dbContext;
 
-    public DeleteCarModelHandler(ICarModelsService carModelsService)
+    public DeleteCarModelHandler(DbContext dbContext)
     {
-        _carModelsService = carModelsService;
+        _dbContext = dbContext;
     }
 
     public async Task Handle(DeleteCarModelCommand command, CancellationToken cancellationToken)
     {
-        await _carModelsService.DeleteAsync(command.Id);
+        var carModel = await _dbContext.Set<Domain.Models.CarModel>()
+            .FindAsync(new object?[] { command.Id }, cancellationToken: cancellationToken)
+            ?? throw new NotFoundException(nameof(Domain.Models.CarModel), "delete");
+        
+        _dbContext.Remove(carModel);
+        await _dbContext.SaveChangesAsync(cancellationToken);
     }
 }
