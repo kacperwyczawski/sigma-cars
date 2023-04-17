@@ -1,11 +1,19 @@
 ﻿using FluentValidation;
 
-namespace SigmaCars.Application.Features.CarModel.Requests;
+namespace SigmaCars.Application.Features.CarModel.Queries;
 
-public class GetCarModelRequestValidator : AbstractValidator<GetCarModelRequest>
+public class GetCarModelValidator : AbstractValidator<GetCarModelsQuery>
 {
-    public GetCarModelRequestValidator()
+    public GetCarModelValidator()
     {
+        RuleFor(x => x.StartDate)
+            .NotEmpty()
+            .LessThan(x => x.EndDate);
+
+        RuleFor(x => x.EndDate)
+            .NotEmpty()
+            .LessThan(x => x.StartDate.AddMonths(4));
+        
         RuleFor(x => x.MaxYear)
             .GreaterThan(x => x.MinYear)
             .When(x => x.MinYear.HasValue);

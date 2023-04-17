@@ -13,20 +13,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4313494-abb2-4ad0-aabf-1fc51cce4021" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Behaviors/ValidationBehavior.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/Car/Persistence/ICarsService.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Commands/CreateCarModelCommand.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Commands/CreateCarModelHandler.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Commands/CreateCarModelResponse.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Commands/DeleteCarModelCommand.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Commands/DeleteCarModelHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Persistence/ICarModelsService.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Queries/GetCarModelHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Queries/GetCarModelValidator.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Queries/GetCarModelsQuery.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Queries/GetCarModelsResponse.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/SigmaCars.Infrastructure/Persistence/CarsService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SigmaCars.Infrastructure/Persistence/ConnectionString.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SigmaCars/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/ICarModelsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Persistence/ICarModelsService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/CreateCarModelRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/CreateCarModelRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/UpdateCarModelRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/UpdateCarModelRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SigmaCars/Docker/docker-compose.generated.override.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SigmaCars/Docker/docker-compose.generated.override.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/ICarModelsService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/CreateCarModelRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/CreateCarModelRequestValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Commands/CreateCarModelValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/GetCarModelRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/GetCarModelRequestValidator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/UpdateCarModelRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SigmaCars.Application/Features/CarModel/Requests/UpdateCarModelRequestValidator.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/SigmaCars.Application/SigmaCars.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Application/SigmaCars.Application.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SigmaCars.Infrastructure/CarModelsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.Infrastructure/Persistence/CarModelsService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SigmaCars.WebApi/Endpoints/CarModelsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SigmaCars.WebApi/Endpoints/CarModelsController.cs" afterDir="false" />
@@ -44,7 +53,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/22efe895cfcdc441cc9e14722e20437fcf7013e6e869636733169ad499b7bb28/NoContentResult.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9a6b1457cbcf17db31a383ba49ef9bcc786cf3ef77146d997eee499b27a46d/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cec346245bb14a6be4680756ab58c14b0dded5f9bbd244daef6adff9432db3/Enums.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Kacper/Desktop/Projects/SigmaCars/Backend/SigmaCars.WebApi/Middlewares/ExceptionHandlingMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Kacper/Desktop/Projects/SigmaCars/Backend/SigmaCars.Application/Features/CarModel/Requests/UpdateCarModelRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Kacper/Desktop/Projects/SigmaCars/Backend/SigmaCars.WebApi/Endpoints/CarModelsController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -299,7 +309,8 @@
       <workItem from="1681643845987" duration="162000" />
       <workItem from="1681644021252" duration="76000" />
       <workItem from="1681644114909" duration="160000" />
-      <workItem from="1681644289904" duration="4155000" />
+      <workItem from="1681644289904" duration="10272000" />
+      <workItem from="1681729780055" duration="2528000" />
     </task>
     <task id="LOCAL-00001" summary="feat(backend): update gitignore">
       <created>1680019559319</created>
@@ -483,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681545768437</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="feat(backend): remove scheduled maintainace from db schema">
+      <created>1681648935607</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1681648935607</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -497,7 +515,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="feat(backend): update gitignore" />
     <MESSAGE value="feat(backend): remove some files from git" />
     <MESSAGE value="build(backend): add .dockerignore" />
     <MESSAGE value="build(backend): update dockerfile" />
@@ -522,7 +539,8 @@
     <MESSAGE value="feat(backend): change path of CarModelsController.cs to `api/car-models`" />
     <MESSAGE value="feat(webapi): return no content if there are no search results" />
     <MESSAGE value="docs: add header svg" />
-    <option name="LAST_COMMIT_MESSAGE" value="docs: add header svg" />
+    <MESSAGE value="feat(backend): remove scheduled maintainace from db schema" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(backend): remove scheduled maintainace from db schema" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

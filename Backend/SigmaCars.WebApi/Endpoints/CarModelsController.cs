@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SigmaCars.Application.Features.CarModel;
-using SigmaCars.Application.Features.CarModel.Requests;
-using SigmaCars.Domain.Models;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using SigmaCars.Application.Features.CarModel.Commands;
+using SigmaCars.Application.Features.CarModel.Persistence;
+using SigmaCars.Application.Features.CarModel.Queries;
 
 namespace SigmaCars.WebApi.Endpoints;
 
@@ -10,20 +11,19 @@ namespace SigmaCars.WebApi.Endpoints;
 public class CarModelsController : Controller
 {
     private readonly ICarModelsService _carModelsService;
+    
+    private readonly IMediator _mediator;
 
-    public CarModelsController(ICarModelsService carModelsService)
+    public CarModelsController(ICarModelsService carModelsService, IMediator mediator)
     {
         _carModelsService = carModelsService;
-    }
-
-    [HttpGet("{id:int}")]
-    public async Task<IActionResult> Get(int id)
-    {
-        return Ok(await _carModelsService.GetAsync(id));
+        _mediator = mediator;
     }
 
     [HttpGet]
     public async Task<IActionResult> Get(
+        [FromQuery(Name = "start-date")] DateTime startDate,
+        [FromQuery(Name = "end-date")] DateTime endDate,
         [FromQuery(Name = "min-year")] int? minYear,
         [FromQuery(Name = "max-year")] int? maxYear,
         [FromQuery(Name = "min-price")] float? minPrice,
@@ -35,7 +35,8 @@ public class CarModelsController : Controller
         [FromQuery(Name = "order-by")] string? orderByPropertyName,
         [FromQuery(Name = "ascending")] bool ascending = true)
     {
-        var request = new GetCarModelRequest(
+        var request = new GetCarModelsQuery(
+            startDate, endDate,
             minYear, maxYear,
             minPrice, maxPrice,
             minSeats, maxSeats,
@@ -44,7 +45,7 @@ public class CarModelsController : Controller
             orderByPropertyName,
             ascending);
 
-        var result = await _carModelsService.GetAsync(request);
+        var result = await _mediator.Send(request);
 
         if (!result.Any())
             return NoContent();
@@ -53,24 +54,18 @@ public class CarModelsController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] CreateCarModelRequest request)
+    public async Task<IActionResult> Post([FromBody] CreateCarModelCommand request)
     {
         var created = await _carModelsService.CreateAsync(request);
 
         return Created($"car-models/{created.Id}", created);
     }
 
-    [HttpPut]
-    public async Task<IActionResult> Put([FromBody] UpdateCarModelRequest request)
-    {
-        await _carModelsService.UpdateAsync(request);
-        return NoContent();
-    }
-
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {
-        await _carModelsService.DeleteAsync(id);
+        await _mediator.Send(new DeleteCarModelCommand(id));
+        
         return NoContent();
     }
 }
