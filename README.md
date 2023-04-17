@@ -2,7 +2,7 @@
 
 > **Note**
 >
-> Currently, the frontend is not yet available, but it will most likely be developed using React, Tailwind CSS, Next.js and TypeScript. Backend is still under development. Stay tuned for updates!
+> Currently, application is still under development. Stay tuned for updates!
 
 ## 📝 Description
 
