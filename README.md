@@ -40,6 +40,16 @@ This project uses some docker configuration files:
 
 To apply changes to the codebase, append `--build` to the docker compose command.
 
+### 🗂️ Simplified database schema
+
+```mermaid
+erDiagram
+    CarModel ||--o{ Car : has
+    Department ||--o{ Car : has
+    Car ||--o{ Rental : "is rented"
+    User ||--o{ Rental : has
+```
+
 ## 📫 Feedback
 
 I hope you find Sigma Cars project helpful! If you encounter any issues or have any feedback, please don't hesitate to contact me via github issues.
