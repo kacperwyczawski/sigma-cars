@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SigmaCars.Infrastructure.Persistence;
+using SigmaCars.Application.Persistence;
 
 namespace SigmaCars.Application.Features.CarModel.Commands;
 

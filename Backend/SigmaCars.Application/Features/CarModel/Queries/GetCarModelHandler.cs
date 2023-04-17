@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using SigmaCars.Application.Persistence;
 using SigmaCars.Domain.Models;
-using SigmaCars.Infrastructure.Persistence;
 
 namespace SigmaCars.Application.Features.CarModel.Queries;
 

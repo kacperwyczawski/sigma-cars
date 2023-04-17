@@ -1,6 +1,6 @@
 ﻿using MediatR;
+using SigmaCars.Application.Persistence;
 using SigmaCars.Domain.Exceptions;
-using SigmaCars.Infrastructure.Persistence;
 
 namespace SigmaCars.Application.Features.CarModel.Commands;
 
