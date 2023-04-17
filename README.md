@@ -2,7 +2,7 @@
 
 > **Note**
 >
-> Currently, the frontend is not yet available, but it will most likely be developed using React, Tailwind CSS, Next.js and TypeScript. Backend is still under development. Stay tuned for updates!
+> Currently, application is still under development. Stay tuned for updates!
 
 ## 📝 Description
 
@@ -39,6 +39,16 @@ This project uses some docker configuration files:
 4. Frontend [Dockerfile](Frontend/Dockerfile)
 
 To apply changes to the codebase, append `--build` to the docker compose command.
+
+### 🗂️ Simplified database schema
+
+```mermaid
+erDiagram
+    CarModel ||--o{ Car : has
+    Department ||--o{ Car : has
+    Car ||--o{ Rental : "is rented"
+    User ||--o{ Rental : has
+```
 
 ## 📫 Feedback
 
