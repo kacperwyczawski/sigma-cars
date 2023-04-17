@@ -1,9 +1,7 @@
 using FluentValidation;
 using MediatR;
 using SigmaCars.Application.Behaviors;
-using SigmaCars.Application.Features.Car.Persistence;
 using SigmaCars.Application.Features.CarModel.Commands;
-using SigmaCars.Application.Features.CarModel.Persistence;
 using SigmaCars.Infrastructure.Persistence;
 using SigmaCars.WebApi.Middlewares;
 using static SigmaCars.WebApi.ProgramHelpers;

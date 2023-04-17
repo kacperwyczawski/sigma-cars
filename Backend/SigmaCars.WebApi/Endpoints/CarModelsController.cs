@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SigmaCars.Application.Features.CarModel.Commands;
-using SigmaCars.Application.Features.CarModel.Persistence;
 using SigmaCars.Application.Features.CarModel.Queries;
 
 namespace SigmaCars.WebApi.Endpoints;
@@ -10,13 +9,10 @@ namespace SigmaCars.WebApi.Endpoints;
 [Route("car-models")]
 public class CarModelsController : Controller
 {
-    private readonly ICarModelsService _carModelsService;
-    
     private readonly IMediator _mediator;
 
-    public CarModelsController(ICarModelsService carModelsService, IMediator mediator)
+    public CarModelsController(IMediator mediator)
     {
-        _carModelsService = carModelsService;
         _mediator = mediator;
     }
 
@@ -56,7 +52,7 @@ public class CarModelsController : Controller
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] CreateCarModelCommand request)
     {
-        var created = await _carModelsService.CreateAsync(request);
+        var created = await _mediator.Send(request);
 
         return Created($"car-models/{created.Id}", created);
     }

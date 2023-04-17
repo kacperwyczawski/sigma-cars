@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using SigmaCars.Application.Features.CarModel.Persistence;
 using SigmaCars.Domain.Exceptions;
 
 namespace SigmaCars.Application.Features.CarModel.Commands;
