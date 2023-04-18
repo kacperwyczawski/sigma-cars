@@ -1,12 +1,12 @@
 ﻿services:
   database:
     build:
-      context: ./Backend/SigmaCars.Database
+      context: ./Backend/Database
     ports:
       - "5432:5432"
   backend:
     build:
-      context: ./Backend
+      context: ./Backend/WebApi
     ports:
       - "5000:5000"
     depends_on:
