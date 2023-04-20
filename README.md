@@ -45,10 +45,10 @@ To apply changes to the codebase, append `--build` to the docker compose command
 
 ```mermaid
 erDiagram
-    CarModel ||--o{ Car : has
-    Department ||--o{ Car : has
-    Car ||--o{ Rental : "is rented"
-    User ||--o{ Rental : has
+    CarModel ||--o{ Car : x
+    Department ||--o{ Car : x
+    Car ||--o{ Rental : x
+    User ||--o{ Rental : x
 ```
 
 ## 📫 Feedback
