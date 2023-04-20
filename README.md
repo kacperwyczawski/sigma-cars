@@ -34,7 +34,7 @@ The following technologies were used in the development of this project:
 
 This project uses some docker configuration files:
 
-1. [docker-compose.yml](Backend/docker-compose.yml)
+1. [docker-compose.yml](docker-compose.yml)
 2. Backend [Dockerfile](Backend/WebApi/Dockerfile)
 3. Database [Dockerfile](Backend/Database/Dockerfile)
 4. Frontend [Dockerfile](Frontend/Dockerfile)
