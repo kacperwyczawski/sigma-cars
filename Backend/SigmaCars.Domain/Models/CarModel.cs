@@ -20,4 +20,6 @@ public class CarModel
     {
         return $"{nameof(CarModel)}: {Color} {Make} {Model} from {ProductionYear} with {SeatCount} seats and price {PricePerDay} per day";
     }
+    
+    public List<Car> Cars { get; set; }
 }

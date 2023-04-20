@@ -21,4 +21,6 @@ public class User
 
     [MaxLength(50)]
     public UserRole Role { get; set; }
+    
+    public List<Rental> Rentals { get; set; }
 }

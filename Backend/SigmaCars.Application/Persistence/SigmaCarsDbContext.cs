@@ -30,8 +30,12 @@ public class SigmaCarsDbContext : DbContext
             e.Property(x => x.DepartmentId).HasColumnName("department_id");
             e.Property(x => x.RegistrationNumber).HasColumnName("registration_number");
             e.Property(x => x.Vin).HasColumnName("vin");
+            e.HasMany(x => x.Rentals)
+                .WithOne(x => x.Car)
+                .HasPrincipalKey(x => x.Id)
+                .HasForeignKey(x => x.CarId);
         });
-        
+
         modelBuilder.Entity<CarModel>(e =>
         {
             e.ToTable("car_models");
@@ -42,8 +46,12 @@ public class SigmaCarsDbContext : DbContext
             e.Property(x => x.Color).HasColumnName("color");
             e.Property(x => x.PricePerDay).HasColumnName("price_per_day");
             e.Property(x => x.SeatCount).HasColumnName("seat_count");
+            e.HasMany(x => x.Cars)
+                .WithOne(x => x.CarModel)
+                .HasPrincipalKey(x => x.Id)
+                .HasForeignKey(x => x.CarModelId);
         });
-        
+
         modelBuilder.Entity<Department>(e =>
         {
             e.ToTable("departments");
@@ -51,8 +59,12 @@ public class SigmaCarsDbContext : DbContext
             e.Property(x => x.CountryCode).HasColumnName("country_code");
             e.Property(x => x.City).HasColumnName("city");
             e.Property(x => x.Address).HasColumnName("address");
+            e.HasMany(x => x.Cars)
+                .WithOne(x => x.Department)
+                .HasPrincipalKey(x => x.Id)
+                .HasForeignKey(x => x.DepartmentId);
         });
-        
+
         modelBuilder.Entity<Rental>(e =>
         {
             e.ToTable("rentals");
@@ -62,7 +74,7 @@ public class SigmaCarsDbContext : DbContext
             e.Property(x => x.StartDate).HasColumnName("start_date");
             e.Property(x => x.EndDate).HasColumnName("end_date");
         });
-        
+
         modelBuilder.Entity<User>(e =>
         {
             e.ToTable("users");
@@ -72,6 +84,10 @@ public class SigmaCarsDbContext : DbContext
             e.Property(x => x.Email).HasColumnName("email");
             e.Property(x => x.PasswordHash).HasColumnName("password_hash");
             e.Property(x => x.Role).HasColumnName("role");
+            e.HasMany(x => x.Rentals)
+                .WithOne(x => x.User)
+                .HasPrincipalKey(x => x.Id)
+                .HasForeignKey(x => x.CustomerId);
         });
     }
 }
