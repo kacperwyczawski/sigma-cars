@@ -17,6 +17,9 @@ Sigma Cars is a car rental application that allows users to rent cars for person
 ## 🚀 How to use
 
 - After running the application, open `http://localhost` in your preferred web browser.
+
+#### 💭 Optional
+
 - You can access OpenAPI schema at `http://localhost:5000/schema/v1` (can be imported into Postman).
 - All REST API endpoints start with `http://localhost:5000`.
 
