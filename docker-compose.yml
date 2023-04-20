@@ -6,7 +6,7 @@
       - "5432:5432"
   backend:
     build:
-      context: ./WebApi
+      context: ./Backend
     ports:
       - "5000:5000"
     depends_on:
