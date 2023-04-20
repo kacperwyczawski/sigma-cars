@@ -1,12 +1,12 @@
 ﻿services:
   database:
     build:
-      context: ./Backend/Database
+      context: ./Database
     ports:
       - "5432:5432"
   backend:
     build:
-      context: ./Backend/WebApi
+      context: ./WebApi
     ports:
       - "5000:5000"
     depends_on:

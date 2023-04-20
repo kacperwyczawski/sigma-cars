@@ -33,9 +33,9 @@ The following technologies were used in the development of this project:
 
 This project uses some docker configuration files:
 
-1. [docker-compose.yml](Backend/docker-compose.yml)
+1. [docker-compose.yml](docker-compose.yml)
 2. Backend [Dockerfile](Backend/Dockerfile)
-3. Database [Dockerfile](Backend/SigmaCars.Database/Dockerfile)
+3. Database [Dockerfile](Database/Dockerfile)
 4. Frontend [Dockerfile](Frontend/Dockerfile)
 
 To apply changes to the codebase, append `--build` to the docker compose command.
