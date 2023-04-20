@@ -11,4 +11,10 @@ public class Car
     public string RegistrationNumber { get; set; }
     
     public string Vin { get; set; }
+    
+    public CarModel CarModel { get; set; }
+    
+    public Department Department { get; set; }
+    
+    public Rental Rental { get; set; }
 }

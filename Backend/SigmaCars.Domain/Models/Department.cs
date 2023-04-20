@@ -18,4 +18,6 @@ public class Department
     
     [MaxLength(100)]
     public string Address { get; set; }
+    
+    public List<Car> Cars { get; set; }
 }
