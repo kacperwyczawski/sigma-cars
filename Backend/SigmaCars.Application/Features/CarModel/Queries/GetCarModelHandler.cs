@@ -47,36 +47,6 @@ public class GetCarModelHandler : IRequestHandler<GetCarModelsQuery, IEnumerable
             _ => carModels
         };
 
-        // var result = Enumerable.Empty<GetCarModelResponse>();
-        //
-        // foreach (var carModel in carModels)
-        // {
-        //     var availableCarIds = await _dbContext.Set<Car>()
-        //         .Where(car => car.CarModelId == carModel.Id)
-        //         .Where(car => !_dbContext
-        //             .Set<Rental>()
-        //             .Where(rental => rental.CarId == car.Id)
-        //             .Where(rental => rental.StartDate <= query.EndDate)
-        //             .Any(rental => rental.EndDate >= query.StartDate))
-        //         .ToListAsync(cancellationToken: cancellationToken);
-        //     
-        //     var allCarIds = await _dbContext.Set<Car>()
-        //         .Where(car => car.CarModelId == carModel.Id)
-        //         .ToListAsync(cancellationToken: cancellationToken);
-        //
-        //     result = result.Append(new GetCarModelResponse(
-        //         carModel.Id,
-        //         carModel.Make,
-        //         carModel.Model,
-        //         carModel.ProductionYear,
-        //         carModel.Color,
-        //         carModel.PricePerDay,
-        //         carModel.SeatCount,
-        //         availableCarIds.Count,
-        //         availableCarIds.Select(car => car.Id),
-        //         allCarIds.Select(car => car.Id)));
-        // }
-
         carModels = carModels
             .Include(carModel => carModel.Cars
                 .Where(car => car.Rentals
