@@ -27,6 +27,7 @@ Sigma Cars is a car rental application that allows users to rent cars for person
 The following technologies were used in the development of this project:
 
 - Backend: Asp.Net Core, EF Core, PostgreSQL, OpenAPI, FluentValidation
+- Frontend: Next.js, TypeScript, React, TailwindCSS, Node.js
 - Other tools: Docker, Postman, Rider
 
 ### 🐋 Docker
@@ -44,10 +45,10 @@ To apply changes to the codebase, append `--build` to the docker compose command
 
 ```mermaid
 erDiagram
-    CarModel ||--o{ Car : has
-    Department ||--o{ Car : has
-    Car ||--o{ Rental : "is rented"
-    User ||--o{ Rental : has
+    CarModel ||--o{ Car : x
+    Department ||--o{ Car : x
+    Car ||--o{ Rental : x
+    User ||--o{ Rental : x
 ```
 
 ## 📫 Feedback
