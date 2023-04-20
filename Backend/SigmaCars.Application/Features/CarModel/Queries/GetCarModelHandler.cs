@@ -47,13 +47,23 @@ public class GetCarModelHandler : IRequestHandler<GetCarModelsQuery, IEnumerable
             _ => carModels
         };
 
-        carModels = carModels
-            .Include(carModel => carModel.Cars
-                .Where(car => car.Rentals
-                    .Where(rental => rental.StartDate <= query.EndDate)
-                    .Any(rental => rental.EndDate >= query.StartDate)));
+        var carModelsQueried = await carModels
+            .Include(carModel => carModel.Cars)
+            .ToListAsync(cancellationToken);
 
-        var results = carModels.Select(x => new GetCarModelResponse(
+        var availableCarIds = carModelsQueried
+            .SelectMany(x => x.Cars)
+            .Where(car => car.Rentals
+                .Any(rental =>
+                    (query.StartDate <= rental.StartDate && query.EndDate <= rental.StartDate)
+                    || (query.StartDate >= rental.EndDate && query.EndDate >= rental.EndDate)))
+            .Select(car => car.Id);
+
+        var carIds = carModelsQueried
+            .SelectMany(x => x.Cars)
+            .Select(car => car.Id);
+
+        var results = carModelsQueried.Select(x => new GetCarModelResponse(
             x.Id,
             x.Make,
             x.Model,
@@ -62,8 +72,8 @@ public class GetCarModelHandler : IRequestHandler<GetCarModelsQuery, IEnumerable
             x.PricePerDay,
             x.SeatCount,
             x.Cars.Count,
-            x.Cars.Select(car => car.Id),
-            x.Cars.Select(car => car.Id)));
+            availableCarIds,
+            carIds));
 
         return results;
     }
