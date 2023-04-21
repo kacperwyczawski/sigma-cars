@@ -15,4 +15,9 @@
     build:
       context: ./Frontend
     ports:
-      - "80:3000"
+      - "3000:3000"
+  reverse-proxy:
+    build:
+      context: ./ReverseProxy
+    ports:
+      - "80:80"
