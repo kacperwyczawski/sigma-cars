@@ -8,6 +8,8 @@
 
 Sigma Cars is a car rental application that allows users to rent cars for personal or business use. This is a learning project that was created to practice and demonstrate the development of a full stack web application. Users can search for cars by location, price, and availability, and make reservations for the selected car.
 
+Technologies used are listed [here](#-technologies)
+
 ## 🛠️ How to run
 
 1. Install [Docker](https://www.docker.com/) and [Git](https://git-scm.com/downloads) on your machine.
@@ -17,8 +19,11 @@ Sigma Cars is a car rental application that allows users to rent cars for person
 ## 🚀 How to use
 
 - After running the application, open `http://localhost` in your preferred web browser.
-- You can access OpenAPI schema at `http://localhost:5000/schema/v1` (can be imported into Postman).
-- All REST API endpoints start with `http://localhost:5000`.
+
+#### 💭 Optional
+
+- You can access OpenAPI schema at `http://localhost/api/schema/v1` (can be imported into Postman).
+- All REST API endpoints start with `http://localhost/api`.
 
 ## ℹ️ Other info
 
@@ -26,9 +31,9 @@ Sigma Cars is a car rental application that allows users to rent cars for person
 
 The following technologies were used in the development of this project:
 
-- Backend: Asp.Net Core, EF Core, PostgreSQL, OpenAPI, FluentValidation
-- Frontend: Next.js, TypeScript, React, TailwindCSS, Node.js
-- Other tools: Docker, Postman, Rider
+- Backend: **Asp.Net Core**, **PostgreSQL**, EF Core, OpenAPI, FluentValidation
+- Frontend: **Next.js**, TypeScript, React, TailwindCSS, Node.js
+- Other tools: **Docker**, **Nginx**, Postman, Rider
 
 ### 🐋 Docker
 
@@ -38,10 +43,21 @@ This project uses some docker configuration files:
 2. Backend [Dockerfile](Backend/Dockerfile)
 3. Database [Dockerfile](Database/Dockerfile)
 4. Frontend [Dockerfile](Frontend/Dockerfile)
+4. Reverse proxy [Dockerfile](ReverseProxy/Dockerfile)
 
 To apply changes to the codebase, append `--build` to the docker compose command.
 
-### 🗂️ Simplified database schema
+### 🔗 Application schema
+
+```mermaid
+flowchart TD
+    user([End user]) --- nginx{{Nginx reverse proxy}}
+    nginx --- backend(Asp.Net Core http api)
+    backend --- database[(Postgres db)]
+    nginx --- frontend(Next.js website)
+```
+
+### 🗃️ Simplified database schema
 
 ```mermaid
 erDiagram
