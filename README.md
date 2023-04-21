@@ -47,7 +47,17 @@ This project uses some docker configuration files:
 
 To apply changes to the codebase, append `--build` to the docker compose command.
 
-### 🗂️ Simplified database schema
+### 🔗 Application schema
+
+```mermaid
+flowchart TD
+    user([End user]) --- nginx{{Nginx reverse proxy}}
+    nginx --- backend(Asp.Net Core http api)
+    backend --- database[(Postgres db)]
+    nginx --- frontend(Next.js website)
+```
+
+### 🗃️ Simplified database schema
 
 ```mermaid
 erDiagram
