@@ -8,6 +8,8 @@
 
 Sigma Cars is a car rental application that allows users to rent cars for personal or business use. This is a learning project that was created to practice and demonstrate the development of a full stack web application. Users can search for cars by location, price, and availability, and make reservations for the selected car.
 
+Technologies used are listed [here](#-technologies)
+
 ## 🛠️ How to run
 
 1. Install [Docker](https://www.docker.com/) and [Git](https://git-scm.com/downloads) on your machine.
