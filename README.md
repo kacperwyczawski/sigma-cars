@@ -20,8 +20,8 @@ Sigma Cars is a car rental application that allows users to rent cars for person
 
 #### 💭 Optional
 
-- You can access OpenAPI schema at `http://localhost:5000/schema/v1` (can be imported into Postman).
-- All REST API endpoints start with `http://localhost:5000`.
+- You can access OpenAPI schema at `http://localhost/api/schema/v1` (can be imported into Postman).
+- All REST API endpoints start with `http://localhost/api`.
 
 ## ℹ️ Other info
 
@@ -31,7 +31,7 @@ The following technologies were used in the development of this project:
 
 - Backend: Asp.Net Core, EF Core, PostgreSQL, OpenAPI, FluentValidation
 - Frontend: Next.js, TypeScript, React, TailwindCSS, Node.js
-- Other tools: Docker, Postman, Rider
+- Other tools: Docker, Postman, Rider, Nginx
 
 ### 🐋 Docker
 
@@ -41,6 +41,7 @@ This project uses some docker configuration files:
 2. Backend [Dockerfile](Backend/Dockerfile)
 3. Database [Dockerfile](Database/Dockerfile)
 4. Frontend [Dockerfile](Frontend/Dockerfile)
+4. Reverse proxy [Dockerfile](ReverseProxy/Dockerfile)
 
 To apply changes to the codebase, append `--build` to the docker compose command.
 
