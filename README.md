@@ -31,9 +31,9 @@ Technologies used are listed [here](#-technologies)
 
 The following technologies were used in the development of this project:
 
-- Backend: Asp.Net Core, EF Core, PostgreSQL, OpenAPI, FluentValidation
-- Frontend: Next.js, TypeScript, React, TailwindCSS, Node.js
-- Other tools: Docker, Postman, Rider, Nginx
+- Backend: **Asp.Net Core**, **PostgreSQL**, EF Core, OpenAPI, FluentValidation
+- Frontend: **Next.js**, TypeScript, React, TailwindCSS, Node.js
+- Other tools: **Docker**, **Nginx**, Postman, Rider
 
 ### 🐋 Docker
 
