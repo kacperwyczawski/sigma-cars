@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SigmaCars.Application.Features.Authentication.Commands;
+using SigmaCars.Application.Features.Authentication.Queries;
 
 namespace SigmaCars.WebApi.Controllers;
 
@@ -18,8 +19,16 @@ public class AuthenticationController : Controller
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterCommand request)
     {
-        var created = await _mediator.Send(request);
+        var response = await _mediator.Send(request);
 
-        return Ok(created);
+        return Ok(response);
+    }
+    
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginQuery request)
+    {
+        var response = await _mediator.Send(request);
+
+        return Ok(response);
     }
 }

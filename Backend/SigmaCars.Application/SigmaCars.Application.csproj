@@ -17,8 +17,4 @@
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.3" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Features\Authentication\Queries\" />
-    </ItemGroup>
-
 </Project>
