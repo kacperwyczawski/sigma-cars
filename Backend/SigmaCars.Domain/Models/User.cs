@@ -20,7 +20,7 @@ public class User
     public string PasswordHash { get; set; }
 
     [MaxLength(50)]
-    public UserRole Role { get; set; }
+    public string Role { get; set; }
     
     public List<Rental> Rentals { get; set; }
 }
