@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SigmaCars.Application.Features.CarModel.Commands;
 using SigmaCars.Application.Features.CarModel.Queries;
 
-namespace SigmaCars.WebApi.Endpoints;
+namespace SigmaCars.WebApi.Controllers;
 
 [ApiController]
 [Route("car-models")]
