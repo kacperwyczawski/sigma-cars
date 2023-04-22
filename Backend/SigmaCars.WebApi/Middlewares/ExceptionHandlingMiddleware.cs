@@ -46,6 +46,16 @@ public class ExceptionHandlingMiddleware
                     problemDetails.Title = "Validation error";
                     problemDetails.Detail = e.Message;
                     break;
+                case ConflictException e:
+                    statusCode = HttpStatusCode.Conflict;
+                    problemDetails.Title = "Conflict";
+                    problemDetails.Detail = e.Details;
+                    break;
+                case InvalidCredentialsException e:
+                    statusCode = HttpStatusCode.Unauthorized;
+                    problemDetails.Title = "Invalid credentials";
+                    problemDetails.Detail = e.Details;
+                    break;
             }
 
             // if exception is not expected
