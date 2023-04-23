@@ -1,7 +1,9 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SigmaCars.Application.Features.CarModel.Commands;
 using SigmaCars.Application.Features.CarModel.Queries;
+using SigmaCars.Domain.Models;
 
 namespace SigmaCars.WebApi.Controllers;
 
@@ -49,6 +51,7 @@ public class CarModelsController : Controller
         return Ok(result);
     }
 
+    [Authorize(UserRole.Administrator)]
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] CreateCarModelCommand request)
     {
@@ -57,6 +60,7 @@ public class CarModelsController : Controller
         return Created($"car-models/{created.Id}", created);
     }
 
+    [Authorize(UserRole.Administrator)]
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {

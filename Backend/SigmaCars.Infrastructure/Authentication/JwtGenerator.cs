@@ -32,7 +32,7 @@ public class JwtGenerator : IJwtGenerator
         };
         
         if(user.Role == UserRole.Administrator)
-            claims.Add(new Claim("role", UserRole.Administrator));
+            claims.Add(new Claim(JwtConstants.RoleClaimName, UserRole.Administrator));
 
         var securityToken = new JwtSecurityToken(
             issuer: _jwtSettings.Issuer,

@@ -7,6 +7,7 @@ using SigmaCars.Application.Behaviors;
 using SigmaCars.Application.Features.Authentication;
 using SigmaCars.Application.Features.CarModel.Commands;
 using SigmaCars.Application.Persistence;
+using SigmaCars.Domain.Models;
 using SigmaCars.Infrastructure.Authentication;
 using SigmaCars.WebApi.Middlewares;
 using static SigmaCars.WebApi.ProgramHelpers;
@@ -54,7 +55,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
 
 // Authorization
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+    options.AddPolicy(UserRole.Administrator, policy =>
+        policy.RequireClaim(JwtConstants.RoleClaimName, UserRole.Administrator)));
 
 var app = builder.Build();
 
