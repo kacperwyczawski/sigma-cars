@@ -33,12 +33,15 @@ public class JwtGenerator : IJwtGenerator
         
         if(user.Role == UserRole.Administrator)
             claims.Add(new Claim(JwtConstants.RoleClaimName, UserRole.Administrator));
+        
+        if(_jwtSettings.MinutesToExpiration == 0)
+            throw new ArgumentException("Minutes to expire must be greater than 0");
 
         var securityToken = new JwtSecurityToken(
             issuer: _jwtSettings.Issuer,
             audience: _jwtSettings.Audience,
             claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(_jwtSettings.MinutesToExpire),
+            expires: DateTime.Now.AddMinutes(_jwtSettings.MinutesToExpiration),
             signingCredentials: signingCredentials);
         
         return new JwtSecurityTokenHandler().WriteToken(securityToken);
