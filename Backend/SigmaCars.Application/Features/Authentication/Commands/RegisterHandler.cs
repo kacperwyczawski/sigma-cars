@@ -30,7 +30,7 @@ public class RegisterHandler : IRequestHandler<RegisterCommand, RegisterResponse
             FirstName = request.FirstName,
             LastName = request.LastName,
             PasswordHash = request.Password, // TODO: Hash password
-            Role = "customer",
+            Role = UserRole.Customer,
             Rentals = new List<Rental>()
         };
 
