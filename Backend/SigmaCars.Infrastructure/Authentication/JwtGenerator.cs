@@ -31,8 +31,8 @@ public class JwtGenerator : IJwtGenerator
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
         
-        if(user.Role == UserRole.Administrator)
-            claims.Add(new Claim(JwtConstants.RoleClaimName, UserRole.Administrator));
+        if(user.Role != UserRole.Customer)
+            claims.Add(new Claim(ClaimTypes.Role, UserRole.Administrator));
         
         if(_jwtSettings.MinutesToExpiration == 0)
             throw new ArgumentException("Minutes to expire must be greater than 0");

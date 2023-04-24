@@ -51,7 +51,7 @@ public class CarModelsController : Controller
         return Ok(result);
     }
 
-    [Authorize(UserRole.Administrator)]
+    [Authorize(Roles = UserRole.Administrator)]
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] CreateCarModelCommand request)
     {
@@ -60,7 +60,7 @@ public class CarModelsController : Controller
         return Created($"car-models/{created.Id}", created);
     }
 
-    [Authorize(UserRole.Administrator)]
+    [Authorize(Roles = UserRole.Administrator)]
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {

@@ -55,9 +55,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
 
 // Authorization
-builder.Services.AddAuthorization(options =>
-    options.AddPolicy(UserRole.Administrator, policy =>
-        policy.RequireClaim(JwtConstants.RoleClaimName, UserRole.Administrator)));
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
