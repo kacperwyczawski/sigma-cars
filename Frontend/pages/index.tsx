@@ -1,3 +1,9 @@
+import UserOpinion from "@/components/UserOpinion";
+import SarahProfilePic from "../assets/sarah.jpg";
+import JohnProfilePic from "../assets/john.jpg";
+import MariaProfilePic from "../assets/maria.jpg";
+import TomProfilePic from "../assets/tom.jpg";
+
 export default function Home() {
     return (
         <>
@@ -19,11 +25,11 @@ export default function Home() {
                     </a>
                 </div>
             </header>
-            <main className="mx-auto max-w-4xl mt-40 p-3">
-                <h1 className="text-center text-5xl md:text-6xl font-semibold">
+            <main className="mx-auto max-w-6xl px-4 sm:px-6">
+                <h1 className="text-center text-5xl mt-24 md:text-6xl font-bold">
                     Rent with Confidence with Sigma&nbsp;Cars
                 </h1>
-                <div className="flex justify-center mt-16">
+                <div className="flex justify-center mt-24">
                     <div className="flex flex-row">
                         <div className="basis-2 flex flex-col gap-2">
                             <label
@@ -52,22 +58,39 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <h2 className="text-center mt-16 text-xl text-neutral-800">
-                    <p className="text-justify">
-                        At Sigma Cars, we are passionate about helping you explore the world on your terms. With our
-                        extensive fleet of high-quality vehicles, you can rest assured that you will find the perfect
-                        car, whether you are embarking on a cross-country adventure or need a reliable vehicle for
-                        your daily commute.
-                    </p>
-                    <p className="mt-10 text-neutral-400 text-base">
-                        Website is under development. Stay tuned for updates! Check out source code on&nbsp;
-                        <a href="https://github.com/kacperwyczawski/sigma-cars" rel="noopener noreferrer"
-                           className="text-blue-400 hover:underline">
-                            GitHub
-                        </a>
-                    </p>
-                </h2>
             </main>
+            <div className="bg-slate-800 px-4 py-16 mt-24 space-y-16">
+                <p className="text-justify text-white text-xl leading-relaxed max-w-6xl mx-auto">
+                    At Sigma Cars, we are passionate about helping you explore the world on your terms. With our
+                    extensive fleet of high-quality vehicles, you can rest assured that you will find the perfect
+                    car, whether you are embarking on a cross-country adventure or need a reliable vehicle for
+                    your daily commute.
+                </p>
+                <p className="text-neutral-400 text-base text-center">
+                    Website is under development. Stay tuned for updates! Check out source code on&nbsp;
+                    <a href="https://github.com/kacperwyczawski/sigma-cars" rel="noopener noreferrer"
+                       className="text-blue-400 hover:underline">
+                        GitHub
+                    </a>
+                </p>
+            </div>
+            <div className="mt-16 px-4">
+                <h2 className="text-center text-4xl">Trusted by users all over the world!</h2>
+                <div className="flex flex-row mt-8 gap-4 overflow-scroll">
+                    <UserOpinion
+                        name="Sarah Johnson" title="Adventure enthusiast" imageUrl={SarahProfilePic}
+                        text="I rented a car from Sigma Cars for a week-long road trip, and I couldn't have been happier with the service and vehicle I received. The staff were helpful and friendly, and the car was clean and reliable. I highly recommend Sigma Cars to anyone looking for a hassle-free rental experience."/>
+                    <UserOpinion
+                        name="John Lee" title="Daily commuter" imageUrl={JohnProfilePic}
+                        text="I've been using Sigma Cars for my daily commute for the past year, and I've never had any issues with the vehicles. They are always clean, well-maintained, and affordable. The customer service is also top-notch, making it a great overall experience."/>
+                    <UserOpinion
+                        name="Maria Hernandez" title="Family traveler" imageUrl={MariaProfilePic}
+                        text="Sigma Cars provided us with a spacious and comfortable SUV for our family vacation. The vehicle was clean and well-equipped, making our trip stress-free and enjoyable. I would definitely use Sigma Cars again for our next family adventure."/>
+                    <UserOpinion
+                        name="Tom Wilson" title="Business traveler" imageUrl={TomProfilePic}
+                        text="I travel for work frequently and always use Sigma Cars for my rental needs. They have a wide selection of vehicles to choose from, and the staff are always helpful and accommodating. The process is quick and easy, making it a great option for busy professionals."/>
+                </div>
+            </div>
         </>
     )
 }
