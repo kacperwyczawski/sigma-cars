@@ -185,6 +185,20 @@ export default function Home() {
                     ))}
                 </div>
             </div>
+            <footer className="grid grid-cols-2 grid-rows-2 bg-slate-800 text-gray-300 text-lg p-4 mt-16 gap-4">
+                <p>
+                    &Sigma; Cars
+                </p>
+                <a
+                    href="https://github.com/kacperwyczawski/sigma-cars"
+                    className="underline hover:text-white justify-self-end">
+                    Source code
+                </a>
+                <p>
+                    &copy; 2023 Kacper Wyczawski, Licensed under AGPL-3.0
+                </p>
+                <p className="justify-self-end">Give a star!</p>
+            </footer>
         </>
     )
 }
