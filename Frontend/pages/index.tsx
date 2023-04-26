@@ -79,7 +79,7 @@ export default function Home() {
                         <label className="flex-grow relative">
                             From:
                             <input
-                                className="block border w-full py-2 px-3 rounded-md h-10 mt-2"
+                                className="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
                                 type="date" value={startDate}
                                 onChange={event => setStartDate(event.target.value)}
                                 max="01-01-2200"
@@ -91,7 +91,7 @@ export default function Home() {
                         <label className="flex-grow relative">
                             To:
                             <input
-                                className="block border w-full py-2 px-3 rounded-md h-10 mt-2"
+                                className="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
                                 type="date" value={endDate}
                                 onChange={event => setEndDate(event.target.value)}
                                 max="01-01-2200"
