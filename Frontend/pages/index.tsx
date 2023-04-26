@@ -176,7 +176,7 @@ export default function Home() {
                 <h2 className="text-center text-4xl">Trusted by users all over the world!</h2>
                 <div className="flex flex-row mt-8 gap-4 overflow-scroll">
                     {userOpinions.map((opinion, index) => (
-                        <UserOpinion {...opinion}/>
+                        <UserOpinion key={opinion.name} {...opinion}/>
                     ))}
                 </div>
             </div>
