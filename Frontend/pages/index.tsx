@@ -54,12 +54,16 @@ export default function Home() {
         <>
             <header className="flex bg-orange-600 p-2 sm:p-4 justify-between items-center text-white">
                 <div className="flex gap-2 text-xl sm:text-2xl font-bold">
-                    <div className="bg-slate-800 w-8 h-8 grid place-items-center rounded-md">
+                    <a
+                        className="bg-slate-800 w-8 h-8 grid place-items-center rounded-md"
+                        href={""}>
                         &Sigma;
-                    </div>
-                    <div className="leading-8">
+                    </a>
+                    <a
+                        className="leading-8"
+                        href={""}>
                         Sigma Cars
-                    </div>
+                    </a>
                 </div>
                 <div className="flex-row font-normal text-lg sm:text-xl divide-x-2">
                     <a href="/" className="px-2">
@@ -68,6 +72,7 @@ export default function Home() {
                     <a href="/" className="px-2">
                         Sign up
                     </a>
+
                 </div>
             </header>
             <main className="mx-auto max-w-6xl px-4 sm:px-6">
