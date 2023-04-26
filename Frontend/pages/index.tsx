@@ -3,8 +3,25 @@ import SarahProfilePic from "../assets/sarah.jpg";
 import JohnProfilePic from "../assets/john.jpg";
 import MariaProfilePic from "../assets/maria.jpg";
 import TomProfilePic from "../assets/tom.jpg";
+import {Listbox, Transition} from "@headlessui/react";
+import React, {Fragment, useState} from "react";
+import {Calendar, Check, ChevronsUpDown} from "lucide-react";
+
+const departments = [
+    "Chicago",
+    "Boston",
+    "Kansas",
+]; // temporary fake data
+
+const defaultStartDate = new Date()
+const defaultEndDate = new Date()
+defaultEndDate.setDate(defaultEndDate.getDate() + 7)
 
 export default function Home() {
+    const [department, setDepartment] = useState(departments[0]);
+    const [startDate, setStartDate] = useState(defaultStartDate.toISOString().slice(0, 10));
+    const [endDate, setEndDate] = useState(defaultEndDate.toISOString().slice(0, 10));
+
     return (
         <>
             <header className="flex bg-orange-600 p-2 sm:p-4 justify-between items-center text-white">
@@ -30,32 +47,85 @@ export default function Home() {
                     Rent with Confidence with Sigma&nbsp;Cars
                 </h1>
                 <div className="flex justify-center mt-24">
-                    <div className="flex flex-row">
-                        <div className="basis-2 flex flex-col gap-2">
-                            <label
-                                className="ml-4 text-lg"
-                                htmlFor="from">
-                                From:
-                            </label>
+                    <div className="max-w-3xl flex gap-3 items-end flex-grow flex-wrap">
+                        <label className="flex-grow relative">
+                            From:
                             <input
-                                className="bg-transparent block p-4 rounded-l-lg border"
-                                type="text" id="from"/>
-                        </div>
-                        <div className="basis-2 flex flex-col gap-2">
-                            <label
-                                className="ml-4 text-lg"
-                                htmlFor="to">
-                                To:
-                            </label>
+                                className="block border w-full py-2 px-3 rounded-md h-10 mt-2"
+                                type="date" value={startDate}
+                                onChange={event => setStartDate(event.target.value)}
+                                max="01-01-2200"
+                                min="01-01-2000"/>
+                            <span className={"pointer-events-none absolute right-4 bottom-2.5 bg-white"}>
+                                <Calendar className={"text-slate-800 h-5 w-5"}/>
+                            </span>
+                        </label>
+                        <label className="flex-grow relative">
+                            To:
                             <input
-                                className="bg-transparent block p-4 border-y"
-                                type="text" id="to"/>
-                        </div>
-                        <div className="basis-1 flex items-end">
-                            <input
-                                className="bg-slate-800 hover:bg-slate-700 block p-4 rounded-r-lg border-slate-800 hover:border-slate-700 border text-white"
-                                type="submit" value="Explore!"/>
-                        </div>
+                                className="block border w-full py-2 px-3 rounded-md h-10 mt-2"
+                                type="date" value={endDate}
+                                onChange={event => setEndDate(event.target.value)}
+                                max="01-01-2200"
+                                min="01-01-2000"/>
+                            <span className={"pointer-events-none absolute right-4 bottom-2.5 bg-white"}>
+                                <Calendar className={"text-slate-800 h-5 w-5"}/>
+                            </span>
+                        </label>
+                        <label className="flex-grow">
+                            Location:
+                            <div className="w-full">
+                                <Listbox
+                                    value={department} onChange={setDepartment}>
+                                    <div className="relative mt-1">
+                                        <Listbox.Button
+                                            className="block border w-full py-2 px-3 rounded-md h-10 mt-2 pr-16 bg-white text-left">
+                                            <span className="block truncate">{department}</span>
+                                            <span
+                                                className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                                    <ChevronsUpDown
+                                        className="h-5 w-5 text-slate-800"
+                                        aria-hidden="true"/>
+                                    </span>
+                                        </Listbox.Button>
+                                        <Transition
+                                            as={Fragment}
+                                            leave="transition ease-in duration-100"
+                                            leaveFrom="opacity-100"
+                                            leaveTo="opacity-0">
+                                            <Listbox.Options
+                                                className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                                                {departments.map((department) => (
+                                                    <Listbox.Option
+                                                        className="relative cursor-default select-none py-2 pl-10 pr-4 hover:bg-slate-100"
+                                                        key={department}
+                                                        value={department}>
+                                                        {({selected}) => selected ? (
+                                                            <>
+                                                                <div className={"block truncate font-bold"}>
+                                                                    {department}
+                                                                </div>
+                                                                <span
+                                                                    className="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-800">
+                                                                    <Check className="h-5 w-5" aria-hidden="true"/>
+                                                                </span>
+                                                            </>
+                                                        ) : (
+                                                            <div className={"block truncate"}>
+                                                                {department}
+                                                            </div>
+                                                        )}
+                                                    </Listbox.Option>
+                                                ))}
+                                            </Listbox.Options>
+                                        </Transition>
+                                    </div>
+                                </Listbox>
+                            </div>
+                        </label>
+                        <input
+                            className="block border py-2 px-3 rounded-md h-10 flex-grow bg-slate-800 text-white border-none hover:bg-slate-700"
+                            type="submit" value="Explore!"/>
                     </div>
                 </div>
             </main>
