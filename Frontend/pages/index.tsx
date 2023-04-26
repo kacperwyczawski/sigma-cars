@@ -7,11 +7,39 @@ import {Listbox, Transition} from "@headlessui/react";
 import React, {Fragment, useState} from "react";
 import {Calendar, Check, ChevronsUpDown} from "lucide-react";
 
+
+// fake data
 const departments = [
     "Chicago",
     "Boston",
     "Kansas",
-]; // temporary fake data
+];
+const userOpinions = [
+    {
+        name: "Sarah Johnson",
+        title: "Adventure enthusiast",
+        image: SarahProfilePic,
+        text: "Sigma Cars made my road trip unforgettable. The car was reliable and the service was exceptional. Highly recommended for adventure seekers like me!"
+    },
+    {
+        name: "John Lee",
+        title: "Daily commuter",
+        image: JohnProfilePic,
+        text: "I rely on Sigma Cars for my daily commute and they never disappoint. Clean and well-maintained cars, affordable prices, and great customer service. What else can I ask for?"
+    },
+    {
+        name: "Maria Hernandez",
+        title: "Family traveler",
+        image: MariaProfilePic,
+        text: "Thanks to Sigma Cars, my family and I had a wonderful vacation. The SUV was spacious and comfortable, and the staff were friendly and helpful. Can't wait for our next adventure!"
+    },
+    {
+        name: "Tom Wilson",
+        title: "Business traveler",
+        image: TomProfilePic,
+        text: "Sigma Cars is my go-to for work travel. With a wide selection of vehicles and a hassle-free rental process, they make my trips smoother and more enjoyable. Highly recommended for busy professionals!"
+    }
+];
 
 const defaultStartDate = new Date()
 const defaultEndDate = new Date()
@@ -147,18 +175,9 @@ export default function Home() {
             <div className="mt-16 px-4">
                 <h2 className="text-center text-4xl">Trusted by users all over the world!</h2>
                 <div className="flex flex-row mt-8 gap-4 overflow-scroll">
-                    <UserOpinion
-                        name="Sarah Johnson" title="Adventure enthusiast" imageUrl={SarahProfilePic}
-                        text="I rented a car from Sigma Cars for a week-long road trip, and I couldn't have been happier with the service and vehicle I received. The staff were helpful and friendly, and the car was clean and reliable. I highly recommend Sigma Cars to anyone looking for a hassle-free rental experience."/>
-                    <UserOpinion
-                        name="John Lee" title="Daily commuter" imageUrl={JohnProfilePic}
-                        text="I've been using Sigma Cars for my daily commute for the past year, and I've never had any issues with the vehicles. They are always clean, well-maintained, and affordable. The customer service is also top-notch, making it a great overall experience."/>
-                    <UserOpinion
-                        name="Maria Hernandez" title="Family traveler" imageUrl={MariaProfilePic}
-                        text="Sigma Cars provided us with a spacious and comfortable SUV for our family vacation. The vehicle was clean and well-equipped, making our trip stress-free and enjoyable. I would definitely use Sigma Cars again for our next family adventure."/>
-                    <UserOpinion
-                        name="Tom Wilson" title="Business traveler" imageUrl={TomProfilePic}
-                        text="I travel for work frequently and always use Sigma Cars for my rental needs. They have a wide selection of vehicles to choose from, and the staff are always helpful and accommodating. The process is quick and easy, making it a great option for busy professionals."/>
+                    {userOpinions.map((opinion, index) => (
+                        <UserOpinion {...opinion}/>
+                    ))}
                 </div>
             </div>
         </>

@@ -4,7 +4,7 @@ interface UserOpinionProps {
     name: string;
     title: string;
     text: string;
-    imageUrl: StaticImageData;
+    image: StaticImageData;
 }
 
 export default function UserOpinion(props: UserOpinionProps) {
@@ -13,7 +13,7 @@ export default function UserOpinion(props: UserOpinionProps) {
             <div className="flex flex-row gap-4">
                 <Image
                     className="rounded-full h-12 w-12"
-                    src={props.imageUrl} alt="User avatar" height={48} width={48}/>
+                    src={props.image} alt="User avatar" height={48} width={48}/>
                 <div>
                     <h3 className="font-bold text-lg leading-snug">
                         {props.name}
