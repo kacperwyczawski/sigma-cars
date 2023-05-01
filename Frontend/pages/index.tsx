@@ -6,6 +6,7 @@ import TomProfilePic from "../assets/tom.jpg";
 import {Listbox, Transition} from "@headlessui/react";
 import React, {Fragment, useState} from "react";
 import {Calendar, Check, ChevronsUpDown} from "lucide-react";
+import {useRouter} from "next/router";
 
 
 // fake data
@@ -41,14 +42,23 @@ const userOpinions = [
     }
 ];
 
-const defaultStartDate = new Date()
-const defaultEndDate = new Date()
-defaultEndDate.setDate(defaultEndDate.getDate() + 7)
+const defaultStartDate = new Date();
+const defaultEndDate = new Date();
+defaultEndDate.setDate(defaultEndDate.getDate() + 7);
 
 export default function Home() {
-    const [department, setDepartment] = useState(departments[0]);
-    const [startDate, setStartDate] = useState(defaultStartDate.toISOString().slice(0, 10));
-    const [endDate, setEndDate] = useState(defaultEndDate.toISOString().slice(0, 10));
+    const [department, setDepartment] =
+        useState(departments[0]);
+    const [startDate, setStartDate] =
+        useState(defaultStartDate.toISOString().slice(0, 10));
+    const [endDate, setEndDate] =
+        useState(defaultEndDate.toISOString().slice(0, 10));
+    const router = useRouter();
+
+    const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        router.push(`/cars/?start-date=${startDate}&end-date=${endDate}&department=${department}`);
+    };
 
     return (
         <>
@@ -88,11 +98,11 @@ export default function Home() {
                 </em> with Sigma&nbsp;Cars
                 </h1>
                 <div className="flex justify-center mt-24">
-                    <form className="max-w-3xl flex gap-3 items-end flex-grow flex-wrap" action="/api/car-models" method="GET">
+                    <form className="max-w-3xl flex gap-3 items-end flex-grow flex-wrap"
+                          onSubmit={handleFormSubmit}>
                         <label className="flex-grow relative">
                             From:
                             <input
-                                name="start-date"
                                 className="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
                                 type="date" value={startDate}
                                 onChange={event => setStartDate(event.target.value)}
@@ -105,7 +115,6 @@ export default function Home() {
                         <label className="flex-grow relative">
                             To:
                             <input
-                                name="end-date"
                                 className="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
                                 type="date" value={endDate}
                                 onChange={event => setEndDate(event.target.value)}
