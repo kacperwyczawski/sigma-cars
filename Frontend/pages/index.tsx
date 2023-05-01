@@ -88,10 +88,11 @@ export default function Home() {
                 </em> with Sigma&nbsp;Cars
                 </h1>
                 <div className="flex justify-center mt-24">
-                    <div className="max-w-3xl flex gap-3 items-end flex-grow flex-wrap">
+                    <form className="max-w-3xl flex gap-3 items-end flex-grow flex-wrap" action="/api/car-models" method="GET">
                         <label className="flex-grow relative">
                             From:
                             <input
+                                name="start-date"
                                 className="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
                                 type="date" value={startDate}
                                 onChange={event => setStartDate(event.target.value)}
@@ -104,6 +105,7 @@ export default function Home() {
                         <label className="flex-grow relative">
                             To:
                             <input
+                                name="end-date"
                                 className="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
                                 type="date" value={endDate}
                                 onChange={event => setEndDate(event.target.value)}
@@ -167,7 +169,7 @@ export default function Home() {
                         <input
                             className="block border py-2 px-3 rounded-md h-10 flex-grow bg-slate-800 text-white border-none hover:bg-slate-700"
                             type="submit" value="Explore!"/>
-                    </div>
+                    </form>
                 </div>
             </main>
             <div className="bg-slate-800 px-4 py-16 mt-24 space-y-16">
