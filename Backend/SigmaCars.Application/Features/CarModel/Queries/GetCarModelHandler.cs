@@ -54,9 +54,9 @@ public class GetCarModelHandler : IRequestHandler<GetCarModelsQuery, IEnumerable
         var availableCarIds = carModelsQueried
             .SelectMany(x => x.Cars)
             .Where(car => car.Rentals
-                .Any(rental =>
-                    (query.StartDate <= rental.StartDate && query.EndDate <= rental.StartDate)
-                    || (query.StartDate >= rental.EndDate && query.EndDate >= rental.EndDate)))
+                .All(rental =>
+                    rental.EndDate < query.StartDate
+                    || rental.StartDate > query.EndDate))
             .Select(car => car.Id);
 
         var carIds = carModelsQueried
