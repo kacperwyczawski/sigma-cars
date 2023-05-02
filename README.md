@@ -18,7 +18,7 @@ Technologies used are listed [here](#-technologies)
 
 ## 🚀 How to use
 
-- After running the application, open `http://localhost` in your preferred web browser. (currently frontend doesn't support any features, it's just a placeholder, but you can do more it in api)
+- After running the application, open `http://localhost` in your preferred web browser.
 - There is default admin account with email: `admin@sigma.cars` and password: `admin`.
 
 #### 💭 Optional
