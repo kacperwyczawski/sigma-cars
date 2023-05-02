@@ -33,7 +33,7 @@ Technologies used are listed [here](#-technologies)
 The following technologies were used in the development of this project:
 
 - Backend: **Asp.Net Core**, **PostgreSQL**, EF Core, OpenAPI, FluentValidation, MediatR
-- Frontend: **Next.js**, TypeScript, React, TailwindCSS, Node.js
+- Frontend: **Nuxt**, **Vue**, TypeScript, TailwindCSS, Node.js
 - Other tools: **Docker**, **Nginx**, Postman, Rider
 
 ### 🐋 Docker
@@ -55,7 +55,7 @@ flowchart TD
     user([End user]) --- nginx{{Nginx reverse proxy}}
     nginx --- backend(Asp.Net Core http api)
     backend --- database[(Postgres db)]
-    nginx --- frontend(Next.js website)
+    nginx --- frontend(Vue with Nuxt website)
 ```
 
 ### 🗃️ Simplified database schema
