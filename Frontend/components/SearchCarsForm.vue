@@ -81,8 +81,8 @@ function handleSubmit() {
                             <ListboxOptions
                                     class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                                 <ListboxOption
-                                        v-slot="{ active, selected }"
                                         v-for="department in departments"
+                                        v-slot="{ active, selected }"
                                         :key="department"
                                         :value="department"
                                         class="relative cursor-default select-none py-2 pl-10 pr-4 hover:bg-slate-100"
@@ -93,7 +93,8 @@ function handleSubmit() {
                                         </span>
                                         <span v-if="selected"
                                               class="absolute inset-y-0 left-0 flex items-center pl-3 text-orange-600">
-                                            <CheckIcon class="h-5 w-5" aria-hidden="true"/>
+                                            <CheckIcon class="h-5 w-5"
+                                                       aria-hidden="true"/>
                                         </span>
                                     </li>
                                 </ListboxOption>
@@ -105,6 +106,7 @@ function handleSubmit() {
         </label>
         <input
                 class="block border py-2 px-3 rounded-md h-10 flex-grow bg-slate-800 text-white border-none hover:bg-slate-700"
-                type="submit" value="Explore!"/>
+                type="submit"
+                value="Explore!"/>
     </form>
 </template>

@@ -23,13 +23,16 @@ watch(
 </script>
 <template>
     <main class="p-4">
-        <h1 v-if="state.cars === null" class="mt-16 text-center text-4xl text-slate-500 animate-pulse">
+        <h1 v-if="state.cars === null"
+            class="mt-16 text-center text-4xl text-slate-500 animate-pulse">
             Loading...
         </h1>
-        <h1 v-else-if="state.cars.length === 0" class="mt-16 text-center text-4xl text-slate-500">
+        <h1 v-else-if="state.cars.length === 0"
+            class="mt-16 text-center text-4xl text-slate-500">
             No cars available for the selected dates and location.
         </h1>
-        <ul v-else class="flex flex-col justify-center gap-2">
+        <ul v-else
+            class="flex flex-col justify-center gap-2">
             <li v-for="car in state.cars">
                 <CarCard :car="car"/>
             </li>

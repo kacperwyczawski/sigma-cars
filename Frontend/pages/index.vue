@@ -5,7 +5,8 @@
         <h1 class="text-center mt-24 leading-tight text-5xl md:leading-tight md:text-6xl font-bold">
             Rent with <em class="not-italic text-orange-500 relative">Confidence
             <svg
-                    aria-hidden="true" viewBox="0 0 418 42"
+                    aria-hidden="true"
+                    viewBox="0 0 418 42"
                     class="absolute left-0 top-2/3 h-8 w-full fill-orange-300/70"
                     preserveAspectRatio="none">
                 <path
