@@ -13,6 +13,8 @@ const departments = [
     "New York",
 ];
 
+const router = useRouter();
+
 const defaultStartDate = new Date();
 const defaultEndDate = new Date();
 defaultEndDate.setDate(defaultEndDate.getDate() + 7);
@@ -20,16 +22,28 @@ defaultEndDate.setDate(defaultEndDate.getDate() + 7);
 const selectedDepartment = ref(departments[0]);
 const startDate = ref(defaultStartDate.toISOString().slice(0, 10));
 const endDate = ref(defaultEndDate.toISOString().slice(0, 10));
+
+function handleSubmit() {
+    router.push({
+        name: "search",
+        query: {
+            startDate: startDate.value,
+            endDate: endDate.value,
+            location: selectedDepartment.value,
+        },
+    });
+}
 </script>
 <template>
-    <form class="max-w-3xl flex gap-3 items-end flex-grow flex-wrap">
+    <form class="max-w-3xl flex gap-3 items-end flex-grow flex-wrap"
+          @submit.prevent="handleSubmit">
         <label class="flex-grow relative">
             From:
             <input v-model="startDate"
-                    class="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
-                    type="date"
-                    max="01-01-2200"
-                    min="01-01-2000"/>
+                   class="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
+                   type="date"
+                   max="01-01-2200"
+                   min="01-01-2000"/>
             <span class="pointer-events-none absolute right-4 bottom-2.5 bg-white">
                 <Calendar class="text-slate-800 h-5 w-5"/>
             </span>
@@ -37,10 +51,10 @@ const endDate = ref(defaultEndDate.toISOString().slice(0, 10));
         <label class="flex-grow relative">
             To:
             <input v-model="endDate"
-                    class="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
-                    type="date"
-                    max="01-01-2200"
-                    min="01-01-2000"/>
+                   class="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
+                   type="date"
+                   max="01-01-2200"
+                   min="01-01-2000"/>
             <span class="pointer-events-none absolute right-4 bottom-2.5 bg-white">
                 <Calendar class="text-slate-800 h-5 w-5"/>
             </span>
