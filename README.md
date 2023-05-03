@@ -18,7 +18,7 @@ Technologies used are listed [here](#-technologies)
 
 ## 🚀 How to use
 
-- After running the application, open `http://localhost` in your preferred web browser. (currently frontend doesn't support any features, it's just a placeholder, but you can do more it in api)
+- After running the application, open `http://localhost` in your preferred web browser.
 - There is default admin account with email: `admin@sigma.cars` and password: `admin`.
 
 #### 💭 Optional
@@ -33,7 +33,7 @@ Technologies used are listed [here](#-technologies)
 The following technologies were used in the development of this project:
 
 - Backend: **Asp.Net Core**, **PostgreSQL**, EF Core, OpenAPI, FluentValidation, MediatR
-- Frontend: **Next.js**, TypeScript, React, TailwindCSS, Node.js
+- Frontend: **Nuxt**, **Vue**, TypeScript, TailwindCSS, Node.js
 - Other tools: **Docker**, **Nginx**, Postman, Rider
 
 ### 🐋 Docker
@@ -55,7 +55,7 @@ flowchart TD
     user([End user]) --- nginx{{Nginx reverse proxy}}
     nginx --- backend(Asp.Net Core http api)
     backend --- database[(Postgres db)]
-    nginx --- frontend(Next.js website)
+    nginx --- frontend(Vue with Nuxt website)
 ```
 
 ### 🗃️ Simplified database schema
