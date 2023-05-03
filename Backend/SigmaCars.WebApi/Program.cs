@@ -21,7 +21,7 @@ builder.Services.AddSwaggerGen(ConfigureSwaggerGen);
 // Database
 builder.Services.AddDbContext<SigmaCarsDbContext>(options => ConfigureDbContext(options, builder));
 
-// Middlewares
+// Custom middlewares
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 
 // Fluent validation
@@ -33,7 +33,7 @@ builder.Services.AddMediatR(cfg =>
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
 // Authentication
-var jwtSettings = builder.Configuration.GetSection("Jwt").Get<JwtSettings>() 
+var jwtSettings = builder.Configuration.GetSection("Jwt").Get<JwtSettings>()
                   // ReSharper disable once StringLiteralTypo
                   ?? throw new InvalidOperationException("Jwt settings not found, check appsettings.json");
 builder.Services.AddSingleton(jwtSettings);
@@ -43,13 +43,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         {
             ValidateIssuer = true,
             ValidIssuer = jwtSettings.Issuer,
-            
+
             ValidateAudience = true,
             ValidAudience = jwtSettings.Audience,
-            
+
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key)),
-            
+
             ValidateLifetime = true
         });
 builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
@@ -57,10 +57,16 @@ builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
 // Authorization
 builder.Services.AddAuthorization();
 
+// Cors
+builder.Services.AddCors(options =>
+    options.AddDefaultPolicy(policyBuilder =>
+        policyBuilder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")));
+
 var app = builder.Build();
 
 app.UseSwagger(options => options.RouteTemplate = "schema/{documentName}");
 app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
