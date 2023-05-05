@@ -12,7 +12,8 @@ public class GetCarModelValidator : AbstractValidator<GetCarModelsQuery>
 
         RuleFor(x => x.EndDate)
             .NotEmpty()
-            .LessThan(x => x.StartDate.AddMonths(4));
+            .LessThan(x => x.StartDate.AddMonths(4))
+            .WithMessage("The maximum rental period is 4 months.");
         
         RuleFor(x => x.MaxYear)
             .GreaterThan(x => x.MinYear)
