@@ -22,7 +22,7 @@ watch(
 
 </script>
 <template>
-    <main class="p-4">
+    <main class="p-4 max-w-6xl mx-auto">
         <ClientOnly>
             <h1 v-if="state.cars === null"
                 class="mt-16 text-center text-4xl text-slate-500 animate-pulse">
@@ -33,7 +33,7 @@ watch(
                 No cars available for the selected dates and location.
             </h1>
             <ul v-else
-                class="flex flex-col justify-center gap-2">
+                class="flex flex-col gap-2">
                 <li v-for="car in state.cars">
                     <CarCard :car="car"/>
                 </li>
