@@ -6,8 +6,7 @@ const state = reactive({
 });
 
 async function fetchData() {
-    state.cars = null; // idk why, but without this data won't be fetched after route change
-    const {data: carsResult} = await useFetch(`http://localhost/api/car-models`
+    const {data: carsResult} = await useLazyFetch(`http://localhost/api/car-models`
         + `?start-date=${route.query.startDate}`
         + `&end-date=${route.query.endDate}`);
     state.cars = carsResult;
