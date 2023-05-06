@@ -29,7 +29,7 @@ const props = defineProps({
                     </p>
                 </div>
                 <NuxtLink :to="'/cars/' + car.id"
-                    class="group p-2 hover:bg-orange-600 text-center text-white bg-slate-800 mt-2">
+                    class="group p-2 hover:bg-orange-600 text-center text-white bg-slate-800 mt-2 transition-colors duration-75">
                     Details
                     <span class="group-hover:translate-x-2 inline-block transition-transform">
                         -&gt;
