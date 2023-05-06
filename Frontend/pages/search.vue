@@ -6,11 +6,13 @@ const state = reactive({
 });
 
 async function fetchData() {
-    const {data: carsResult} = await useLazyFetch(`http://localhost/api/car-models`
+    console.log(`fetching cars for dates ${route.query.startDate} to ${route.query.endDate}`);
+
+    const res = await useLazyFetch(`http://localhost/api/car-models`
         + `?start-date=${route.query.startDate}`
         + `&end-date=${route.query.endDate}`);
-    state.cars = carsResult;
-    console.log(`data fetched for dates ${route.query.startDate} to ${route.query.endDate}`);
+
+    state.cars = res.data;
 }
 
 watch(
