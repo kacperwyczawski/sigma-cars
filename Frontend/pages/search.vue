@@ -12,6 +12,15 @@ async function fetchData() {
         + `?start-date=${route.query.startDate}`
         + `&end-date=${route.query.endDate}`);
 
+    if (!res.data.value) {
+        const errorRes = res.error.value.data;
+        throw createError({
+            statusCode: errorRes.status,
+            statusMessage: errorRes.title,
+            message: errorRes.detail,
+        })
+    }
+
     state.cars = res.data;
 }
 
