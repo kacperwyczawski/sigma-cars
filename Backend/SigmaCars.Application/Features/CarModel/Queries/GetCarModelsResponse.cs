@@ -5,7 +5,6 @@ public record GetCarModelResponse(
     string Make,
     string Model,
     int ProductionYear,
-    string Color,
     float PricePerDay,
     int SeatCount,
     int AvailableCarsCount,

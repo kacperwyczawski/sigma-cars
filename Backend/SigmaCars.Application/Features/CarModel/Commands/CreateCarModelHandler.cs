@@ -17,7 +17,6 @@ public class CreateCarModelHandler : IRequestHandler<CreateCarModelCommand, Crea
         var carModel = new Domain.Models.CarModel
         {
             Id = 0,
-            Color = command.Color,
             Make = command.Make,
             Model = command.Model,
             ProductionYear = command.ProductionYear,

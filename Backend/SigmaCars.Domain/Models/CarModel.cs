@@ -10,15 +10,13 @@ public class CarModel
     
     public int ProductionYear { get; set; }
     
-    public string Color { get; set; }
-    
     public float PricePerDay { get; set; }
     
     public int SeatCount { get; set; }
 
     public override string ToString()
     {
-        return $"{nameof(CarModel)}: {Color} {Make} {Model} from {ProductionYear} with {SeatCount} seats and price {PricePerDay} per day";
+        return $"{nameof(CarModel)}: {Make} {Model} from {ProductionYear} with {SeatCount} seats and price {PricePerDay} per day";
     }
     
     public List<Car> Cars { get; set; }

@@ -5,7 +5,6 @@ public record CreateCarModelResponse(
     string Make,
     string Model,
     int ProductionYear,
-    string Color,
     float PricePerDay,
     int SeatCount)
 {
@@ -14,7 +13,6 @@ public record CreateCarModelResponse(
         carModel.Make,
         carModel.Model,
         carModel.ProductionYear,
-        carModel.Color,
         carModel.PricePerDay,
         carModel.SeatCount);
 }

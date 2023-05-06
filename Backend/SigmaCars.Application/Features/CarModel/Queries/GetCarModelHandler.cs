@@ -68,7 +68,6 @@ public class GetCarModelHandler : IRequestHandler<GetCarModelsQuery, IEnumerable
             x.Make,
             x.Model,
             x.ProductionYear,
-            x.Color,
             x.PricePerDay,
             x.SeatCount,
             x.Cars.Count,

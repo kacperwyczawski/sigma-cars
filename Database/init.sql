@@ -13,7 +13,6 @@ create table car_models
     make            varchar(50) not null,
     model           varchar(50) not null,
     production_year int         not null,
-    color           varchar(50) not null,
     price_per_day   real        not null,
     seat_count      int         not null
 );
