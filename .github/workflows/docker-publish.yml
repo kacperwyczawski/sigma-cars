@@ -6,7 +6,6 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push-image:
@@ -32,10 +31,19 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+      - name: Build Docker images
+        run: docker compose build
+        
+      - name: Get Docker images
+        run: echo "IMAGES=$(echo "$(docker inspect --format='{{.Image}}' "$(docker ps -aq)")")" >> $GITHUB_ENV
+      - name: Push Docker images
+        run: |
+          for IMAGE in ${{ env.IMAGES }}; do
+            echo "IMAGE: $IMAGE"
+    
+            NAME=$(basename "${{ github.repository }}").$(docker inspect --format '{{ index .Config.Labels "name" }}' "$IMAGE")
+            TAG="ghcr.io/${{ github.repository }}/$NAME"
+
+            docker tag "$IMAGE" "$TAG"
+            docker push "$TAG"
+          done
