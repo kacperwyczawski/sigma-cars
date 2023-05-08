@@ -6,7 +6,7 @@
 
 ## 📝 Description
 
-Sigma Cars is a car rental application that allows users to rent cars for personal or business use. This is a learning
+Sigma Cars is a car rental application. This is a learning
 project that was created to practice and demonstrate the development of a full stack web application. Users can search
 for cars by location, price, and availability, and make reservations for the selected car.
 
