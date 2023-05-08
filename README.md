@@ -55,7 +55,7 @@ If you want to use hot reload for frontend:
 The following technologies were used in the development of this project:
 
 - Backend: **Asp.Net Core**, **PostgreSQL**, EF Core, OpenAPI, FluentValidation, MediatR
-- Frontend: **Nuxt**, **Vue**, TypeScript, TailwindCSS, Node.js
+- Frontend: **Nuxt**, **Vue**, TypeScript/JavaScript, TailwindCSS, HTML
 - Other tools: **Docker**, **Nginx**, Postman, Rider
 
 ### 🐋 Docker
