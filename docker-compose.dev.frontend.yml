@@ -21,11 +21,11 @@
     container_name: sigma-cars-frontend
   reverse-proxy:
     build:
-      context: ./ReverseProxy
+      context: ./ReverseProxy/DevFrontend
     ports:
       - "80:80"
     depends_on:
       - backend
       - frontend
     container_name: sigma-cars-reverse-proxy
-name: sigma-cars
+name: sigma-cars-dev-frontend

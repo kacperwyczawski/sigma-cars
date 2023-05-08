@@ -12,14 +12,14 @@ async function fetchData() {
         + `?start-date=${route.query.startDate}`
         + `&end-date=${route.query.endDate}`);
 
-    if (!res.data.value) {
-        const errorRes = res.error.value.data;
-        throw createError({
-            statusCode: errorRes.status,
-            statusMessage: errorRes.title,
-            message: errorRes.detail,
-        })
-    }
+    // if (!res.data.value) {
+    //     const errorRes = res.error.value.data;
+    //     throw createError({
+    //         statusCode: errorRes.status,
+    //         statusMessage: errorRes.title,
+    //         message: errorRes.detail,
+    //     })
+    // }
 
     state.cars = res.data;
 }
@@ -34,7 +34,7 @@ watch(
 <template>
     <main class="p-4 max-w-6xl mx-auto">
         <ClientOnly>
-            <h1 v-if="state.cars === null"
+            <h1 v-if="state.cars == null"
                 class="mt-16 text-center text-4xl text-slate-500 animate-pulse">
                 Loading...
             </h1>

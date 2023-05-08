@@ -11,13 +11,11 @@ builder.Services.AddValidation();
 builder.Services.AddMediator();
 builder.Services.AddAuthentication(builder.Configuration);
 builder.Services.AddAuthorization();
-builder.Services.AddCustomCors();
 
 var app = builder.Build();
 
 app.UseCustomSwagger();
 app.UseExceptionHandling();
-app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

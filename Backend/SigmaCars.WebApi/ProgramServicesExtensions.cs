@@ -73,9 +73,4 @@ internal static class ProgramServicesExtensions
 
         services.AddScoped<IJwtGenerator, JwtGenerator>();
     }
-
-    internal static void AddCustomCors(this IServiceCollection services) =>
-        services.AddCors(options =>
-            options.AddDefaultPolicy(policyBuilder =>
-                policyBuilder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")));
 }
