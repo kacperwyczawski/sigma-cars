@@ -44,8 +44,7 @@ If you want to use hot reload for frontend:
         Details for Linux users
     </summary>
         There may be some problems with proxy_pass from nginx to host machine.
-        [This](https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach/43541681#43541681)
-        stackoverflow answer may help.
+        This stackoverflow answer may help: https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach/43541681#43541681
 </details>
 
 ## ℹ️ Other info
