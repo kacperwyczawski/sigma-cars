@@ -13,12 +13,6 @@
     depends_on:
       - database
     container_name: sigma-cars-backend
-  frontend:
-    build:
-      context: ./Frontend
-    ports:
-      - "3000:3000"
-    container_name: sigma-cars-frontend
   reverse-proxy:
     build:
       context: ./ReverseProxy/DevFrontend
@@ -26,6 +20,5 @@
       - "80:80"
     depends_on:
       - backend
-      - frontend
     container_name: sigma-cars-reverse-proxy
 name: sigma-cars-dev-frontend
