@@ -31,23 +31,23 @@ public class CarModelsController : Controller
         [FromQuery(Name = "make")] string? make,
         [FromQuery(Name = "model")] string? model,
         [FromQuery(Name = "order-by")] string? orderByPropertyName,
-        [FromQuery(Name = "ascending")] bool ascending = true)
+        [FromQuery(Name = "ascending")] bool ascending = true,
+        [FromQuery(Name = "available-only")] bool availableOnly = true)
     {
         var request = new GetCarModelsQuery(
             startDate, endDate,
             minYear, maxYear,
             minPrice, maxPrice,
             minSeats, maxSeats,
-            make,
-            model,
-            orderByPropertyName,
-            ascending);
+            make, model,
+            orderByPropertyName, ascending,
+            availableOnly);
 
         var result = await _mediator.Send(request);
 
-        if (!result.Any())
+        if (!result.CarModels.Any())
             return NoContent();
-        
+
         return Ok(result);
     }
 
@@ -65,7 +65,7 @@ public class CarModelsController : Controller
     public async Task<IActionResult> Delete(int id)
     {
         await _mediator.Send(new DeleteCarModelCommand(id));
-        
+
         return NoContent();
     }
 }

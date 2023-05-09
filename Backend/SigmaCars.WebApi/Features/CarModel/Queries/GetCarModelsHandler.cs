@@ -4,16 +4,16 @@ using SigmaCars.WebApi.Persistence;
 
 namespace SigmaCars.WebApi.Features.CarModel.Queries;
 
-public class GetCarModelHandler : IRequestHandler<GetCarModelsQuery, IEnumerable<GetCarModelResponse>>
+public class GetCarModelsHandler : IRequestHandler<GetCarModelsQuery, GetCarModelsResponse>
 {
     private readonly SigmaCarsDbContext _dbContext;
 
-    public GetCarModelHandler(SigmaCarsDbContext dbContext)
+    public GetCarModelsHandler(SigmaCarsDbContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public async Task<IEnumerable<GetCarModelResponse>> Handle(
+    public async Task<GetCarModelsResponse> Handle(
         GetCarModelsQuery query,
         CancellationToken cancellationToken)
     {
@@ -51,29 +51,22 @@ public class GetCarModelHandler : IRequestHandler<GetCarModelsQuery, IEnumerable
             .Include(carModel => carModel.Cars)
             .ToListAsync(cancellationToken);
 
-        var availableCarIds = carModelsQueried
-            .SelectMany(x => x.Cars)
-            .Where(car => car.Rentals
-                .All(rental =>
-                    rental.EndDate < query.StartDate
-                    || rental.StartDate > query.EndDate))
-            .Select(car => car.Id);
+        if (query.AvailableOnly)
+        {
+            carModelsQueried = carModelsQueried.Where(carModel =>
+                carModel.Cars.Any(car =>
+                    car.Rentals.All(rental =>
+                        rental.EndDate < query.StartDate
+                        || rental.StartDate > query.EndDate))).ToList();
+        }
 
-        var carIds = carModelsQueried
-            .SelectMany(x => x.Cars)
-            .Select(car => car.Id);
-
-        var results = carModelsQueried.Select(x => new GetCarModelResponse(
-            x.Id,
-            x.Make,
-            x.Model,
-            x.ProductionYear,
-            x.PricePerDay,
-            x.SeatCount,
-            x.Cars.Count,
-            availableCarIds,
-            carIds));
-
-        return results;
+        return new GetCarModelsResponse(
+            carModelsQueried.Select(x =>
+                new GetCarModelResponse(
+                    x.Id,
+                    x.Make,
+                    x.Model,
+                    x.PricePerDay,
+                    x.SeatCount)));
     }
 }

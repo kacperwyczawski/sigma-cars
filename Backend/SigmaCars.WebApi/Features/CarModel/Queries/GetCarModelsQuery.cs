@@ -10,5 +10,5 @@ public record GetCarModelsQuery(
         string? Make,
         string? Model,
         string? OrderByPropertyName,
-        bool Ascending)
-    : IRequest<IEnumerable<GetCarModelResponse>>;
+        bool Ascending, bool AvailableOnly)
+    : IRequest<GetCarModelsResponse>;
