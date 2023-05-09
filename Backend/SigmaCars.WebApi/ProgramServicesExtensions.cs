@@ -5,12 +5,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using SigmaCars.Application.Behaviors;
-using SigmaCars.Application.Features.Authentication;
-using SigmaCars.Application.Features.CarModel.Commands;
-using SigmaCars.Application.Persistence;
-using SigmaCars.Infrastructure.Authentication;
+using SigmaCars.WebApi.Behaviors;
+using SigmaCars.WebApi.Features.Authentication.Shared;
+using SigmaCars.WebApi.Features.CarModel.Commands;
 using SigmaCars.WebApi.Middlewares;
+using SigmaCars.WebApi.Persistence;
 
 namespace SigmaCars.WebApi;
 
@@ -71,6 +70,6 @@ internal static class ProgramServicesExtensions
                     ValidateLifetime = true
                 });
 
-        services.AddScoped<IJwtGenerator, JwtGenerator>();
+        services.AddScoped<JwtGenerator>();
     }
 }

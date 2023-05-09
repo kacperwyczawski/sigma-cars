@@ -3,11 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigmaCars.Infrastructure", "SigmaCars.Infrastructure\SigmaCars.Infrastructure.csproj", "{91F9A954-B1FA-48C4-BB1C-4BD46014122F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigmaCars.Domain", "SigmaCars.Domain\SigmaCars.Domain.csproj", "{88545BB1-3449-41CD-8BEA-5BE17D29034C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigmaCars.Application", "SigmaCars.Application\SigmaCars.Application.csproj", "{49FC01BF-576C-4E6B-9B3A-B2EFBB526238}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigmaCars.WebApi", "SigmaCars.WebApi\SigmaCars.WebApi.csproj", "{318FA8EE-357D-45C3-B9DD-DC5E36E0FF05}"
 EndProject
@@ -20,18 +16,10 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{91F9A954-B1FA-48C4-BB1C-4BD46014122F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91F9A954-B1FA-48C4-BB1C-4BD46014122F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91F9A954-B1FA-48C4-BB1C-4BD46014122F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91F9A954-B1FA-48C4-BB1C-4BD46014122F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{88545BB1-3449-41CD-8BEA-5BE17D29034C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{88545BB1-3449-41CD-8BEA-5BE17D29034C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88545BB1-3449-41CD-8BEA-5BE17D29034C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88545BB1-3449-41CD-8BEA-5BE17D29034C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{49FC01BF-576C-4E6B-9B3A-B2EFBB526238}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49FC01BF-576C-4E6B-9B3A-B2EFBB526238}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49FC01BF-576C-4E6B-9B3A-B2EFBB526238}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49FC01BF-576C-4E6B-9B3A-B2EFBB526238}.Release|Any CPU.Build.0 = Release|Any CPU
 		{318FA8EE-357D-45C3-B9DD-DC5E36E0FF05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{318FA8EE-357D-45C3-B9DD-DC5E36E0FF05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{318FA8EE-357D-45C3-B9DD-DC5E36E0FF05}.Release|Any CPU.ActiveCfg = Release|Any CPU
