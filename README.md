@@ -6,7 +6,7 @@
 
 ## 📝 Description
 
-Sigma Cars is a car rental application that allows users to rent cars for personal or business use. This is a learning
+Sigma Cars is a car rental application. This is a learning
 project that was created to practice and demonstrate the development of a full stack web application. Users can search
 for cars by location, price, and availability, and make reservations for the selected car.
 
@@ -41,11 +41,10 @@ If you want to use hot reload for frontend:
 
 <details>
     <summary>
-        Details for Linux users
+        Details for Linux users:
     </summary>
         There may be some problems with proxy_pass from nginx to host machine.
-        [This](https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach/43541681#43541681)
-        stackoverflow answer may help.
+        This stackoverflow answer may help: https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach/43541681#43541681
 </details>
 
 ## ℹ️ Other info
@@ -55,7 +54,7 @@ If you want to use hot reload for frontend:
 The following technologies were used in the development of this project:
 
 - Backend: **Asp.Net Core**, **PostgreSQL**, EF Core, OpenAPI, FluentValidation, MediatR
-- Frontend: **Nuxt**, **Vue**, TypeScript/JavaScript, TailwindCSS, HTML
+- Frontend: **Nuxt**, **Vue**, TypeScript/JavaScript, TailwindCSS
 - Other tools: **Docker**, **Nginx**, Postman, Rider
 
 ### 🐋 Docker
@@ -90,6 +89,16 @@ erDiagram
     Car ||--o{ Rental : x
     User ||--o{ Rental : x
 ```
+
+## 🤔 FAQ
+
+**Q: Why postgres instead of for example mssql?**
+
+A: Because postgres works better with Docker, I can put SQL script inside special directory and it's automatically run when container is ready.
+
+**Q: Does somebody realy asks these questions?**
+
+A: No.
 
 ## 📫 Feedback
 
