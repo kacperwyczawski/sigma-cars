@@ -41,7 +41,7 @@ If you want to use hot reload for frontend:
 
 <details>
     <summary>
-        Details for Linux users
+        Details for Linux users:
     </summary>
         There may be some problems with proxy_pass from nginx to host machine.
         This stackoverflow answer may help: https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach/43541681#43541681
@@ -89,6 +89,16 @@ erDiagram
     Car ||--o{ Rental : x
     User ||--o{ Rental : x
 ```
+
+## 🤔 FAQ
+
+**Q: Why postgres instead of for example mssql?**
+
+A: Because postgres works better with Docker, I can put SQL script inside special directory and it's automatically run when container is ready.
+
+**Q: Does somebody realy asks these questions?**
+
+A: No.
 
 ## 📫 Feedback
 
