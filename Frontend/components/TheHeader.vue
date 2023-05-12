@@ -1,9 +1,9 @@
 ﻿<template>
     <header class="flex bg-orange-600 p-2 sm:p-4 justify-between items-center text-white">
         <div class="flex gap-2 text-xl sm:text-2xl font-bold">
-            <NuxtLink class="bg-slate-800 w-8 h-8 grid place-items-center rounded-md"
+            <NuxtLink class="w-8 h-8"
                       href="/">
-                &Sigma;
+                <img src="/favicon.svg" alt="logo">
             </NuxtLink>
             <NuxtLink class="leading-8"
                       href="/">
@@ -17,7 +17,6 @@
             <NuxtLink href="/" class="px-2">
                 Sign up
             </NuxtLink>
-
         </div>
     </header>
 </template>
