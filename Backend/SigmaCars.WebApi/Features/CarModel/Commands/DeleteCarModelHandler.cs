@@ -16,9 +16,9 @@ public class DeleteCarModelHandler : IRequestHandler<DeleteCarModelCommand>
     public async Task Handle(DeleteCarModelCommand command, CancellationToken cancellationToken)
     {
         var carModel = await _dbContext.Set<Domain.Models.CarModel>()
-            .FindAsync(new object?[] { command.Id }, cancellationToken: cancellationToken)
-            ?? throw new NotFoundException(nameof(Domain.Models.CarModel), "delete");
-        
+                           .FindAsync(new object?[] { command.Id }, cancellationToken: cancellationToken)
+                       ?? throw new NotFoundException(nameof(Domain.Models.CarModel), "delete");
+
         _dbContext.Remove(carModel);
         await _dbContext.SaveChangesAsync(cancellationToken);
     }
