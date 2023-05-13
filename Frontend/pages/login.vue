@@ -1,4 +1,28 @@
 <script setup>
+
+const state = reactive({
+    email: '',
+    password: '',
+});
+const router = useRouter();
+const userData = useUserData();
+
+async function HandleLogIn() {
+    console.log("handling login with: ", state.email, state.password);
+    const {data} = await useFetch("api/auth/login", {
+        method: "POST",
+        body: {
+            email: state.email,
+            password: state.password,
+        },
+    });
+    console.log("request was sent");
+    console.log("received: ", data);
+    userData.value = data.value;
+    console.log("userData: ", userData.value);
+    await router.push("/");
+}
+
 </script>
 <template>
     <div class="min-h-[calc(100vh-4rem)] grid place-items-center bg-gray-100 p-2">
@@ -11,24 +35,24 @@
                     <label class="block text-gray-800 font-bold mb-2" for="email">
                         Email
                     </label>
-                    <input
-                            class="border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
-                            id="email"
-                            type="email"
-                            placeholder="Email address"
-                            required
+                    <input v-model="state.email"
+                           class="border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
+                           id="email"
+                           type="email"
+                           placeholder="Email address"
+                           required
                     >
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-800 font-bold mb-2" for="password">
                         Password
                     </label>
-                    <input
-                            class="border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
-                            id="password"
-                            type="password"
-                            placeholder="Password"
-                            required
+                    <input v-model="state.password"
+                           class="border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
+                           id="password"
+                           type="password"
+                           placeholder="Password"
+                           required
                     >
                 </div>
                 <div class="flex items-center justify-between">
