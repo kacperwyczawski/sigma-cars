@@ -44,12 +44,9 @@
                     >
                 </div>
                 <div class="flex items-center justify-between">
-                    <button class="group px-4 py-2 hover:bg-orange-600 text-center text-white bg-slate-800 transition-colors duration-75 rounded-md">
+                    <ButtonArrow>
                         Sign up
-                        <span class="group-hover:translate-x-2 inline-block transition-transform">
-                        -&gt;
-                    </span>
-                    </button>
+                    </ButtonArrow>
                     <NuxtLink class="text-sm"
                               to="/login"
                     >

@@ -20,12 +20,9 @@ const props = defineProps({
                 <User class="inline h-7"/>
                 {{ car.seatCount }} seats
             </p>
-            <button class="group px-4 py-2 hover:bg-orange-600 text-center text-white bg-slate-800 transition-colors duration-75 rounded-md">
+            <ButtonArrow>
                 Rent now
-                <span class="group-hover:translate-x-2 inline-block transition-transform">
-                        -&gt;
-                    </span>
-            </button>
+            </ButtonArrow>
         </div>
     </div>
 </template>
