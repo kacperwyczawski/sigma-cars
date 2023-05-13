@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SigmaCars.Domain.Models;
+using SigmaCars.WebApi.Features.Car.Commands;
+using SigmaCars.WebApi.Features.Car.Queries;
 using SigmaCars.WebApi.Features.CarModel.Commands;
 using SigmaCars.WebApi.Features.CarModel.Queries;
 
@@ -49,6 +51,35 @@ public class CarModelsController : Controller
             return NoContent();
 
         return Ok(result);
+    }
+    
+    [HttpGet("{id:int}/cars")]
+    public async Task<IActionResult> GetCars(int id)
+    {
+        var request = new GetCarsQuery(id);
+
+        var result = await _mediator.Send(request);
+
+        if (!result.Cars.Any())
+            return NoContent();
+
+        return Ok(result);
+    }
+    
+    [HttpDelete("{id:int}/cars/{carId:int}")]
+    public async Task<IActionResult> DeleteCar(int id, int carId)
+    {
+        await _mediator.Send(new DeleteCarCommand(carId));
+
+        return NoContent();
+    }
+    
+    [HttpPost("{id:int}/cars")]
+    public async Task<IActionResult> PostCar(int id, [FromBody] CreateCarCommand request)
+    {
+        var created = await _mediator.Send(request);
+
+        return Created($"car-models/{id}/cars/{created.Id}", created);
     }
 
     [Authorize(Roles = UserRole.Administrator)]
