@@ -10,11 +10,11 @@
                 Sigma Cars
             </NuxtLink>
         </div>
-        <div class="flex-row font-normal text-lg sm:text-xl divide-x-2">
-            <NuxtLink href="/login" class="px-2">
+        <div class="flex-row font-normal text-md divide-x border rounded-md divide-gray-200">
+            <NuxtLink href="/login" class="px-3 py-1.5 inline-block hover:bg-white/20">
                 Log in
             </NuxtLink>
-            <NuxtLink href="/signup" class="px-2">
+            <NuxtLink href="/signup" class="px-3 py-1.5 inline-block hover:bg-white/20">
                 Sign up
             </NuxtLink>
         </div>
