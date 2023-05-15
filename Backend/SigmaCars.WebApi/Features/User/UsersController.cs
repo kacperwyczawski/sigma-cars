@@ -1,11 +1,12 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SigmaCars.WebApi.Features.Rental.Queries;
 
 namespace SigmaCars.WebApi.Features.User;
 
 [ApiController]
 [Route("users/{id:int}")]
-public class UsersController
+public class UsersController : Controller
 {
     private readonly IMediator _mediator;
 
@@ -23,7 +24,12 @@ public class UsersController
     [HttpGet("rentals")]
     public async Task<IActionResult> GetRentals(int id)
     {
-        throw new NotImplementedException();
+        var result = await _mediator.Send(new GetRentalsQuery(id));
+        
+        if (!result.Rentals.Any())
+            return NoContent();
+
+        return Ok(result);
     }
     
     [HttpDelete("rentals/{rentalId:int}")]
