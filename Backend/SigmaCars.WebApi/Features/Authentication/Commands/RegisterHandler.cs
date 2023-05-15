@@ -24,7 +24,7 @@ public class RegisterHandler : IRequestHandler<RegisterCommand, RegisterResponse
         if (_dbContext.Users.Any(u => u.Email == request.Email))
             throw new ConflictException($"User with {request.Email} email already exists");
 
-        var user = new User
+        var user = new Domain.Models.User
         {
             Id = 0,
             Email = request.Email,

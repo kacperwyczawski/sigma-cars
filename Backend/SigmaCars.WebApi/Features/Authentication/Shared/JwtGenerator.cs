@@ -15,7 +15,7 @@ public class JwtGenerator
         _jwtSettings = jwtSettings;
     }
 
-    public string GenerateToken(User user)
+    public string GenerateToken(Domain.Models.User user)
     {
         var signingCredentials =
             new SigningCredentials(
