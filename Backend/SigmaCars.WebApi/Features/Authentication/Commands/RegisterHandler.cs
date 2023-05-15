@@ -32,7 +32,7 @@ public class RegisterHandler : IRequestHandler<RegisterCommand, RegisterResponse
             LastName = request.LastName,
             PasswordHash = request.Password, // TODO: Hash password
             Role = UserRole.Customer,
-            Rentals = new List<Rental>()
+            Rentals = new List<Domain.Models.Rental>()
         };
 
         var token = _jwtGenerator.GenerateToken(user);
