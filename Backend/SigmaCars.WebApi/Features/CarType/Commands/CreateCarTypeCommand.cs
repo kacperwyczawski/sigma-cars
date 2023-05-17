@@ -1,12 +1,12 @@
 ﻿using MediatR;
 
-namespace SigmaCars.WebApi.Features.CarModel.Commands;
+namespace SigmaCars.WebApi.Features.CarType.Commands;
 
-public record CreateCarModelCommand(
+public record CreateCarTypeCommand(
         string Make,
         string Model,
         int ProductionYear,
         string Color,
         float PricePerDay,
         int SeatCount)
-    : IRequest<CreateCarModelResponse>;
+    : IRequest<CreatecarTypeResponse>;

@@ -15,12 +15,12 @@ public class GetCarsHandler : IRequestHandler<GetCarsQuery, GetCarsResponse>
 
     public async Task<GetCarsResponse> Handle(GetCarsQuery query, CancellationToken cancellationToken)
     {
-        var carModel = await _dbContext
-                           .Set<Domain.Models.CarModel>()
-                           .FindAsync(new object?[] { query.CarModelId }, cancellationToken: cancellationToken)
-                       ?? throw new NotFoundException(nameof(Domain.Models.CarModel), "get");
+        var carType = await _dbContext
+                           .Set<Domain.Models.CarType>()
+                           .FindAsync(new object?[] { query.carTypeId }, cancellationToken: cancellationToken)
+                       ?? throw new NotFoundException(nameof(Domain.Models.CarType), "get");
 
-        return new GetCarsResponse(carModel.Cars.Select(
+        return new GetCarsResponse(carType.Cars.Select(
             x => new GetCarResponse(
                 x.Id,
                 "", // TODO

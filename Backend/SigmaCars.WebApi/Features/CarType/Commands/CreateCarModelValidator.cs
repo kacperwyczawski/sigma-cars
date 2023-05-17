@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 
-namespace SigmaCars.WebApi.Features.CarModel.Commands;
+namespace SigmaCars.WebApi.Features.CarType.Commands;
 
-public class CreateCarModelValidator : AbstractValidator<CreateCarModelCommand>
+public class CreatecarTypeValidator : AbstractValidator<CreateCarTypeCommand>
 {
-    public CreateCarModelValidator()
+    public CreatecarTypeValidator()
     {
         RuleFor(x => x.Make)
             .NotEmpty()

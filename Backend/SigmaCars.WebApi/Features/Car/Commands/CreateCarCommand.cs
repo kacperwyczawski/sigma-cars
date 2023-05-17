@@ -3,7 +3,7 @@ using MediatR;
 namespace SigmaCars.WebApi.Features.Car.Commands;
 
 public record CreateCarCommand(
-        int CarModelId,
+        int carTypeId,
         int DepartmentId,
         string RegistrationNumber,
         string Vin)

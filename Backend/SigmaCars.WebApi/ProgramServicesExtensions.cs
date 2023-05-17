@@ -7,7 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SigmaCars.WebApi.Behaviors;
 using SigmaCars.WebApi.Features.Authentication.Shared;
-using SigmaCars.WebApi.Features.CarModel.Commands;
+using SigmaCars.WebApi.Features.CarType.Commands;
 using SigmaCars.WebApi.Middlewares;
 using SigmaCars.WebApi.Persistence;
 
@@ -37,12 +37,12 @@ internal static class ProgramServicesExtensions
         services.AddTransient<ExceptionHandlingMiddleware>();
 
     internal static void AddValidation(this IServiceCollection services) =>
-        services.AddValidatorsFromAssemblyContaining<CreateCarModelValidator>(ServiceLifetime.Transient);
+        services.AddValidatorsFromAssemblyContaining<CreatecarTypeValidator>(ServiceLifetime.Transient);
 
     internal static void AddMediator(this IServiceCollection services)
     {
         services.AddMediatR(configuration =>
-            configuration.RegisterServicesFromAssemblyContaining<CreateCarModelHandler>());
+            configuration.RegisterServicesFromAssemblyContaining<CreateCarTypeHandler>());
 
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
     }

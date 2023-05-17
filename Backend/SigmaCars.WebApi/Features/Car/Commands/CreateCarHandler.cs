@@ -17,7 +17,7 @@ public class CreateCarHandler : IRequestHandler<CreateCarCommand, CreateCarRespo
         var car = new Domain.Models.Car
         {
             Id = 0,
-            CarModelId = command.CarModelId,
+            carTypeId = command.carTypeId,
             DepartmentId = command.DepartmentId,
             RegistrationNumber = command.RegistrationNumber,
             Vin = command.Vin

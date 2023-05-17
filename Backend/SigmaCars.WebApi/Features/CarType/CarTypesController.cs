@@ -3,22 +3,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SigmaCars.WebApi.Features.Car.Commands;
 using SigmaCars.WebApi.Features.Car.Queries;
-using SigmaCars.WebApi.Features.CarModel.Commands;
-using SigmaCars.WebApi.Features.CarModel.Queries;
-using SigmaCars.WebApi.Features.CarModel.Requests;
+using SigmaCars.WebApi.Features.CarType.Commands;
+using SigmaCars.WebApi.Features.CarType.Queries;
+using SigmaCars.WebApi.Features.CarType.Requests;
 using SigmaCars.WebApi.Persistence;
 
-namespace SigmaCars.WebApi.Features.CarModel;
+namespace SigmaCars.WebApi.Features.CarType;
 
 [ApiController]
-[Route("car-models")]
-public class CarModelsController : Controller
+[Route("car-types")]
+public class CarTypesController : Controller
 {
     private readonly IMediator _mediator;
 
     private readonly SigmaCarsDbContext _dbContext;
 
-    public CarModelsController(IMediator mediator, SigmaCarsDbContext dbContext)
+    public CarTypesController(IMediator mediator, SigmaCarsDbContext dbContext)
     {
         _mediator = mediator;
         _dbContext = dbContext;
@@ -40,7 +40,7 @@ public class CarModelsController : Controller
         [FromQuery(Name = "ascending")] bool ascending = true,
         [FromQuery(Name = "available-only")] bool availableOnly = true)
     {
-        var request = new GetCarModelsQuery(
+        var request = new GetcarTypesQuery(
             startDate, endDate,
             minYear, maxYear,
             minPrice, maxPrice,
@@ -51,7 +51,7 @@ public class CarModelsController : Controller
 
         var result = await _mediator.Send(request);
 
-        if (!result.CarModels.Any())
+        if (!result.carTypes.Any())
             return NoContent();
 
         return Ok(result);
@@ -83,30 +83,30 @@ public class CarModelsController : Controller
     {
         var created = await _mediator.Send(request);
 
-        return Created($"car-models/{id}/cars/{created.Id}", created);
+        return Created($"car-types/{id}/cars/{created.Id}", created);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] CreateCarModelCommand request)
+    public async Task<IActionResult> Post([FromBody] CreateCarTypeCommand request)
     {
         var created = await _mediator.Send(request);
 
-        return Created($"car-models/{created.Id}", created);
+        return Created($"car-types/{created.Id}", created);
     }
 
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {
-        await _mediator.Send(new DeleteCarModelCommand(id));
+        await _mediator.Send(new DeletecarTypeCommand(id));
 
         return NoContent();
     }
 
-    [HttpPost("{carModelId:int}/rentals")]
-    public async Task<IActionResult> PostRental([FromBody] PostRentalRequest request, int carModelId)
+    [HttpPost("{carTypeId:int}/rentals")]
+    public async Task<IActionResult> PostRental([FromBody] PostRentalRequest request, int carTypeId)
     {
         var carId = await _dbContext.Cars
-            .Where(c => c.CarModelId == carModelId)
+            .Where(c => c.carTypeId == carTypeId)
             .Select(c => c.Id)
             .FirstOrDefaultAsync();
 

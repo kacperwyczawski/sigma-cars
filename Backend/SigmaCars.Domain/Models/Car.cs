@@ -4,7 +4,7 @@ public class Car
 {
     public int Id { get; set; }
     
-    public int CarModelId { get; set; }
+    public int carTypeId { get; set; }
     
     public int DepartmentId { get; set; }
     
@@ -12,7 +12,7 @@ public class Car
     
     public string Vin { get; set; }
     
-    public CarModel CarModel { get; set; }
+    public CarType CarType { get; set; }
     
     public Department Department { get; set; }
     

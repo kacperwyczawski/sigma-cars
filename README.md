@@ -84,7 +84,7 @@ flowchart TD
 
 ```mermaid
 erDiagram
-    CarModel ||--o{ Car : x
+    carType ||--o{ Car : x
     Department ||--o{ Car : x
     Car ||--o{ Rental : x
     User ||--o{ Rental : x

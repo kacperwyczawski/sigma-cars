@@ -1,6 +1,6 @@
 ﻿namespace SigmaCars.Domain.Models;
 
-public class CarModel
+public class CarType
 {
     public int Id { get; set; }
     
@@ -16,7 +16,7 @@ public class CarModel
 
     public override string ToString()
     {
-        return $"{nameof(CarModel)}: {Make} {Model} from {ProductionYear} with {SeatCount} seats and price {PricePerDay} per day";
+        return $"{nameof(CarType)}: {Make} {Model} from {ProductionYear} with {SeatCount} seats and price {PricePerDay} per day";
     }
     
     public List<Car> Cars { get; set; }

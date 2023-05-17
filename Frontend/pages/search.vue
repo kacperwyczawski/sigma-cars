@@ -3,7 +3,7 @@
 const route = useRoute();
 
 const {pending, data} = await useLazyFetch( // data can be watched, see https://nuxt.com/docs/getting-started/data-fetching#example-1
-    "api/car-models"
+    "api/car-types"
     + `?start-date=${route.query.startDate}`
     + `&end-date=${route.query.endDate}`
     + "&available-only=false",
@@ -16,13 +16,13 @@ const {pending, data} = await useLazyFetch( // data can be watched, see https://
              class="mt-16 text-center text-4xl text-slate-500 animate-pulse">
             Loading...
         </div>
-        <div v-else-if="data.carModels.length === 0"
+        <div v-else-if="data.carTypes.length === 0"
              class="mt-16 text-center text-4xl text-slate-500 animate-pulse">
             Sorry, no cars available for the selected dates and location.
         </div>
         <div v-else>
             <ul class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-2">
-                <li v-for="car in data.carModels">
+                <li v-for="car in data.carTypes">
                     <CarCard :car="car"/>
                 </li>
             </ul>

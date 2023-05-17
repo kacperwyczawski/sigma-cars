@@ -1,13 +1,13 @@
 create table cars
 (
     id                  serial primary key,
-    car_model_id        int         not null,
+    car_type_id         int         not null,
     department_id       int         not null,
     registration_number varchar(10) not null,
     vin                 varchar(17) not null
 );
 
-create table car_models
+create table car_types
 (
     id              serial primary key,
     make            varchar(50) not null,

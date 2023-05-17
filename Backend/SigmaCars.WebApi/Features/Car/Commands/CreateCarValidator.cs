@@ -6,7 +6,7 @@ public class CreateCarValidator : AbstractValidator<CreateCarCommand>
 {
     public CreateCarValidator()
     {
-        RuleFor(x => x.CarModelId)
+        RuleFor(x => x.carTypeId)
             .NotEmpty();
         RuleFor(x => x.DepartmentId)
             .NotEmpty();

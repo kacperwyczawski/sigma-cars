@@ -6,7 +6,7 @@ public class GetCarsValidator : AbstractValidator<GetCarsQuery>
 {
     public GetCarsValidator()
     {
-        RuleFor(x => x.CarModelId)
+        RuleFor(x => x.carTypeId)
             .NotEmpty();
     }
 }

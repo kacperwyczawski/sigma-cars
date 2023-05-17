@@ -1,8 +1,8 @@
 ﻿using MediatR;
 
-namespace SigmaCars.WebApi.Features.CarModel.Queries;
+namespace SigmaCars.WebApi.Features.CarType.Queries;
 
-public record GetCarModelsQuery(
+public record GetcarTypesQuery(
         DateTime StartDate, DateTime EndDate,
         int? MinYear, int? MaxYear,
         float? MinPrice, float? MaxPrice,
@@ -11,4 +11,4 @@ public record GetCarModelsQuery(
         string? Model,
         string? OrderByPropertyName,
         bool Ascending, bool AvailableOnly)
-    : IRequest<GetCarModelsResponse>;
+    : IRequest<GetcarTypesResponse>;

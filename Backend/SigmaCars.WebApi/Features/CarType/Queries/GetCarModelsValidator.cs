@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 
-namespace SigmaCars.WebApi.Features.CarModel.Queries;
+namespace SigmaCars.WebApi.Features.CarType.Queries;
 
-public class GetCarModelsValidator : AbstractValidator<GetCarModelsQuery>
+public class GetcarTypesValidator : AbstractValidator<GetcarTypesQuery>
 {
-    public GetCarModelsValidator()
+    public GetcarTypesValidator()
     {
         RuleFor(x => x.StartDate)
             .NotEmpty()

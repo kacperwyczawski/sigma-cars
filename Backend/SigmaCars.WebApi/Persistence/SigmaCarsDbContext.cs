@@ -11,7 +11,7 @@ public class SigmaCarsDbContext : DbContext
 
     public DbSet<Car> Cars { get; set; }
 
-    public DbSet<CarModel> CarModels { get; set; }
+    public DbSet<CarType> carTypes { get; set; }
 
     public DbSet<Department> Departments { get; set; }
 
@@ -26,7 +26,7 @@ public class SigmaCarsDbContext : DbContext
         {
             e.ToTable("cars");
             e.Property(x => x.Id).HasColumnName("id");
-            e.Property(x => x.CarModelId).HasColumnName("car_model_id");
+            e.Property(x => x.carTypeId).HasColumnName("car_type_id");
             e.Property(x => x.DepartmentId).HasColumnName("department_id");
             e.Property(x => x.RegistrationNumber).HasColumnName("registration_number");
             e.Property(x => x.Vin).HasColumnName("vin");
@@ -36,9 +36,9 @@ public class SigmaCarsDbContext : DbContext
                 .HasForeignKey(x => x.CarId);
         });
 
-        modelBuilder.Entity<CarModel>(e =>
+        modelBuilder.Entity<CarType>(e =>
         {
-            e.ToTable("car_models");
+            e.ToTable("car_types");
             e.Property(x => x.Id).HasColumnName("id");
             e.Property(x => x.Make).HasColumnName("make");
             e.Property(x => x.Model).HasColumnName("model");
@@ -46,9 +46,9 @@ public class SigmaCarsDbContext : DbContext
             e.Property(x => x.PricePerDay).HasColumnName("price_per_day");
             e.Property(x => x.SeatCount).HasColumnName("seat_count");
             e.HasMany(x => x.Cars)
-                .WithOne(x => x.CarModel)
+                .WithOne(x => x.CarType)
                 .HasPrincipalKey(x => x.Id)
-                .HasForeignKey(x => x.CarModelId);
+                .HasForeignKey(x => x.carTypeId);
         });
 
         modelBuilder.Entity<Department>(e =>

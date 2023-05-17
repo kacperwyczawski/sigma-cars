@@ -17,8 +17,8 @@ public class GetRentalsHandler : IRequestHandler<GetRentalsQuery, GetRentalsResp
         var result = _dbContext.Rentals
             .Where(r => r.User.Id == query.UserId)
             .Select(r => new GetRentalResponse(
-                r.Car.CarModel.Make,
-                r.Car.CarModel.Model,
+                r.Car.CarType.Make,
+                r.Car.CarType.Model,
                 r.Car.RegistrationNumber,
                 r.StartDate,
                 r.EndDate));
