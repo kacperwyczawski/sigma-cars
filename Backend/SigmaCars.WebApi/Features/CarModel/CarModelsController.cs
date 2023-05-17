@@ -1,11 +1,12 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SigmaCars.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using SigmaCars.WebApi.Features.Car.Commands;
 using SigmaCars.WebApi.Features.Car.Queries;
 using SigmaCars.WebApi.Features.CarModel.Commands;
 using SigmaCars.WebApi.Features.CarModel.Queries;
+using SigmaCars.WebApi.Features.CarModel.Requests;
+using SigmaCars.WebApi.Persistence;
 
 namespace SigmaCars.WebApi.Features.CarModel;
 
@@ -15,9 +16,12 @@ public class CarModelsController : Controller
 {
     private readonly IMediator _mediator;
 
-    public CarModelsController(IMediator mediator)
+    private readonly SigmaCarsDbContext _dbContext;
+
+    public CarModelsController(IMediator mediator, SigmaCarsDbContext dbContext)
     {
         _mediator = mediator;
+        _dbContext = dbContext;
     }
 
     [HttpGet]
@@ -52,7 +56,7 @@ public class CarModelsController : Controller
 
         return Ok(result);
     }
-    
+
     [HttpGet("{id:int}/cars")]
     public async Task<IActionResult> GetCars(int id)
     {
@@ -65,7 +69,7 @@ public class CarModelsController : Controller
 
         return Ok(result);
     }
-    
+
     [HttpDelete("{id:int}/cars/{carId:int}")]
     public async Task<IActionResult> DeleteCar(int id, int carId)
     {
@@ -73,7 +77,7 @@ public class CarModelsController : Controller
 
         return NoContent();
     }
-    
+
     [HttpPost("{id:int}/cars")]
     public async Task<IActionResult> PostCar(int id, [FromBody] CreateCarCommand request)
     {
@@ -96,5 +100,31 @@ public class CarModelsController : Controller
         await _mediator.Send(new DeleteCarModelCommand(id));
 
         return NoContent();
+    }
+
+    [HttpPost("{carModelId:int}/rentals")]
+    public async Task<IActionResult> PostRental([FromBody] PostRentalRequest request, int carModelId)
+    {
+        var carId = await _dbContext.Cars
+            .Where(c => c.CarModelId == carModelId)
+            .Select(c => c.Id)
+            .FirstOrDefaultAsync();
+
+        if (carId == default)
+            return Problem(
+                detail: "Car associated with the car model was not found.",
+                statusCode: StatusCodes.Status404NotFound,
+                title: "Not Found");
+
+        var rental = new Domain.Models.Rental(
+            carId,
+            request.UserId,
+            request.StartDate,
+            request.EndDate);
+
+        _dbContext.Rentals.Add(rental);
+        await _dbContext.SaveChangesAsync();
+
+        return Created($"users/{request.UserId}/rentals/{rental.Id}", rental);
     }
 }
