@@ -23,10 +23,11 @@ const userData = useUserData();
                       class="px-3 py-1.5 inline-block hover:bg-white/20">
                 Log in
             </NuxtLink>
-            <div v-else
-                 class="px-3 py-1.5 h-full inline-block hover:bg-white/20">
+            <NuxtLink v-else
+                      href="/profile"
+                      class="px-3 py-1.5 h-full inline-block hover:bg-white/20">
                 <User class="h-5 inline scale-125"/>
-            </div>
+            </NuxtLink>
             <NuxtLink v-if="!userData"
                       href="/signup"
                       class="px-3 py-1.5 inline-block hover:bg-white/20">

@@ -1,4 +1,28 @@
 <script setup>
+
+const state = reactive({
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+});
+const router = useRouter();
+const userData = useUserData();
+
+async function HandleLogIn() {
+    const {data} = await useFetch("api/auth/register", {
+        method: "POST",
+        body: {
+            email: state.email,
+            password: state.password,
+            firstName: state.firstName,
+            lastName: state.lastName,
+        },
+    });
+    userData.value = data.value;
+    await router.push("/");
+}
+
 </script>
 <template>
     <div class="min-h-[calc(100vh-4rem)] grid place-items-center bg-gray-100 p-2">
@@ -12,11 +36,25 @@
                         First name
                     </label>
                     <input
-                        class="border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
-                        id="firstName"
-                        type="email"
-                        placeholder="First name"
-                        required
+                            v-model="state.firstName"
+                            class="border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
+                            id="firstName"
+                            type="email"
+                            placeholder="First name"
+                            required
+                    >
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-800 font-bold mb-2" for="firstName">
+                        Last name
+                    </label>
+                    <input
+                            v-model="state.lastName"
+                            class="border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
+                            id="lastName"
+                            type="email"
+                            placeholder="Last name"
+                            required
                     >
                 </div>
                 <div class="mb-4">
@@ -24,6 +62,7 @@
                         Email
                     </label>
                     <input
+                            v-model="state.email"
                             class="border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
                             id="email"
                             type="email"
@@ -36,6 +75,7 @@
                         Password
                     </label>
                     <input
+                            v-model="state.password"
                             class="border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
                             id="password"
                             type="password"
