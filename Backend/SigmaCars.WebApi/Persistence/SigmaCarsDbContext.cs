@@ -69,7 +69,7 @@ public class SigmaCarsDbContext : DbContext
             e.ToTable("rentals");
             e.Property(x => x.Id).HasColumnName("id");
             e.Property(x => x.CarId).HasColumnName("car_id");
-            e.Property(x => x.CustomerId).HasColumnName("customer_id");
+            e.Property(x => x.UserId).HasColumnName("user_id");
             e.Property(x => x.StartDate).HasColumnName("start_date");
             e.Property(x => x.EndDate).HasColumnName("end_date");
         });
@@ -86,7 +86,7 @@ public class SigmaCarsDbContext : DbContext
             e.HasMany(x => x.Rentals)
                 .WithOne(x => x.User)
                 .HasPrincipalKey(x => x.Id)
-                .HasForeignKey(x => x.CustomerId);
+                .HasForeignKey(x => x.UserId);
         });
     }
 }

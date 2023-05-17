@@ -2,11 +2,11 @@
 
 public class Rental
 {
-    public Rental(int carId, int customerId, DateTime startDate, DateTime endDate, int id = 0)
+    public Rental(int carId, int userId, DateTime startDate, DateTime endDate, int id = 0)
     {
         Id = id;
         CarId = carId;
-        CustomerId = customerId;
+        UserId = userId;
         StartDate = startDate;
         EndDate = endDate;
     }
@@ -15,7 +15,7 @@ public class Rental
 
     public int CarId { get; set; }
 
-    public int CustomerId { get; set; }
+    public int UserId { get; set; }
 
     public DateTime StartDate { get; set; }
 

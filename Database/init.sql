@@ -27,11 +27,11 @@ create table departments
 
 create table rentals
 (
-    id          serial primary key,
-    car_id      int       not null,
-    customer_id int       not null,
-    start_date  timestamp not null,
-    end_date    timestamp not null
+    id         serial primary key,
+    car_id     int       not null,
+    user_id    int       not null,
+    start_date timestamp not null,
+    end_date   timestamp not null
 );
 
 create table users
