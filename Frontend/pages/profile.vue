@@ -1,32 +1,9 @@
 <script setup>
-import { XCircle } from "lucide-vue-next";
-
 const userData = useUserData();
 
-const tempRentals = [
-    {
-        carMake: "BMW",
-        carModel: "M3",
-        carRegistrationNumber: "ABC123",
-        startDate: "2021-10-10",
-        endDate: "2021-10-20",
-    },
-    {
-        carMake: "Audi",
-        carModel: "A4",
-        carRegistrationNumber: "DEF456",
-        startDate: "2021-10-10",
-        endDate: "2021-10-20",
-    },
-    {
-        carMake: "Mercedes",
-        carModel: "C63",
-        carRegistrationNumber: "GHI789",
-        startDate: "2021-10-10",
-        endDate: "2021-10-20",
-    },
-];
+const {data} = await useFetch(`/api/users/${userData.value.id}/rentals`);
 
+const rentals = data.value.rentals === undefined ? [] : data.value.rentals;
 </script>
 <template>
     <div v-if="userData === null"
@@ -48,7 +25,7 @@ const tempRentals = [
                 Your rentals:
             </h2>
             <ul class="mt-4 divide-y">
-                <li v-for="rental in tempRentals"
+                <li v-for="rental in rentals"
                     class="flex py-2 flex-col md:flex-row md:justify-between">
                     <div class="text-slate-800 font-bold">
                         {{ rental.carMake }} {{ rental.carModel }}
