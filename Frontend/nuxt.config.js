@@ -1,7 +1,13 @@
+// noinspection SpellCheckingInspection
+
 export default defineNuxtConfig({
     ssr: false,
     modules: ["@nuxtjs/tailwindcss"],
     app: {
+        pageTransition: {
+            name: "page",
+            mode: "out-in"
+        },
         head: {
             title: "Sigma Cars",
             link: [
