@@ -40,6 +40,8 @@ function handleRent() {
             endDate: endDate.value,
         },
     });
+    
+    router.push('/profile');
 }
 
 </script>
