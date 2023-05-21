@@ -3,9 +3,19 @@ const userData = useUserData();
 
 const {data} = await useFetch(`/api/users/${userData.value.userId}/rentals`);
 
-const rentals = data.value.rentals === undefined 
-    ? [] 
+const rentals = data.value.rentals === undefined
+    ? []
     : data.value.rentals;
+
+function formatDate(date) {
+    date = new Date(date);
+    return date.toDateString();
+}
+
+rentals.forEach(rental => {
+    rental.startDate = formatDate(rental.startDate);
+    rental.endDate = formatDate(rental.endDate);
+});
 </script>
 <template>
     <div>
@@ -24,7 +34,7 @@ const rentals = data.value.rentals === undefined
                 </p>
             </div>
             <div v-if="rentals.length !== 0"
-                class="rounded-md border p-4 mt-4">
+                 class="rounded-md border p-4 mt-4">
                 <h2 class="text-xl">
                     Your rentals:
                 </h2>
@@ -38,17 +48,13 @@ const rentals = data.value.rentals === undefined
                         </span>
                         </div>
                         <div>
-                        <span class="text-slate-600">
-                            from
-                        </span>
+                            <span class="text-slate-600">from</span>
                             {{ rental.startDate }}
-                            <span class="text-slate-600">
-                            to
-                        </span>
+                            <span class="text-slate-600">to</span>
                             {{ rental.endDate }}
-                            <span class="ml-4 underline text-orange-600">
-                            Cancel
-                        </span>
+                            <span class="text-slate-600">in</span>
+                            [Location]
+                            <span class="ml-4 underline text-orange-600">Cancel</span>
                         </div>
                     </li>
                 </ul>
