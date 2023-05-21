@@ -25,13 +25,13 @@ rentals.forEach(rental => {
         </div>
         <div v-else
              class="p-4">
-            <div class="rounded-md p-4 flex justify-between bg-gray-200">
+            <div class="rounded-md p-4 flex flex-col md:flex-row justify-between bg-gray-200">
                 <p class="text-xl font-bold">
                     {{ userData.firstName }} {{ userData.lastName }}
                 </p>
                 <p>
-                    <span class="mr-4">{{ userData.email }}</span>
-                    <ButtonCancel>Logout</ButtonCancel>
+                    {{ userData.email }}
+                    <span class="block md:inline md:ml-4"><ButtonCancel>Logout</ButtonCancel></span>
                 </p>
             </div>
             <div v-if="rentals.length !== 0"
@@ -44,9 +44,7 @@ rentals.forEach(rental => {
                         class="flex py-2 flex-col md:flex-row md:justify-between">
                         <div class="text-slate-800 font-bold">
                             {{ rental.carMake }} {{ rental.carModel }}
-                            <span class="text-xs text-gray-500 font-normal">
-                            {{ rental.carRegistrationNumber }}
-                        </span>
+                            <span class="text-xs text-gray-500 font-normal">{{ rental.carRegistrationNumber }}</span>
                         </div>
                         <div>
                             <span class="text-slate-600">from</span>
@@ -55,7 +53,7 @@ rentals.forEach(rental => {
                             {{ rental.endDate }}
                             <span class="text-slate-600">in</span>
                             [Location]
-                            <span class="ml-4"><ButtonCancel>Cancel</ButtonCancel></span>
+                            <span class="block md:inline md:ml-4"><ButtonCancel>Cancel</ButtonCancel></span>
                         </div>
                     </li>
                 </ul>
