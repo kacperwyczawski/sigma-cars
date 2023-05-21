@@ -1,5 +1,6 @@
 <script setup>
 const userData = useUserData();
+const router = useRouter();
 
 const {data} = await useFetch(`/api/users/${userData.value.userId}/rentals`);
 
@@ -16,6 +17,11 @@ rentals.forEach(rental => {
     rental.startDate = formatDate(rental.startDate);
     rental.endDate = formatDate(rental.endDate);
 });
+
+function handleLogout() {
+    userData.value = null;
+    router.push('/');
+}
 </script>
 <template>
     <div>
@@ -31,7 +37,9 @@ rentals.forEach(rental => {
                 </p>
                 <p>
                     {{ userData.email }}
-                    <span class="block md:inline md:ml-4"><ButtonCancel>Logout</ButtonCancel></span>
+                    <span class="block md:inline md:ml-4">
+                        <ButtonCancel @click="handleLogout">Logout</ButtonCancel>
+                    </span>
                 </p>
             </div>
             <div v-if="rentals.length !== 0"
