@@ -37,7 +37,7 @@ function handleSubmit() {
 <template>
     <form class="max-w-3xl flex gap-3 items-end flex-grow flex-wrap"
           @submit.prevent="handleSubmit">
-        <label class="flex-grow relative">
+        <label class="flex-grow relative basis-32">
             From:
             <input v-model="startDate"
                    class="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
@@ -48,7 +48,7 @@ function handleSubmit() {
                 <Calendar class="text-slate-800 h-5 w-5"/>
             </span>
         </label>
-        <label class="flex-grow relative">
+        <label class="flex-grow relative basis-32">
             To:
             <input v-model="endDate"
                    class="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
@@ -59,7 +59,7 @@ function handleSubmit() {
                 <Calendar class="text-slate-800 h-5 w-5"/>
             </span>
         </label>
-        <label class="flex-grow">
+        <label class="flex-grow basis-32">
             Location:
             <span class="w-full">
                 <Listbox v-model="selectedDepartment">
