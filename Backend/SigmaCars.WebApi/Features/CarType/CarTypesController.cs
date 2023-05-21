@@ -106,14 +106,14 @@ public class CarTypesController : Controller
     public async Task<IActionResult> PostRental([FromBody] PostRentalRequest request, int carTypeId)
     {
         var carId = await _dbContext.Cars
-            .Where(c => c.carTypeId == carTypeId)
+            .Where(car =>
+                car.carTypeId == carTypeId)
+            .Where(car =>
+                car.Rentals.All(rental =>
+                    rental.EndDate < request.StartDate
+                    || rental.StartDate > request.EndDate))
             .Select(c => c.Id)
             .FirstOrDefaultAsync();
-        
-        // TODO: 👆
-        // this thing rents the same car over and over again
-        // it should rent the car that is available for the given period
-        // amen
 
         if (carId == default)
             return Problem(
