@@ -1,9 +1,46 @@
 ﻿<script setup>
 import {User} from "lucide-vue-next";
+import {useUserData} from "~/composables/useUserData";
 
 const props = defineProps({
     car: Object,
 });
+
+const userData = useUserData();
+const router = useRouter();
+const route = useRoute();
+
+const startDate = computed(() => {
+    let date = new Date(route.query.startDate);
+    date.setHours(10);
+    return date.toISOString();
+});
+
+const endDate = computed(() => {
+    let date = new Date(route.query.endDate);
+    date.setHours(10);
+    return date.toISOString();
+});
+
+function handleRent() {
+    if (!userData.value) {
+        // TODO: Tell user they need to be logged in via modal or something
+        router.push('/login');
+        return;
+    }
+    
+    useFetch(`/api/car-types/${props.car.id}/rentals`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: {
+            userId: userData.value.userId,
+            startDate: startDate.value,
+            endDate: endDate.value,
+        },
+    });
+}
 
 </script>
 <template>
@@ -20,7 +57,7 @@ const props = defineProps({
                 <User class="inline h-7"/>
                 {{ car.seatCount }} seats
             </p>
-            <ButtonArrow>
+            <ButtonArrow @click="handleRent">
                 Rent now
             </ButtonArrow>
         </div>
