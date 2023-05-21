@@ -54,7 +54,7 @@ rentals.forEach(rental => {
                             {{ rental.endDate }}
                             <span class="text-slate-600">in</span>
                             [Location]
-                            <span class="ml-4 underline text-orange-600">Cancel</span>
+                            <span class="ml-4"><ButtonCancel>Cancel</ButtonCancel></span>
                         </div>
                     </li>
                 </ul>
