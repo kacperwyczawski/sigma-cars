@@ -12,6 +12,8 @@ for cars by location, price, and availability, and make reservations for the sel
 
 Technologies used are listed [here](#-technologies)
 
+![Mockup](Assets/sigma-mockup.png)
+
 ## 🚀 How to run
 
 1. Install [Docker](https://www.docker.com/) and [Git](https://git-scm.com/downloads) on your machine.
