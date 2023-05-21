@@ -1,4 +1,4 @@
-![Sigma cars](Assets/header.svg)
+# Sigma Cars
 
 > **Note**
 >
