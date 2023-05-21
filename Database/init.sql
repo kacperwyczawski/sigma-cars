@@ -45,23 +45,18 @@ create table users
 );
 
 insert into car_types (make, model, production_year, price_per_day, seat_count)
-values ('Dodge', 'Charger', 2018, 200, 5),
-       ('DeLorean', 'DMC-12', 1981, 350, 2),
-       ('Volkswagen', 'Passat', 2019, 99.99, 5),
-       ('Aston Martin', 'DB5', 1964, 300, 2);
+values ('DeLorean', 'DMC-12', 1981, 350, 2),
+       ('Aston Martin', 'DB5', 1964, 300, 2),
+       ('Volkswagen', 'Passat', 2019, 99.99, 5);
 
 insert into departments (country_code, city, address)
 values ('US', 'Boston', 'August St. 1976');
 
 insert into cars (car_type_id, department_id, registration_number, vin)
-values (4, 1, 'BMT216A', '56789012345678901'),
-       (2, 1, 'OUTATIME', '23456789012345678'),
+values (1, 1, 'OUTATIME', '12345678901234567'),
+       (2, 1, 'BMT216A', '23456789012345678'),
        (3, 1, '345678', '34567890123456789'),
-       (3, 1, '456789', '45678901234567890'),
-       (1, 1, '123456', '12345678901234567');
+       (3, 1, '456789', '45678901234567890');
 
 insert into users (first_name, last_name, email, password_hash, role)
 values ('James', 'Bond', 'admin@sigma.cars', 'admin', 'admin');
-
-insert into rentals (car_id, user_id, start_date, end_date)
-values (1, 1, '2000-01-01 10:00:00', '2000-01-02 10:00:00');
