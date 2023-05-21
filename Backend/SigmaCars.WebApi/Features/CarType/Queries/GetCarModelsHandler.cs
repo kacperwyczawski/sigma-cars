@@ -49,15 +49,17 @@ public class GetcarTypesHandler : IRequestHandler<GetcarTypesQuery, GetcarTypesR
 
         var carTypesQueried = await carTypes
             .Include(carType => carType.Cars)
+            .ThenInclude(car => car.Rentals)
             .ToListAsync(cancellationToken);
 
         if (query.AvailableOnly)
         {
-            carTypesQueried = carTypesQueried.Where(carType =>
-                carType.Cars.Any(car =>
-                    car.Rentals.All(rental =>
-                        rental.EndDate < query.StartDate
-                        || rental.StartDate > query.EndDate))).ToList();
+            carTypesQueried = carTypesQueried
+                .Where(carType =>
+                    carType.Cars.Any(car =>
+                        car.Rentals.All(rental =>
+                            rental.EndDate < query.StartDate
+                            || rental.StartDate > query.EndDate))).ToList();
         }
 
         return new GetcarTypesResponse(

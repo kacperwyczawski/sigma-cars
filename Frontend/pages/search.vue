@@ -4,8 +4,7 @@ const route = useRoute();
 const {data} = await useFetch(
     "/api/car-types"
     + `?start-date=${route.query.startDate}`
-    + `&end-date=${route.query.endDate}`
-    + "&available-only=false",
+    + `&end-date=${route.query.endDate}`,
 );
 
 const carTypes = data.value.carTypes;
