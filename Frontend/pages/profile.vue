@@ -1,7 +1,7 @@
 <script setup>
 const userData = useUserData();
 
-const {data} = await useFetch(`/api/users/${userData.value.id}/rentals`);
+const {data} = await useFetch(`/api/users/${userData.value.userId}/rentals`);
 
 const rentals = data.value.rentals === undefined ? [] : data.value.rentals;
 </script>
