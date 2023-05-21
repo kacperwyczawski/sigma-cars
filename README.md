@@ -1,4 +1,4 @@
-![Sigma cars](Assets/header.svg)
+# Sigma Cars
 
 > **Note**
 >
@@ -11,6 +11,8 @@ project that was created to practice and demonstrate the development of a full s
 for cars by location, price, and availability, and make reservations for the selected car.
 
 Technologies used are listed [here](#-technologies)
+
+![Mockup](Assets/sigma-mockup.png)
 
 ## 🚀 How to run
 
