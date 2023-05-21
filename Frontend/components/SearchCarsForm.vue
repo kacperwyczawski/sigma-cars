@@ -74,10 +74,13 @@ function handleSubmit() {
                                                 aria-hidden="true"/>
                             </span>
                         </ListboxButton>
-                        <Transition
-                                leave-active-class="transition duration-100 ease-in"
-                                leave-from-class="opacity-100"
-                                leave-to-class="opacity-0">
+                        <transition
+                                enter-active-class="transition duration-100 ease-out"
+                                enter-from-class="transform scale-95 opacity-0"
+                                enter-to-class="transform scale-100 opacity-100"
+                                leave-active-class="transition duration-75 ease-out"
+                                leave-from-class="transform scale-100 opacity-100"
+                                leave-to-class="transform scale-95 opacity-0">
                             <ListboxOptions
                                     class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                                 <ListboxOption
@@ -99,7 +102,7 @@ function handleSubmit() {
                                     </li>
                                 </ListboxOption>
                             </ListboxOptions>
-                        </Transition>
+                        </transition>
                     </div>
                 </Listbox>
             </span>
