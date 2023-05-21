@@ -30,7 +30,8 @@ rentals.forEach(rental => {
                     {{ userData.firstName }} {{ userData.lastName }}
                 </p>
                 <p>
-                    {{ userData.email }}
+                    <span class="mr-4">{{ userData.email }}</span>
+                    <ButtonCancel>Logout</ButtonCancel>
                 </p>
             </div>
             <div v-if="rentals.length !== 0"
