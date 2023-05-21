@@ -3,7 +3,9 @@ const userData = useUserData();
 
 const {data} = await useFetch(`/api/users/${userData.value.userId}/rentals`);
 
-const rentals = data.value.rentals === undefined ? [] : data.value.rentals;
+const rentals = data.value.rentals === undefined 
+    ? [] 
+    : data.value.rentals;
 </script>
 <template>
     <div>
@@ -21,7 +23,8 @@ const rentals = data.value.rentals === undefined ? [] : data.value.rentals;
                     {{ userData.email }}
                 </p>
             </div>
-            <div class="rounded-md border p-4 mt-4">
+            <div v-if="rentals.length !== 0"
+                class="rounded-md border p-4 mt-4">
                 <h2 class="text-xl">
                     Your rentals:
                 </h2>
