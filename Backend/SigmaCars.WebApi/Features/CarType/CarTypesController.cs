@@ -109,6 +109,11 @@ public class CarTypesController : Controller
             .Where(c => c.carTypeId == carTypeId)
             .Select(c => c.Id)
             .FirstOrDefaultAsync();
+        
+        // TODO: 👆
+        // this thing rents the same car over and over again
+        // it should rent the car that is available for the given period
+        // amen
 
         if (carId == default)
             return Problem(
