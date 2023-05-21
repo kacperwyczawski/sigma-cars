@@ -32,9 +32,10 @@ public class LoginHandler : IRequestHandler<LoginQuery, LoginResponse>
 
         return Task.FromResult(
             new LoginResponse(
-                FirstName: user.FirstName,
-                LastName: user.LastName,
-                Email: user.Email,
-                Jwt: token));
+                user.Id,
+                user.FirstName,
+                user.LastName,
+                user.Email,
+                token));
     }
 }

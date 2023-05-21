@@ -42,6 +42,7 @@ public class RegisterHandler : IRequestHandler<RegisterCommand, RegisterResponse
 
         return Task.FromResult(
             new RegisterResponse(
+                user.Id,
                 user.FirstName,
                 user.LastName,
                 user.Email,
