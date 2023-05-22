@@ -2,16 +2,9 @@
 import {Listbox, ListboxButton, ListboxOption, ListboxOptions} from "@headlessui/vue";
 import {Calendar, CheckIcon, ChevronsUpDown} from "lucide-vue-next";
 
-const departments = [
-    "Boston",
-    "Chicago",
-    "Paris",
-    "London",
-    "Warsaw",
-    "Sydney",
-    "Tokyo",
-    "New York",
-];
+const {data} = await useFetch("/api/departments");
+const departments = data.value.map((x) => x.city);
+const isListboxDisabled = computed(() => departments.length === 1);
 
 const router = useRouter();
 
@@ -62,15 +55,20 @@ function handleSubmit() {
         <label class="flex-grow basis-32">
             Location:
             <span class="w-full">
-                <Listbox v-model="selectedDepartment">
+                <Listbox
+                        v-model="selectedDepartment"
+                        :disabled="isListboxDisabled"
+                        v-slot="{ disabled }">
                     <div class="relative mt-1">
                         <ListboxButton
                                 class="block border w-full py-2 px-3 rounded-md h-10 mt-2 pr-16 bg-white text-left">
-                            <span class="block truncate">
+                            <span class="block truncate"
+                                  :class="{'text-slate-400': disabled}">
                                 {{ selectedDepartment }}
                             </span>
                             <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                                <ChevronsUpDown class="h-5 w-5 text-slate-800"
+                                <ChevronsUpDown class="h-5 w-5"
+                                                :class="[disabled ? 'text-slate-400' : 'text-slate-800']"
                                                 aria-hidden="true"/>
                             </span>
                         </ListboxButton>
@@ -91,7 +89,7 @@ function handleSubmit() {
                                         class="relative cursor-default select-none py-2 pl-10 pr-4 hover:bg-slate-100"
                                         as="template">
                                     <li class="relative cursor-default select-none py-2 pl-10 pr-4]">
-                                        <span :class="[ selected ? 'font-semibold' : 'font-normal', 'block truncate',]">
+                                        <span :class="[ selected ? 'font-semibold' : 'font-normal', 'block truncate']">
                                             {{ department }}
                                         </span>
                                         <span v-if="selected"
