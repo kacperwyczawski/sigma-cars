@@ -36,6 +36,7 @@ public class LoginHandler : IRequestHandler<LoginQuery, LoginResponse>
                 user.FirstName,
                 user.LastName,
                 user.Email,
+                user.Role,
                 token));
     }
 }

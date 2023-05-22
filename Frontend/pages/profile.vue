@@ -1,4 +1,6 @@
 <script setup>
+import {ShieldCheck} from "lucide-vue-next";
+
 const userData = useUserData();
 const router = useRouter();
 
@@ -32,9 +34,14 @@ function handleLogout() {
         <div v-else
              class="p-4">
             <div class="rounded-md p-4 flex flex-col md:flex-row justify-between bg-gray-200">
-                <p class="text-xl font-bold">
-                    {{ userData.firstName }} {{ userData.lastName }}
-                </p>
+                <div class="text-xl font-bold flex gap-2 items-center">
+                    <h1>
+                        {{ userData.firstName }} {{ userData.lastName }}
+                    </h1>
+                    <ShieldCheck
+                            v-if="userData.role === 'admin'"
+                            class="h-6 relative text-orange-600"/>
+                </div>
                 <p>
                     {{ userData.email }}
                     <span class="block md:inline md:ml-4">
