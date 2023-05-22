@@ -70,16 +70,16 @@ function handleLogout() {
                 <ul class="mt-4 divide-y">
                     <li v-for="rental in rentals"
                         class="flex py-2 flex-col md:flex-row md:justify-between">
-                        <div class="text-slate-800 font-bold">
+                        <div class="font-bold">
                             {{ rental.carMake }} {{ rental.carModel }}
-                            <span class="text-xs text-gray-500 font-normal">{{ rental.carRegistrationNumber }}</span>
+                            <span class="text-xs text-slate-500 font-normal">{{ rental.carRegistrationNumber }}</span>
                         </div>
                         <div>
-                            <span class="text-slate-600">from</span>
+                            <span class="text-slate-500">from</span>
                             {{ rental.startDate }}
-                            <span class="text-slate-600">to</span>
+                            <span class="text-slate-500">to</span>
                             {{ rental.endDate }}
-                            <span class="text-slate-600">in</span>
+                            <span class="text-slate-500">in</span>
                             [Location]
                             <span class="block md:inline md:ml-4"><ButtonCancel>Cancel</ButtonCancel></span>
                         </div>
