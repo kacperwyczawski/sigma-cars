@@ -12,12 +12,11 @@ const {data} = await useFetch(`/api/users/${userData.value.userId}/rentals`);
 
 let departments = [];
 if (userData.value.role === "admin") {
-    console.log("admin")
     const {data} = await useFetch(`/api/departments`);
     departments = data.value === undefined
         ? []
         : data.value;
-}
+} // TODO: refresh departments on add (using watch and maybe useAsyncData)
 
 const rentals = data.value.rentals === undefined
     ? []
@@ -36,6 +35,21 @@ rentals.forEach(rental => {
 function handleLogout() {
     userData.value = null;
     router.push('/');
+}
+
+const adding = ref(false);
+const newDepartment = ref({
+    countryCode: '',
+    city: '',
+    address: '',
+});
+
+async function handleAddDepartment() {
+    adding.value = false;
+    await useFetch(`/api/departments`, {
+        method: 'POST',
+        body: newDepartment.value,
+    });
 }
 </script>
 <template>
@@ -92,17 +106,58 @@ function handleLogout() {
                     <h2 class="text-xl">
                         Departments:
                     </h2>
-                    <button class="hover:bg-orange-600 text-white bg-slate-800 transition-colors duration-75 rounded-md py-1 px-2 text-sm">
+                    <button v-if="!adding"
+                            class="hover:bg-orange-600 text-white bg-slate-800 transition-colors duration-75 rounded-md py-1 px-2 text-sm"
+                            @click="adding = true">
                         Add
                     </button>
                 </div>
                 <ul class="mt-4 divide-y">
+                    <li v-if="adding">
+                        <form class="caret-orange-600"
+                              @submit.prevent="handleAddDepartment">
+                            <label for="countryCode">
+                                Country code:
+                                <input type="text"
+                                       id="countryCode"
+                                       maxlength="2"
+                                       required
+                                       class="w-10 border rounded-full m-2 ml-0 focus:outline-none focus:border-orange-600 px-2"
+                                       v-model="newDepartment.countryCode">
+                            </label>
+                            <label for="city">
+                                City:
+                                <input type="text"
+                                       id="city"
+                                       required
+                                       class="w-32 border rounded-full m-2 ml-0 focus:outline-none focus:border-orange-600 px-2"
+                                       v-model="newDepartment.city">
+                            </label>
+                            <label for="address">
+                                Address:
+                                <input type="text"
+                                       id="address"
+                                       required
+                                       class="w-32 border rounded-full m-2 ml-0 focus:outline-none focus:border-orange-600 px-2"
+                                       v-model="newDepartment.address">
+                            </label>
+                            <input type="submit"
+                                   value="Add"
+                                   class="underline text-orange-600 hover:text-orange-800 ml-2">
+                        </form>
+                    </li>
                     <li v-for="department in departments"
                         class="flex py-2 flex-col md:flex-row md:justify-between">
                         <div class="flex items-center gap-2">
-                            <div class="rounded-full border px-1.5 text-slate-500 text-sm">US</div> <!-- TODO -->
-                            <div class="font-bold">{{department.city}}</div>
-                            <div class="text-slate-500">amongus street 123</div> <!-- TODO -->
+                            <div class="rounded-full border px-1.5 text-slate-500 text-sm">
+                                {{ department.countryCode }}
+                            </div>
+                            <div class="font-bold">
+                                {{ department.city }}
+                            </div>
+                            <div class="text-slate-500">
+                                {{ department.address }}
+                            </div>
                         </div>
                         <div>
                             <ButtonCancel>Remove</ButtonCancel>
