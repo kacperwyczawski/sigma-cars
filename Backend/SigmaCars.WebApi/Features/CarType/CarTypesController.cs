@@ -57,35 +57,6 @@ public class CarTypesController : Controller
         return Ok(result);
     }
 
-    [HttpGet("{id:int}/cars")]
-    public async Task<IActionResult> GetCars(int id)
-    {
-        var request = new GetCarsQuery(id);
-
-        var result = await _mediator.Send(request);
-
-        if (!result.Cars.Any())
-            return NoContent();
-
-        return Ok(result);
-    }
-
-    [HttpDelete("{id:int}/cars/{carId:int}")]
-    public async Task<IActionResult> DeleteCar(int id, int carId)
-    {
-        await _mediator.Send(new DeleteCarCommand(carId));
-
-        return NoContent();
-    }
-
-    [HttpPost("{id:int}/cars")]
-    public async Task<IActionResult> PostCar(int id, [FromBody] CreateCarCommand request)
-    {
-        var created = await _mediator.Send(request);
-
-        return Created($"car-types/{id}/cars/{created.Id}", created);
-    }
-
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] CreateCarTypeCommand request)
     {
@@ -102,12 +73,41 @@ public class CarTypesController : Controller
         return NoContent();
     }
 
-    [HttpPost("{carTypeId:int}/rentals")]
-    public async Task<IActionResult> PostRental([FromBody] PostRentalRequest request, int carTypeId)
+    [HttpGet("{id:int}/cars")]
+    public async Task<IActionResult> GetCars(int id)
+    {
+        var request = new GetCarsQuery(id);
+
+        var result = await _mediator.Send(request);
+
+        if (!result.Cars.Any())
+            return NoContent();
+
+        return Ok(result);
+    }
+
+    [HttpPost("{id:int}/cars")]
+    public async Task<IActionResult> PostCar(int id, [FromBody] CreateCarCommand request)
+    {
+        var created = await _mediator.Send(request);
+
+        return Created($"car-types/{id}/cars/{created.Id}", created);
+    }
+
+    [HttpDelete("{id:int}/cars/{carId:int}")]
+    public async Task<IActionResult> DeleteCar(int id, int carId)
+    {
+        await _mediator.Send(new DeleteCarCommand(carId));
+
+        return NoContent();
+    }
+
+    [HttpPost("{id:int}/rentals")]
+    public async Task<IActionResult> PostRental([FromBody] PostRentalRequest request, int id)
     {
         var carId = await _dbContext.Cars
             .Where(car =>
-                car.carTypeId == carTypeId)
+                car.carTypeId == id)
             .Where(car =>
                 car.Rentals.All(rental =>
                     rental.EndDate < request.StartDate
