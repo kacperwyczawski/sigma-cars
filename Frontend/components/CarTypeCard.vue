@@ -63,21 +63,17 @@ const showDetails = ref(false);
         {{ car.seatCount }} seats
       </div>
       <div class="flex gap-2 items-center">
-        <div v-if="userData && userData.role === 'admin'"
-             class="bg-slate-100 rounded basis-6 p-2 hover:bg-slate-200 transition-colors duration-75">
-          <button
-              @click="showDetails = true"
-              class="block">
-            <SlidersHorizontal/>
-          </button>
+        <button
+            v-if="userData && userData.role === 'admin'"
+            @click="showDetails = true"
+            class="bg-slate-100 rounded basis-6 p-2 hover:bg-slate-200 transition-colors duration-75 block">
+          <SlidersHorizontal/>
           <Modal :show="showDetails">
             <template #header>
               Car type details
             </template>
             <template #body>
-              <!--<CarTypeCars :carTypeId="car.id"/>-->
-              list of cars (may be veeeeeeeeeeeeeeeeeeeeeeeeeryyyyyyyyyyyyyyyy loooooooong)
-              <!--TODO-->
+              <CarTypeDetails :carTypeId="car.id"/>
             </template>
             <template #footer>
               <ButtonPrimary
@@ -91,7 +87,7 @@ const showDetails = ref(false);
               </ButtonPrimary>
             </template>
           </Modal>
-        </div>
+        </button>
         <ButtonPrimary @click="handleRent">
           Rent now
         </ButtonPrimary>
