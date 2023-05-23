@@ -45,6 +45,8 @@ function handleRent() {
   router.push('/profile');
 }
 
+const showDetails = ref(false);
+
 </script>
 <template>
   <div class="border divide-y rounded-md">
@@ -63,7 +65,32 @@ function handleRent() {
       <div class="flex gap-2 items-center">
         <div v-if="userData && userData.role === 'admin'"
              class="bg-slate-100 rounded basis-6 p-2 hover:bg-slate-200 transition-colors duration-75">
-          <SlidersHorizontal/>
+          <button
+              @click="showDetails = true"
+              class="block">
+            <SlidersHorizontal/>
+          </button>
+          <Modal :show="showDetails">
+            <template #header>
+              Car type details
+            </template>
+            <template #body>
+              <!--<CarTypeCars :carTypeId="car.id"/>-->
+              list of cars (may be veeeeeeeeeeeeeeeeeeeeeeeeeryyyyyyyyyyyyyyyy loooooooong)
+              <!--TODO-->
+            </template>
+            <template #footer>
+              <ButtonPrimary
+                  :show-arrow="false">
+                Delete
+              </ButtonPrimary>
+              <ButtonPrimary
+                  @click="showDetails = false"
+                  :show-arrow="false">
+                Close
+              </ButtonPrimary>
+            </template>
+          </Modal>
         </div>
         <ButtonPrimary @click="handleRent">
           Rent now

@@ -15,7 +15,7 @@ const props = defineProps<{
           <div class="p-2">
             <slot name="body"></slot>
           </div>
-          <div class="p-2">
+          <div class="p-2 flex justify-end gap-2">
             <slot name="footer"></slot>
           </div>
         </div>
