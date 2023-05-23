@@ -11,7 +11,7 @@ withDefaults(defineProps<{
 <template>
   <component
       :is="element"
-      class="group px-5 py-2 hover:bg-orange-600 text-center text-white bg-slate-800 transition-colors duration-75 rounded-md text-base"
+      class="group px-3 py-2 hover:bg-orange-600 text-center text-white bg-slate-800 transition-colors duration-75 rounded-md text-base"
       @click.prevent="$emit('click')">
     <slot></slot>
     <span
