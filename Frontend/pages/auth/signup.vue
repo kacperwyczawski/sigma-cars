@@ -10,7 +10,7 @@ const router = useRouter();
 const userData = useUserData();
 
 async function HandleLogIn() {
-    const {data} = await useFetch("api/auth/register", {
+    const {data} = await useFetch("/api/auth/register", {
         method: "POST",
         body: {
             email: state.email,

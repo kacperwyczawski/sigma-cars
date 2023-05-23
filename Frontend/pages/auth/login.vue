@@ -8,7 +8,7 @@ const router = useRouter();
 const userData = useUserData();
 
 async function HandleLogIn() {
-    const {data} = await useFetch("api/auth/login", {
+    const {data} = await useFetch("/api/auth/login", {
         method: "POST",
         body: {
             email: state.email,
