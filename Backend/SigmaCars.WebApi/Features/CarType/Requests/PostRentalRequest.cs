@@ -5,4 +5,4 @@ public record PostRentalRequest(
     DateTime StartDate,
     DateTime EndDate);
 
-// TODO: Add validation
+// TODO: Add validation to requests that are not in mediator pipeline

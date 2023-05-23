@@ -46,18 +46,28 @@ function handleRent() {
 }
 
 const {data: departments} = await useFetch('/api/departments');
-const filteredDepartments = computed(() =>
-    departmentsQuery.value === ''
-        ? departments.value
-        : departments.value.filter(department => department.city.toLowerCase().includes(departmentsQuery.value.toLowerCase())),
-);
-const departmentsQuery = ref('');
 const showDetails = ref(false);
 const addingCar = ref(false);
-const newCar = ref({
-  registrationNumber: '', //TODO: should be uppercased
-  departmentId: 0,
+const newCar = reactive({
+  registrationNumber: '',
+  departmentId: 1,
 });
+
+async function handleAddCar() {
+  addingCar.value = false;
+  await useFetch(`/api/car-types/${props.car.id}/cars`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: {
+      registrationNumber: newCar.registrationNumber.toUpperCase(),
+      departmentId: newCar.departmentId,
+    },
+  });
+  newCar.registrationNumber = "";
+  newCar.departmentId = 1;
+}
 </script>
 <template>
   <div class="border divide-y rounded-md">
@@ -84,7 +94,9 @@ const newCar = ref({
               {{ car.make }} {{ car.model }} details
             </template>
             <template #body>
-              <CarTypeDetails :carTypeId="car.id"/>
+              <CarTypeDetails
+                  :carTypeId="car.id"
+                  :key="addingCar"/>
               <form class="caret-orange-600 mt-2 pt-2 border-t border-dashed flex flex-col gap-2"
                     v-if="addingCar"
                     @submit.prevent="handleAddCar">
@@ -103,8 +115,8 @@ const newCar = ref({
                           required
                           class="rounded-full border focus: bg-white px-2 h-6">
                     <option v-for="department in departments"
-                            :key="department.id"
-                            :value="department.id">
+                            :key="department.departmentId"
+                            :value="department.departmentId">
                       {{ department.city }}
                     </option>
                   </select>

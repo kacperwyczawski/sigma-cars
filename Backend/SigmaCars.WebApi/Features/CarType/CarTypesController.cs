@@ -87,11 +87,21 @@ public class CarTypesController : Controller
     }
 
     [HttpPost("{id:int}/cars")]
-    public async Task<IActionResult> PostCar(int id, [FromBody] CreateCarCommand request)
+    public async Task<IActionResult> PostCar(int id, [FromBody] PostCarRequest request)
     {
-        var created = await _mediator.Send(request);
+        var newCar = new Domain.Models.Car
+        {
+            Id = 0,
+            carTypeId = id,
+            DepartmentId = request.DepartmentId,
+            RegistrationNumber = request.RegistrationNumber,
+            Vin = new string('0', 17) // TODO: remove vin
+        };
+          
+        _dbContext.Cars.Add(newCar);
+        await _dbContext.SaveChangesAsync();
 
-        return Created($"car-types/{id}/cars/{created.Id}", created);
+        return Created($"car-types/{id}/cars/{newCar.Id}", newCar);
     }
 
     [HttpDelete("{id:int}/cars/{carId:int}")]

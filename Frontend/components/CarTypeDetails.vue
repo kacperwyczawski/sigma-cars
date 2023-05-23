@@ -13,7 +13,7 @@ const {data: cars} = await useFetch(
 );
 </script>
 <template>
-  <ul class="space-y-2">
+  <ul class="space-y-2"> <!--TODO: this should be table-->
     <li v-for="car in cars"
         :key="car.id"
         class="flex gap-6 text-lg items-center justify-between">
