@@ -10,13 +10,20 @@ if (userData.value === null) {
 
 const {data} = await useFetch(`/api/users/${userData.value.userId}/rentals`);
 
-let departments = [];
+const departments = ref([]);
 if (userData.value.role === "admin") {
-    const {data} = await useFetch(`/api/departments`);
-    departments = data.value === undefined
-        ? []
-        : data.value;
-} // TODO: refresh departments on add (using watch and maybe useAsyncData)
+    const {data: newDepartments} = await useAsyncData(
+        "departments",
+        () => $fetch("/api/departments"),
+        {
+            transform: (data) =>
+                data === undefined
+                    ? []
+                    : data,
+        },
+    );
+    departments.value = newDepartments.value;
+}
 
 const rentals = data.value.rentals === undefined
     ? []
@@ -50,6 +57,7 @@ async function handleAddDepartment() {
         method: 'POST',
         body: newDepartment.value,
     });
+    departments.value.push(newDepartment.value);
 }
 </script>
 <template>
