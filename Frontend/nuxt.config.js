@@ -6,29 +6,36 @@ export default defineNuxtConfig({
     app: {
         pageTransition: {
             name: "page",
-            mode: "out-in"
+            mode: "out-in",
         },
         head: {
             title: "Sigma Cars",
             link: [
                 {
                     rel: "preconnect",
-                    href: "https://fonts.googleapis.com"
+                    href: "https://fonts.googleapis.com",
                 },
                 {
                     rel: "preconnect",
                     href: "https://fonts.gstatic.com",
-                    crossorigin: ""
+                    crossorigin: "",
                 },
                 {
                     rel: "stylesheet",
-                    href: "https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700&display=swap"
+                    href: "https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600;700&display=swap",
                 },
                 {
                     rel: "favicon",
-                    href: "/favicon.svg"
-                }
-            ]
-        }
-    }
+                    href: "/favicon.svg",
+                },
+            ],
+        },
+    },
+    vite: {
+        vue: {
+            script: {
+                defineModel: true,
+            },
+        },
+    },
 });
