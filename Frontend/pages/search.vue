@@ -17,8 +17,8 @@ const carTypes = data.value.carTypes;
     </div>
     <div v-else>
       <ul class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-2">
-        <li v-for="car in carTypes"> <!--TODO: add keys to all v-fors-->
-          <CarCard :car="car"/>
+        <li v-for="carType in carTypes"> <!--TODO: add keys to all v-fors-->
+          <CarTypeCard :car="carType"/>
         </li>
       </ul>
     </div>
