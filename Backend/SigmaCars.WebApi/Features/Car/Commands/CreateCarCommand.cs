@@ -6,5 +6,5 @@ public record CreateCarCommand(
         int carTypeId,
         int DepartmentId,
         string RegistrationNumber,
-        string Vin)
+        string Vin) // TODO: remove vin
     : IRequest<CreateCarResponse>;
