@@ -16,7 +16,7 @@ const {data: cars} = await useFetch(
   <ul class="space-y-2">
     <li v-for="car in cars"
         :key="car.id"
-        class="flex gap-6 text-lg items-center">
+        class="flex gap-6 text-lg items-center justify-between">
       <span>
         <Hash class="inline text-slate-400 -top-0.5 relative"/>
         {{ car.registrationNumber }}

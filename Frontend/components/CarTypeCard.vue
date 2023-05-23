@@ -70,7 +70,7 @@ const showDetails = ref(false);
           <SlidersHorizontal/>
           <Modal :show="showDetails">
             <template #header>
-              Car type details
+              {{ car.make }} {{ car.model }} details
             </template>
             <template #body>
               <CarTypeDetails :carTypeId="car.id"/>
