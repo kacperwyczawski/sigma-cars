@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using SigmaCars.Domain.Exceptions;
 using SigmaCars.WebApi.Persistence;
 
@@ -15,15 +16,23 @@ public class GetCarsHandler : IRequestHandler<GetCarsQuery, GetCarsResponse>
 
     public async Task<GetCarsResponse> Handle(GetCarsQuery query, CancellationToken cancellationToken)
     {
+        // check if car type exists
         var carType = await _dbContext
-                           .Set<Domain.Models.CarType>()
-                           .FindAsync(new object?[] { query.carTypeId }, cancellationToken: cancellationToken)
-                       ?? throw new NotFoundException(nameof(Domain.Models.CarType), "get");
+            .Set<Domain.Models.CarType>()
+            .FindAsync(new object?[] { query.carTypeId }, cancellationToken: cancellationToken);
+        if (carType == null)
+            throw new NotFoundException(nameof(Domain.Models.CarType), "get");
 
-        return new GetCarsResponse(carType.Cars.Select(
-            x => new GetCarResponse(
-                x.Id,
-                "", // TODO
-                x.RegistrationNumber)));
+        var cars = await _dbContext
+            .Cars
+            .Where(car => car.carTypeId == query.carTypeId)
+            .Include(car => car.Department)
+            .ToListAsync(cancellationToken: cancellationToken);
+        
+        return new GetCarsResponse(cars.Select(
+            car => new GetCarResponse(
+                car.Id,
+                car.Department.City,
+                car.RegistrationNumber)));
     }
 }
