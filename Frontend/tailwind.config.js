@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     fontFamily: {
       'sans': ['Inter', ...defaultTheme.fontFamily.sans],
+      'mono': ['Fira Code', ...defaultTheme.fontFamily.mono]
     }
   },
   plugins: [],

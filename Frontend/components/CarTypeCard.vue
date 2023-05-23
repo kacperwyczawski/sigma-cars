@@ -45,8 +45,19 @@ function handleRent() {
   router.push('/profile');
 }
 
+const {data: departments} = await useFetch('/api/departments');
+const filteredDepartments = computed(() =>
+    departmentsQuery.value === ''
+        ? departments.value
+        : departments.value.filter(department => department.city.toLowerCase().includes(departmentsQuery.value.toLowerCase())),
+);
+const departmentsQuery = ref('');
 const showDetails = ref(false);
-
+const addingCar = ref(false);
+const newCar = ref({
+  registrationNumber: '', //TODO: should be uppercased
+  departmentId: 0,
+});
 </script>
 <template>
   <div class="border divide-y rounded-md">
@@ -74,14 +85,55 @@ const showDetails = ref(false);
             </template>
             <template #body>
               <CarTypeDetails :carTypeId="car.id"/>
+              <form class="caret-orange-600 mt-2 pt-2 border-t border-dashed flex flex-col gap-2"
+                    v-if="addingCar"
+                    @submit.prevent="handleAddCar">
+                <label>
+                  Registration number:
+                  <InputSecondary
+                      type="text"
+                      required
+                      v-model="newCar.registrationNumber"
+                      maxlength="10"
+                      class="w-[7.2rem] font-mono"/>
+                </label>
+                <label>
+                  Department:
+                  <select v-model="newCar.departmentId"
+                          required
+                          class="rounded-full border focus: bg-white px-2 h-6">
+                    <option v-for="department in departments"
+                            :key="department.id"
+                            :value="department.id">
+                      {{ department.city }}
+                    </option>
+                  </select>
+                </label>
+                <div class="space-x-2">
+                  <input type="submit"
+                         value="Add"
+                         class="underline text-orange-600 hover:text-orange-800">
+                  <input type="button"
+                         value="Cancel"
+                         @click="addingCar = false"
+                         class="underline text-orange-600 hover:text-orange-800">
+                </div>
+
+              </form>
             </template>
             <template #footer>
+              <ButtonPrimary
+                  v-if="!addingCar"
+                  @click="addingCar = true"
+                  :show-arrow="false">
+                Add
+              </ButtonPrimary>
               <ButtonPrimary
                   :show-arrow="false">
                 Delete
               </ButtonPrimary>
               <ButtonPrimary
-                  @click="showDetails = false"
+                  @click="showDetails = false; addingCar = false"
                   :show-arrow="false">
                 Close
               </ButtonPrimary>
