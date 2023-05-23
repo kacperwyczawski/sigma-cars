@@ -1,6 +1,7 @@
 ﻿<script setup>
 import {User} from "lucide-vue-next";
 import {useUserData} from "~/composables/useUserData";
+import ButtonPrimary from "~/components/ButtonPrimary.vue";
 
 const props = defineProps({
     car: Object,
@@ -59,9 +60,9 @@ function handleRent() {
                 <User class="inline h-7"/>
                 {{ car.seatCount }} seats
             </p>
-            <ButtonArrow @click="handleRent">
+            <ButtonPrimary @click="handleRent">
                 Rent now
-            </ButtonArrow>
+            </ButtonPrimary>
         </div>
     </div>
 </template>

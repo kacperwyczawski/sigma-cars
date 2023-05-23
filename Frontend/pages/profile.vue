@@ -80,7 +80,7 @@ async function handleAddDepartment() {
                 <p>
                     {{ userData.email }}
                     <span class="block md:inline md:ml-4">
-                        <ButtonCancel @click="handleLogout">Logout</ButtonCancel>
+                        <ButtonSecondary @click="handleLogout">Logout</ButtonSecondary>
                     </span>
                 </p>
             </div>
@@ -103,7 +103,7 @@ async function handleAddDepartment() {
                             {{ rental.endDate }}
                             <span class="text-slate-500">in</span>
                             [Location]
-                            <span class="block md:inline md:ml-4"><ButtonCancel>Cancel</ButtonCancel></span>
+                            <span class="block md:inline md:ml-4"><ButtonSecondary>Cancel</ButtonSecondary></span>
                         </div>
                     </li>
                 </ul>
@@ -168,7 +168,7 @@ async function handleAddDepartment() {
                             </div>
                         </div>
                         <div>
-                            <ButtonCancel>Remove</ButtonCancel>
+                            <ButtonSecondary>Remove</ButtonSecondary>
                         </div>
                     </li>
                 </ul>

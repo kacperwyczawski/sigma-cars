@@ -84,9 +84,9 @@ async function HandleLogIn() {
                     >
                 </div>
                 <div class="flex items-center justify-between">
-                    <ButtonArrow>
+                    <ButtonPrimary>
                         Sign up
-                    </ButtonArrow>
+                    </ButtonPrimary>
                     <NuxtLink class="text-sm"
                               to="/login"
                     >
