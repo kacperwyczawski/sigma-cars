@@ -26,7 +26,7 @@ const endDate = computed(() => {
 function handleRent() {
     if (!userData.value) {
         // TODO: Tell user they need to be logged in via modal or something
-        router.push('/login');
+        router.push('/auth/login');
         return;
     }
     

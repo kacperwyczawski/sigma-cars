@@ -56,7 +56,7 @@ async function HandleLogIn() {
                         Log in
                     </ButtonPrimary>
                     <NuxtLink class="text-sm"
-                              to="/signup"
+                              to="/auth/signup"
                     >
                         Are you new here? Sign up!
                     </NuxtLink>

@@ -19,7 +19,7 @@ const userData = useUserData();
         </div>
         <div class="flex-row font-normal text-md divide-x border rounded-md divide-gray-200">
             <NuxtLink v-if="!userData"
-                      href="/login"
+                      href="/auth/login"
                       class="px-2 py-1 sm:px-3 sm:py-1.5 inline-block hover:bg-white/20">
                 Log in
             </NuxtLink>
@@ -29,7 +29,7 @@ const userData = useUserData();
                 <User class="h-5 inline scale-125"/>
             </NuxtLink>
             <NuxtLink v-if="!userData"
-                      href="/signup"
+                      href="/auth/signup"
                       class="px-2 py-1 sm:px-3 sm:py-1.5 inline-block hover:bg-white/20">
                 Sign up
             </NuxtLink>

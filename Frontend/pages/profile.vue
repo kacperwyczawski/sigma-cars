@@ -5,7 +5,7 @@ const userData = useUserData();
 const router = useRouter();
 
 if (userData.value === null) {
-    router.push('/login');
+    router.push('/auth/login');
 }
 
 const {data} = await useFetch(`/api/users/${userData.value.userId}/rentals`);

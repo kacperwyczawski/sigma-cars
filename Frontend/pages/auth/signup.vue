@@ -88,7 +88,7 @@ async function HandleLogIn() {
                         Sign up
                     </ButtonPrimary>
                     <NuxtLink class="text-sm"
-                              to="/login"
+                              to="/auth/login"
                     >
                         Already have an account? Log in!
                     </NuxtLink>
