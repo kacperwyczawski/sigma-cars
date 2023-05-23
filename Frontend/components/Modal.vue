@@ -6,6 +6,7 @@ const props = defineProps<{
 <template>
   <Teleport to="body">
     <Transition>
+      <!--TODO: try to use v-if instead of v-show-->
       <div v-if="show"
            class="fixed inset-0 backdrop-blur-sm grid place-items-center">
         <div class="max-w-4xl m-2 bg-white border rounded-md divide-y">
@@ -15,7 +16,9 @@ const props = defineProps<{
           <div class="p-2">
             <slot name="body"></slot>
           </div>
-          <div class="p-2 flex justify-end gap-2">
+          <div 
+              v-if="$slots.footer"
+              class="p-2 flex justify-end gap-2">
             <slot name="footer"></slot>
           </div>
         </div>
