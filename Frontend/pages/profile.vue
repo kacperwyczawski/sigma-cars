@@ -1,5 +1,5 @@
 <script setup>
-import {ShieldCheck, Plus} from "lucide-vue-next";
+import {ShieldCheck} from "lucide-vue-next";
 
 const userData = useUserData();
 const router = useRouter();
