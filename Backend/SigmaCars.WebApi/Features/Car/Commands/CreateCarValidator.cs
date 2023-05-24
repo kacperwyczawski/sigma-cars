@@ -6,7 +6,7 @@
 // {
 //     public CreateCarValidator()
 //     {
-//         RuleFor(x => x.carTypeId)
+//         RuleFor(x => x.CarTypeId)
 //             .NotEmpty();
 //         RuleFor(x => x.DepartmentId)
 //             .NotEmpty();

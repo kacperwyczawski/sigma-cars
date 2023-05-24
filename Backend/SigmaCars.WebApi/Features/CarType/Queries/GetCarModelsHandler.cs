@@ -4,17 +4,17 @@ using SigmaCars.WebApi.Persistence;
 
 namespace SigmaCars.WebApi.Features.CarType.Queries;
 
-public class GetcarTypesHandler : IRequestHandler<GetcarTypesQuery, GetcarTypesResponse>
+public class GetCarTypesHandler : IRequestHandler<GetCarTypesQuery, GetCarTypesResponse>
 {
     private readonly SigmaCarsDbContext _dbContext;
 
-    public GetcarTypesHandler(SigmaCarsDbContext dbContext)
+    public GetCarTypesHandler(SigmaCarsDbContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public async Task<GetcarTypesResponse> Handle(
-        GetcarTypesQuery query,
+    public async Task<GetCarTypesResponse> Handle(
+        GetCarTypesQuery query,
         CancellationToken cancellationToken)
     {
         var carTypes = _dbContext.Set<Domain.Models.CarType>().AsQueryable();
@@ -62,9 +62,9 @@ public class GetcarTypesHandler : IRequestHandler<GetcarTypesQuery, GetcarTypesR
                             || rental.StartDate > query.EndDate))).ToList();
         }
 
-        return new GetcarTypesResponse(
+        return new GetCarTypesResponse(
             carTypesQueried.Select(x =>
-                new GetcarTypeResponse(
+                new GetCarTypeResponse(
                     x.Id,
                     x.Make,
                     x.Model,

@@ -2,9 +2,9 @@
 
 namespace SigmaCars.WebApi.Features.CarType.Commands;
 
-public class CreatecarTypeValidator : AbstractValidator<CreateCarTypeCommand>
+public class CreateCarTypeValidator : AbstractValidator<CreateCarTypeCommand>
 {
-    public CreatecarTypeValidator()
+    public CreateCarTypeValidator()
     {
         RuleFor(x => x.Make)
             .NotEmpty()

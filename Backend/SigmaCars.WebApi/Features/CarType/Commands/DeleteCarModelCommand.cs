@@ -2,4 +2,4 @@
 
 namespace SigmaCars.WebApi.Features.CarType.Commands;
 
-public record DeletecarTypeCommand(int Id) : IRequest;
+public record DeleteCarTypeCommand(int Id) : IRequest;

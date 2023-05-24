@@ -9,13 +9,11 @@ public class LoginHandler : IRequestHandler<LoginQuery, LoginResponse>
 {
     private readonly JwtGenerator _jwtGenerator;
     private readonly SigmaCarsDbContext _dbContext;
-    private readonly ILogger<LoginHandler> _logger;
 
-    public LoginHandler(JwtGenerator jwtGenerator, SigmaCarsDbContext dbContext, ILogger<LoginHandler> logger)
+    public LoginHandler(JwtGenerator jwtGenerator, SigmaCarsDbContext dbContext)
     {
         _jwtGenerator = jwtGenerator;
         _dbContext = dbContext;
-        _logger = logger;
     }
 
     public Task<LoginResponse> Handle(LoginQuery request, CancellationToken cancellationToken)

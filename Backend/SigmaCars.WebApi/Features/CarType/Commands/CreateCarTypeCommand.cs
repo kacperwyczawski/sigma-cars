@@ -9,4 +9,4 @@ public record CreateCarTypeCommand(
         string Color,
         float PricePerDay,
         int SeatCount)
-    : IRequest<CreatecarTypeResponse>;
+    : IRequest<CreateCarTypeResponse>;

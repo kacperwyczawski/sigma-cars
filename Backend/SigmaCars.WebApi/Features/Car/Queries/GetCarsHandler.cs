@@ -19,13 +19,13 @@ public class GetCarsHandler : IRequestHandler<GetCarsQuery, GetCarsResponse>
         // check if car type exists
         var carType = await _dbContext
             .Set<Domain.Models.CarType>()
-            .FindAsync(new object?[] { query.carTypeId }, cancellationToken: cancellationToken);
+            .FindAsync(new object?[] { query.CarTypeId }, cancellationToken: cancellationToken);
         if (carType == null)
             throw new NotFoundException(nameof(Domain.Models.CarType), "get");
 
         var cars = await _dbContext
             .Cars
-            .Where(car => car.carTypeId == query.carTypeId)
+            .Where(car => car.CarTypeId == query.CarTypeId)
             .Include(car => car.Department)
             .ToListAsync(cancellationToken: cancellationToken);
         

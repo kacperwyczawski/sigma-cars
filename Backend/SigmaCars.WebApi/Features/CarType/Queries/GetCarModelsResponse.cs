@@ -1,9 +1,9 @@
 ﻿namespace SigmaCars.WebApi.Features.CarType.Queries;
 
-public record GetcarTypesResponse(
-    IEnumerable<GetcarTypeResponse> carTypes);
+public record GetCarTypesResponse(
+    IEnumerable<GetCarTypeResponse> CarTypes);
 
-public record GetcarTypeResponse(
+public record GetCarTypeResponse(
     int Id,
     string Make,
     string Model,

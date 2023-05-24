@@ -2,9 +2,9 @@
 
 namespace SigmaCars.WebApi.Features.CarType.Queries;
 
-public class GetcarTypesValidator : AbstractValidator<GetcarTypesQuery>
+public class GetCarTypesValidator : AbstractValidator<GetCarTypesQuery>
 {
-    public GetcarTypesValidator()
+    public GetCarTypesValidator()
     {
         RuleFor(x => x.StartDate)
             .NotEmpty()

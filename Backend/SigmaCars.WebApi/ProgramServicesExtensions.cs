@@ -37,7 +37,7 @@ internal static class ProgramServicesExtensions
         services.AddTransient<ExceptionHandlingMiddleware>();
 
     internal static void AddValidation(this IServiceCollection services) =>
-        services.AddValidatorsFromAssemblyContaining<CreatecarTypeValidator>(ServiceLifetime.Transient);
+        services.AddValidatorsFromAssemblyContaining<CreateCarTypeValidator>(ServiceLifetime.Transient);
 
     internal static void AddMediator(this IServiceCollection services)
     {

@@ -1,6 +1,6 @@
 ﻿namespace SigmaCars.WebApi.Features.CarType.Commands;
 
-public record CreatecarTypeResponse(
+public record CreateCarTypeResponse(
     int Id,
     string Make,
     string Model,
@@ -8,7 +8,7 @@ public record CreatecarTypeResponse(
     float PricePerDay,
     int SeatCount)
 {
-    public static CreatecarTypeResponse FromcarType(Domain.Models.CarType carType) => new(
+    public static CreateCarTypeResponse FromCarType(Domain.Models.CarType carType) => new(
         carType.Id,
         carType.Make,
         carType.Model,

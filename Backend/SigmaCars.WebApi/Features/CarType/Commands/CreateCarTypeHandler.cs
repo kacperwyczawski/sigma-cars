@@ -3,7 +3,7 @@ using SigmaCars.WebApi.Persistence;
 
 namespace SigmaCars.WebApi.Features.CarType.Commands;
 
-public class CreateCarTypeHandler : IRequestHandler<CreateCarTypeCommand, CreatecarTypeResponse>
+public class CreateCarTypeHandler : IRequestHandler<CreateCarTypeCommand, CreateCarTypeResponse>
 {
     private readonly SigmaCarsDbContext _dbContext;
 
@@ -12,7 +12,7 @@ public class CreateCarTypeHandler : IRequestHandler<CreateCarTypeCommand, Create
         _dbContext = dbContext;
     }
 
-    public async Task<CreatecarTypeResponse> Handle(CreateCarTypeCommand command, CancellationToken cancellationToken)
+    public async Task<CreateCarTypeResponse> Handle(CreateCarTypeCommand command, CancellationToken cancellationToken)
     {
         var carType = new Domain.Models.CarType
         {
@@ -27,6 +27,6 @@ public class CreateCarTypeHandler : IRequestHandler<CreateCarTypeCommand, Create
         _dbContext.Set<Domain.Models.CarType>().Add(carType);
         await _dbContext.SaveChangesAsync(cancellationToken);
             
-        return CreatecarTypeResponse.FromcarType(carType);
+        return CreateCarTypeResponse.FromCarType(carType);
     }
 }

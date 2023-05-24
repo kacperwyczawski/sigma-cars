@@ -11,7 +11,7 @@ public class SigmaCarsDbContext : DbContext
 
     public DbSet<Car> Cars { get; set; }
 
-    public DbSet<CarType> carTypes { get; set; }
+    public DbSet<CarType> CarTypes { get; set; }
 
     public DbSet<Department> Departments { get; set; }
 
@@ -26,7 +26,7 @@ public class SigmaCarsDbContext : DbContext
         {
             e.ToTable("cars");
             e.Property(x => x.Id).HasColumnName("id");
-            e.Property(x => x.carTypeId).HasColumnName("car_type_id");
+            e.Property(x => x.CarTypeId).HasColumnName("car_type_id");
             e.Property(x => x.DepartmentId).HasColumnName("department_id");
             e.Property(x => x.RegistrationNumber).HasColumnName("registration_number");
             e.Property(x => x.Vin).HasColumnName("vin");
@@ -48,7 +48,7 @@ public class SigmaCarsDbContext : DbContext
             e.HasMany(x => x.Cars)
                 .WithOne(x => x.CarType)
                 .HasPrincipalKey(x => x.Id)
-                .HasForeignKey(x => x.carTypeId);
+                .HasForeignKey(x => x.CarTypeId);
         });
 
         modelBuilder.Entity<Department>(e =>

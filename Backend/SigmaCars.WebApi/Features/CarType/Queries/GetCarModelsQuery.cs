@@ -2,7 +2,7 @@
 
 namespace SigmaCars.WebApi.Features.CarType.Queries;
 
-public record GetcarTypesQuery(
+public record GetCarTypesQuery(
         DateTime StartDate, DateTime EndDate,
         int? MinYear, int? MaxYear,
         float? MinPrice, float? MaxPrice,
@@ -11,4 +11,4 @@ public record GetcarTypesQuery(
         string? Model,
         string? OrderByPropertyName,
         bool Ascending, bool AvailableOnly)
-    : IRequest<GetcarTypesResponse>;
+    : IRequest<GetCarTypesResponse>;

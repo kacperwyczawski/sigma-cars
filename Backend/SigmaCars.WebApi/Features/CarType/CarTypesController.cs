@@ -40,7 +40,7 @@ public class CarTypesController : Controller
         [FromQuery(Name = "ascending")] bool ascending = true,
         [FromQuery(Name = "available-only")] bool availableOnly = true)
     {
-        var request = new GetcarTypesQuery(
+        var request = new GetCarTypesQuery(
             startDate, endDate,
             minYear, maxYear,
             minPrice, maxPrice,
@@ -51,7 +51,7 @@ public class CarTypesController : Controller
 
         var result = await _mediator.Send(request);
 
-        if (!result.carTypes.Any())
+        if (!result.CarTypes.Any())
             return NoContent();
 
         return Ok(result);
@@ -68,7 +68,7 @@ public class CarTypesController : Controller
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {
-        await _mediator.Send(new DeletecarTypeCommand(id));
+        await _mediator.Send(new DeleteCarTypeCommand(id));
 
         return NoContent();
     }
@@ -92,7 +92,7 @@ public class CarTypesController : Controller
         var newCar = new Domain.Models.Car
         {
             Id = 0,
-            carTypeId = id,
+            CarTypeId = id,
             DepartmentId = request.DepartmentId,
             RegistrationNumber = request.RegistrationNumber,
             Vin = new string('0', 17) // TODO: remove vin
@@ -117,7 +117,7 @@ public class CarTypesController : Controller
     {
         var carId = await _dbContext.Cars
             .Where(car =>
-                car.carTypeId == id)
+                car.CarTypeId == id)
             .Where(car =>
                 car.Rentals.All(rental =>
                     rental.EndDate < request.StartDate

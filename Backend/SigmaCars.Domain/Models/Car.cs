@@ -4,7 +4,7 @@ public class Car
 {
     public int Id { get; set; }
     
-    public int carTypeId { get; set; }
+    public int CarTypeId { get; set; }
     
     public int DepartmentId { get; set; }
     

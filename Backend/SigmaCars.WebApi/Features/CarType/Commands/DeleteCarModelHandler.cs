@@ -4,16 +4,16 @@ using SigmaCars.WebApi.Persistence;
 
 namespace SigmaCars.WebApi.Features.CarType.Commands;
 
-public class DeletecarTypeHandler : IRequestHandler<DeletecarTypeCommand>
+public class DeleteCarTypeHandler : IRequestHandler<DeleteCarTypeCommand>
 {
     private readonly SigmaCarsDbContext _dbContext;
 
-    public DeletecarTypeHandler(SigmaCarsDbContext dbContext)
+    public DeleteCarTypeHandler(SigmaCarsDbContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public async Task Handle(DeletecarTypeCommand command, CancellationToken cancellationToken)
+    public async Task Handle(DeleteCarTypeCommand command, CancellationToken cancellationToken)
     {
         var carType = await _dbContext.Set<Domain.Models.CarType>()
                            .FindAsync(new object?[] { command.Id }, cancellationToken: cancellationToken)
