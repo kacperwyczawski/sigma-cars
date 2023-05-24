@@ -21,7 +21,8 @@ async function handleDeleteCar(id: number) {
 }
 </script>
 <template>
-  <ul class="space-y-2"> <!--TODO: this should be table-->
+  <ul v-if="cars && cars.length !== 0"
+      class="space-y-2"> <!--TODO: this should be table-->
     <li v-for="car in cars"
         :key="car.id"
         class="flex gap-6 text-lg items-center justify-between">
@@ -38,4 +39,8 @@ async function handleDeleteCar(id: number) {
           class="inline text-red-500 hover:text-red-800"/>
     </li>
   </ul>
+  <p v-else
+     class="text-lg text-center text-slate-500">
+    No cars registered
+  </p>
 </template>
