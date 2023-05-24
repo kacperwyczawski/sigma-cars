@@ -31,25 +31,25 @@ async function HandleLogIn() {
           <label class="block text-gray-800 font-bold mb-2" for="email">
             Email
           </label>
-          <input v-model="state.email"
-                 class="border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
-                 id="email"
-                 type="email"
-                 placeholder="Email address"
-                 required
-          ><!--TODO: use InputPrimary-->
+          <InputPrimary
+              v-model="state.email"
+              class="w-full"
+              id="email"
+              type="email"
+              placeholder="Email address"
+              required/>
         </div>
         <div class="mb-4">
           <label class="block text-gray-800 font-bold mb-2" for="password">
             Password
           </label>
-          <input v-model="state.password"
-                 class="border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
-                 id="password"
-                 type="password"
-                 placeholder="Password"
-                 required
-          >
+          <InputPrimary
+              v-model="state.password"
+              class="w-full"
+              id="password"
+              type="password"
+              placeholder="Password"
+              required/>
         </div>
         <div class="flex items-center justify-between">
           <ButtonPrimary @click="HandleLogIn">

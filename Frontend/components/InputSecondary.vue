@@ -1,7 +1,7 @@
 <script setup>
-const modelValue = defineModel();
+const model = defineModel();
 </script>
 <template>
   <input class="border rounded-full focus:outline-none focus:border-orange-600 px-2"
-         v-model="modelValue">
+         v-model="model">
 </template>
