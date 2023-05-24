@@ -102,7 +102,7 @@ async function handleAddDepartment() {
                             <span class="text-slate-500">to</span>
                             {{ rental.endDate }}
                             <span class="text-slate-500">in</span>
-                            [Location]
+                            {{ rental.departmentCity }}
                             <span class="block md:inline md:ml-4"><ButtonSecondary>Cancel</ButtonSecondary></span>
                         </div>
                     </li>

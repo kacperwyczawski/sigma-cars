@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using SigmaCars.WebApi.Persistence;
 
 namespace SigmaCars.WebApi.Features.Rental.Queries;
@@ -15,14 +16,17 @@ public class GetRentalsHandler : IRequestHandler<GetRentalsQuery, GetRentalsResp
     public Task<GetRentalsResponse> Handle(GetRentalsQuery query, CancellationToken cancellationToken)
     {
         var result = _dbContext.Rentals
-            .Where(r => r.User.Id == query.UserId)
-            .Select(r => new GetRentalResponse(
-                r.Car.CarType.Make,
-                r.Car.CarType.Model,
-                r.Car.RegistrationNumber,
-                r.StartDate,
-                r.EndDate));
-        
+            .Where(rental => rental.User.Id == query.UserId)
+            .Include(rental => rental.Car)
+            .ThenInclude(car => car.Department)
+            .Select(x => new GetRentalResponse(
+                x.Car.CarType.Make,
+                x.Car.CarType.Model,
+                x.Car.RegistrationNumber,
+                x.Car.Department.City,
+                x.StartDate,
+                x.EndDate));
+
         return Task.FromResult(new GetRentalsResponse(result));
     }
 }
