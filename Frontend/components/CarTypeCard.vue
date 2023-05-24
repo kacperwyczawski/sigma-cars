@@ -1,26 +1,37 @@
-﻿<script setup>
+﻿<script setup lang="ts">
 import {User, SlidersHorizontal} from "lucide-vue-next";
 import {useUserData} from "~/composables/useUserData";
-import ButtonPrimary from "~/components/ButtonPrimary.vue";
 
-const props = defineProps({
-  car: Object,
-});
+const emits = defineEmits<{
+  delete: []
+}>();
+const props = defineProps<{
+  car: any
+}>();
 
 const userData = useUserData();
 const router = useRouter();
 const route = useRoute();
 
 const startDate = computed(() => {
-  let date = new Date(route.query.startDate);
+  let date = new Date(String(route.query.startDate));
   date.setHours(10);
   return date.toISOString();
 });
 
 const endDate = computed(() => {
-  let date = new Date(route.query.endDate);
+  let date = new Date(String(route.query.endDate));
   date.setHours(10);
   return date.toISOString();
+});
+
+const {data: departments} = await useFetch('/api/departments');
+
+const showDetails = ref(false);
+const addingCar = ref(false);
+const newCar = reactive({
+  registrationNumber: '',
+  departmentId: 1,
 });
 
 function handleRent() {
@@ -44,15 +55,6 @@ function handleRent() {
 
   router.push('/profile');
 }
-
-const {data: departments} = await useFetch('/api/departments');
-const showDetails = ref(false);
-const addingCar = ref(false);
-const newCar = reactive({
-  registrationNumber: '',
-  departmentId: 1,
-});
-
 async function handleAddCar() {
   addingCar.value = false;
   await useFetch(`/api/car-types/${props.car.id}/cars`, {
@@ -67,6 +69,13 @@ async function handleAddCar() {
   });
   newCar.registrationNumber = "";
   newCar.departmentId = 1;
+}
+async function handleDeleteCarType() {
+  await useFetch(`/api/car-types/${props.car.id}`, {
+    method: "DELETE",
+  });
+  showDetails.value = false;
+  emits('delete');
 }
 </script>
 <template>
@@ -141,6 +150,7 @@ async function handleAddCar() {
                 Add
               </ButtonPrimary>
               <ButtonPrimary
+                  @click="handleDeleteCarType"
                   :show-arrow="false">
                 Delete
               </ButtonPrimary>

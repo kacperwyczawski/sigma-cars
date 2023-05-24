@@ -16,7 +16,7 @@ const newCarType = reactive({
   seatCount: 0,
 });
 
-const {data: carTypes} = await useAsyncData(
+const {data: carTypes, refresh} = await useAsyncData(
     () =>
         $fetch("/api/car-types", {
           query: {
@@ -167,7 +167,8 @@ function handleAddCarModel() {
       <ul class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-2">
         <li v-for="carType in carTypes"
             :key="carType.id"> <!--TODO: add keys to all v-fors-->
-          <CarTypeCard :car="carType"/>
+          <CarTypeCard :car="carType"
+          @delete="refresh"/>
         </li>
       </ul>
     </div>
