@@ -4,6 +4,7 @@ public record GetRentalsResponse(
     IEnumerable<GetRentalResponse> Rentals);
 
 public record GetRentalResponse(
+    int Id,
     string CarMake,
     string CarType,
     string CarRegistrationNumber,

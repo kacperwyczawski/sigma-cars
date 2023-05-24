@@ -20,6 +20,7 @@ public class GetRentalsHandler : IRequestHandler<GetRentalsQuery, GetRentalsResp
             .Include(rental => rental.Car)
             .ThenInclude(car => car.Department)
             .Select(x => new GetRentalResponse(
+                x.Id,
                 x.Car.CarType.Make,
                 x.Car.CarType.Model,
                 x.Car.RegistrationNumber,
