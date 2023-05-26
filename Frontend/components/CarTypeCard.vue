@@ -103,7 +103,7 @@ async function handleDeleteCarType() {
               {{ car.make }} {{ car.model }} details
             </template>
             <template #body>
-              <CarTypeDetails
+              <CarTypeCars
                   :carTypeId="car.id"
                   :key="addingCar"/>
               <form class="caret-orange-600 mt-2 pt-2 border-t border-dashed flex flex-col gap-2"
@@ -111,7 +111,8 @@ async function handleDeleteCarType() {
                     @submit.prevent="handleAddCar">
                 <label>
                   Registration number:
-                  <InputSecondary
+                  <InputPrimary
+                      compact
                       type="text"
                       required
                       v-model="newCar.registrationNumber"

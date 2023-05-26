@@ -91,7 +91,7 @@ function handleAddCarModel() {
             <div class="grid md:grid-cols-2 gap-4 p-2 max-w-xl">
               <label>
                 Make:
-                <InputSecondary
+                <InputPrimary
                     v-model="newCarType.make"
                     class="w-full"
                     type="text"
@@ -100,7 +100,7 @@ function handleAddCarModel() {
               </label>
               <label>
                 Model:
-                <InputSecondary
+                <InputPrimary
                     v-model="newCarType.model"
                     class="w-full"
                     type="text"
@@ -109,7 +109,7 @@ function handleAddCarModel() {
               </label>
               <label>
                 Production year:
-                <InputSecondary
+                <InputPrimary
                     v-model="newCarType.productionYear"
                     class="w-full"
                     type="number"
@@ -119,7 +119,7 @@ function handleAddCarModel() {
               </label>
               <label>
                 Color:
-                <InputSecondary
+                <InputPrimary
                     v-model="newCarType.color"
                     class="w-full"
                     type="text"
@@ -128,7 +128,7 @@ function handleAddCarModel() {
               </label>
               <label>
                 Price per day:
-                <InputSecondary
+                <InputPrimary
                     v-model="newCarType.pricePerDay"
                     class="w-full"
                     type="number"
@@ -138,7 +138,7 @@ function handleAddCarModel() {
               </label>
               <label>
                 Seat count:
-                <InputSecondary
+                <InputPrimary
                     v-model="newCarType.seatCount"
                     class="w-full"
                     type="number"

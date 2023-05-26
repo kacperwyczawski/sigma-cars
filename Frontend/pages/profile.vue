@@ -14,17 +14,17 @@ const {data: rentals} = await useFetch(
         let result = data.rentals === undefined
             ? []
             : data.rentals;
-        
+
         function formatDate(date) {
           date = new Date(date);
           return date.toDateString();
         }
-        
+
         result.forEach(rental => {
           rental.startDate = formatDate(rental.startDate);
           rental.endDate = formatDate(rental.endDate);
         });
-        
+
         return result;
       },
     },
@@ -32,17 +32,17 @@ const {data: rentals} = await useFetch(
 
 const departments = ref([]);
 if (userData.value.role === "admin") {
-    const {data: newDepartments} = await useAsyncData(
-        "departments",
-        () => $fetch("/api/departments"),
-        {
-            transform: (data) =>
-                data === undefined
-                    ? []
-                    : data,
-        },
-    );
-    departments.value = newDepartments.value;
+  const {data: newDepartments} = await useAsyncData(
+      "departments",
+      () => $fetch("/api/departments"),
+      {
+        transform: (data) =>
+            data === undefined
+                ? []
+                : data,
+      },
+  );
+  departments.value = newDepartments.value;
 }
 
 function handleLogout() {
@@ -143,32 +143,38 @@ async function handleCancelRent(id) {
                   @submit.prevent="handleAddDepartment">
               <label for="countryCode">
                 Country code:
-                <input type="text"
-                       id="countryCode"
-                       maxlength="2"
-                       required
-                       class="w-10 border rounded-full m-2 ml-0 focus:outline-none focus:border-orange-600 px-2"
-                       v-model="newDepartment.countryCode">
+                <InputPrimary
+                    compact
+                    type="text"
+                    id="countryCode"
+                    maxlength="2"
+                    required
+                    class="w-10 border rounded-full m-2 ml-0 focus:outline-none focus:border-orange-600 px-2"
+                    v-model="newDepartment.countryCode"/>
               </label>
               <label for="city">
                 City:
-                <input type="text"
-                       id="city"
-                       required
-                       class="w-32 border rounded-full m-2 ml-0 focus:outline-none focus:border-orange-600 px-2"
-                       v-model="newDepartment.city">
+                <InputPrimary
+                    compact
+                    type="text"
+                    id="city"
+                    required
+                    class="w-32 m-2"
+                    v-model="newDepartment.city"/>
               </label>
               <label for="address">
                 Address:
-                <input type="text"
-                       id="address"
-                       required
-                       class="w-32 border rounded-full m-2 ml-0 focus:outline-none focus:border-orange-600 px-2"
-                       v-model="newDepartment.address">
+                <InputPrimary
+                    compact
+                    type="text"
+                    id="address"
+                    required
+                    class="w-32 m-2"
+                    v-model="newDepartment.address"/>
               </label>
               <input type="submit"
                      value="Add"
-                     class="underline text-orange-600 hover:text-orange-800 ml-2">
+                     class="underline text-orange-600 hover:text-orange-800 ml-2"> <!-- TODO: extract component -->
             </form>
           </li>
           <li v-for="department in departments"
