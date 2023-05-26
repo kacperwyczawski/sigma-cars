@@ -1,14 +1,14 @@
 ﻿<script setup lang="ts">
 import {Listbox, ListboxButton, ListboxOption, ListboxOptions} from "@headlessui/vue";
 import {Calendar, CheckIcon, ChevronsUpDown} from "lucide-vue-next";
-import {Ref} from "vue";
+import {Department} from "~/types/Department";
 
 const router = useRouter();
 
 const {data: departments} = await useFetch(
     "/api/departments",
     {
-      transform: (data: any): string[] => data.map((x: any) => x.city), // TODO: add type to /types
+      transform: (data: Department[]): string[] => data.map((x: Department) => x.city),
     }
 )
 
@@ -65,10 +65,10 @@ function handleSubmit() {
     <label class="flex-grow basis-32">
       Location:
       <span class="w-full">
-                <Listbox
-                    v-model="state.selectedDepartment"
-                    :disabled="isListboxDisabled"
-                    v-slot="{ disabled }">
+        <Listbox
+            v-model="state.selectedDepartment"
+            :disabled="isListboxDisabled"
+            v-slot="{ disabled }">
                     <div class="relative mt-1">
                         <ListboxButton
                             class="block border w-full py-2 px-3 rounded-md h-10 mt-2 pr-16 bg-white text-left">
@@ -112,8 +112,8 @@ function handleSubmit() {
                             </ListboxOptions>
                         </transition>
                     </div>
-                </Listbox>
-            </span>
+        </Listbox>
+      </span>
     </label>
     <input
         class="block border py-2 px-3 rounded-md h-10 flex-grow bg-slate-800 text-white border-none hover:bg-slate-700"

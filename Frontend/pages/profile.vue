@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {ShieldCheck} from "lucide-vue-next";
 import {Ref} from "vue";
-import {UserData} from "~/types/UserData";
+import {Department} from "~/types/Department";
 
 const userData = useUserData();
 const router = useRouter();
@@ -32,17 +32,10 @@ const {data: rentals} = await useFetch(
     },
 );
 
-const departments: Ref<any[]> = ref([]); // TODO: add type
+const departments: Ref<Department[]> = ref([]);
 if (userData.value?.role === "admin") {
-  const {data: newDepartments} = await useFetch("/api/departments",
-      {
-        transform: (data: any) =>
-            data === undefined
-                ? []
-                : data,
-      },
-  );
-  departments.value = newDepartments.value;
+  const {data: newDepartments} = await useFetch<Department[]>("/api/departments");
+  departments.value = newDepartments?.value ?? [];
 }
 
 function handleLogout() {
@@ -63,7 +56,7 @@ async function handleAddDepartment() {
     method: 'POST',
     body: newDepartment,
   });
-  departments.value.push(newDepartment);
+  departments.value.push(newDepartment as Department);
 }
 
 async function handleCancelRent(id: number) {
