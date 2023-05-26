@@ -1,6 +1,4 @@
-﻿<script setup>
-</script>
-<template>
+﻿<template>
     <div>
         <main class="mx-auto max-w-6xl px-4 sm:px-6">
             <h1 class="text-center mt-24 leading-tight text-5xl md:leading-tight md:text-6xl font-bold">

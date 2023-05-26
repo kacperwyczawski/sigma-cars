@@ -1,5 +1,7 @@
-<script setup>
+<script setup lang="ts">
 import {ShieldCheck} from "lucide-vue-next";
+import {Ref} from "vue";
+import {UserData} from "~/types/UserData";
 
 const userData = useUserData();
 const router = useRouter();
@@ -9,18 +11,18 @@ if (userData.value === null) {
 }
 
 const {data: rentals} = await useFetch(
-    `/api/users/${userData.value.userId}/rentals`, {
-      transform: (data) => {
+    `/api/users/${userData.value?.userId}/rentals`, {
+      transform: (data: any) => {
         let result = data.rentals === undefined
             ? []
             : data.rentals;
 
-        function formatDate(date) {
+        function formatDate(date: string | Date) {
           date = new Date(date);
           return date.toDateString();
         }
 
-        result.forEach(rental => {
+        result.forEach((rental: any) => { // TODO: add type
           rental.startDate = formatDate(rental.startDate);
           rental.endDate = formatDate(rental.endDate);
         });
@@ -30,13 +32,11 @@ const {data: rentals} = await useFetch(
     },
 );
 
-const departments = ref([]);
-if (userData.value.role === "admin") {
-  const {data: newDepartments} = await useAsyncData(
-      "departments",
-      () => $fetch("/api/departments"),
+const departments: Ref<any[]> = ref([]); // TODO: add type
+if (userData.value?.role === "admin") {
+  const {data: newDepartments} = await useFetch("/api/departments",
       {
-        transform: (data) =>
+        transform: (data: any) =>
             data === undefined
                 ? []
                 : data,
@@ -51,7 +51,7 @@ function handleLogout() {
 }
 
 const adding = ref(false);
-const newDepartment = ref({
+const newDepartment = reactive({
   countryCode: '',
   city: '',
   address: '',
@@ -61,16 +61,16 @@ async function handleAddDepartment() {
   adding.value = false;
   await useFetch(`/api/departments`, {
     method: 'POST',
-    body: newDepartment.value,
+    body: newDepartment,
   });
-  departments.value.push(newDepartment.value);
+  departments.value.push(newDepartment);
 }
 
-async function handleCancelRent(id) {
+async function handleCancelRent(id: number) {
   await useFetch(`/api/rentals/${id}`, {
     method: 'DELETE',
   });
-  rentals.value = rentals.value.filter(r => r.id !== id);
+  rentals.value = rentals.value.filter((r: any) => r.id !== id); // TODO: add type
 }
 </script>
 <template>
@@ -91,7 +91,7 @@ async function handleCancelRent(id) {
               class="h-6 relative text-orange-600"/>
         </div>
         <p>
-          {{ userData.email }}
+          {{ userData?.email }}
           <span class="block md:inline md:ml-4">
                         <ButtonSecondary @click="handleLogout">Logout</ButtonSecondary>
                     </span>
@@ -125,7 +125,7 @@ async function handleCancelRent(id) {
           </li>
         </ul>
       </div>
-      <div v-if="userData.role === 'admin'"
+      <div v-if="userData?.role === 'admin'"
            class="rounded-md border p-4 mt-4">
         <div class="flex justify-between">
           <h2 class="text-xl">

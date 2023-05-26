@@ -1,11 +1,13 @@
-<script setup>
+<script setup lang="ts">
+import {UserData} from "~/types/UserData";
+
+const router = useRouter();
+const userData = useUserData();
 
 const state = reactive({
   email: '',
   password: '',
 });
-const router = useRouter();
-const userData = useUserData();
 
 async function HandleLogIn() {
   const {data} = await useFetch("/api/auth/login", {
@@ -15,7 +17,7 @@ async function HandleLogIn() {
       password: state.password,
     },
   });
-  userData.value = data.value;
+  userData.value = data.value as UserData;
   await router.push("/");
 }
 

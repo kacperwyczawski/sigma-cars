@@ -1,70 +1,80 @@
-﻿<script setup>
+﻿<script setup lang="ts">
 import {Listbox, ListboxButton, ListboxOption, ListboxOptions} from "@headlessui/vue";
 import {Calendar, CheckIcon, ChevronsUpDown} from "lucide-vue-next";
-
-const {data} = await useFetch("/api/departments");
-const departments = data.value.map((x) => x.city);
-const isListboxDisabled = computed(() => departments.length === 1);
+import {Ref} from "vue";
 
 const router = useRouter();
+
+const {data: departments} = await useFetch(
+    "/api/departments",
+    {
+      transform: (data: any): string[] => data.map((x: any) => x.city), // TODO: add type to /types
+    }
+)
+
+const isListboxDisabled = computed(
+    () => departments?.value?.length === 1
+);
 
 const defaultStartDate = new Date();
 const defaultEndDate = new Date();
 defaultEndDate.setDate(defaultEndDate.getDate() + 7);
 
-const selectedDepartment = ref(departments[0]);
-const startDate = ref(defaultStartDate.toISOString().slice(0, 10));
-const endDate = ref(defaultEndDate.toISOString().slice(0, 10));
+const state = reactive({
+  selectedDepartment: departments?.value?.[0] as string,
+  startDate: defaultStartDate.toISOString().slice(0, 10),
+  endDate: defaultEndDate.toISOString().slice(0, 10),
+});
 
 function handleSubmit() {
-    router.push({
-        name: "search",
-        query: {
-            startDate: startDate.value,
-            endDate: endDate.value,
-            location: selectedDepartment.value,
-        },
-    });
+  router.push({
+    name: "search",
+    query: {
+      startDate: state.startDate,
+      endDate: state.endDate,
+      location: state.selectedDepartment,
+    },
+  });
 }
 </script>
 <template>
-    <form class="max-w-3xl flex gap-3 items-end flex-grow flex-wrap"
-          @submit.prevent="handleSubmit">
-        <label class="flex-grow relative basis-32">
-            From:
-            <input v-model="startDate"
-                   class="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
-                   type="date"
-                   max="01-01-2200"
-                   min="01-01-2000"/>
-            <span class="pointer-events-none absolute right-4 bottom-2.5 bg-white">
+  <form class="max-w-3xl flex gap-3 items-end flex-grow flex-wrap"
+        @submit.prevent="handleSubmit">
+    <label class="flex-grow relative basis-32">
+      From:
+      <input v-model="state.startDate"
+             class="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
+             type="date"
+             max="01-01-2200"
+             min="01-01-2000"/>
+      <span class="pointer-events-none absolute right-4 bottom-2.5 bg-white">
                 <Calendar class="text-slate-800 h-5 w-5"/>
             </span>
-        </label>
-        <label class="flex-grow relative basis-32">
-            To:
-            <input v-model="endDate"
-                   class="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
-                   type="date"
-                   max="01-01-2200"
-                   min="01-01-2000"/>
-            <span class="pointer-events-none absolute right-4 bottom-2.5 bg-white">
+    </label>
+    <label class="flex-grow relative basis-32">
+      To:
+      <input v-model="state.endDate"
+             class="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
+             type="date"
+             max="01-01-2200"
+             min="01-01-2000"/>
+      <span class="pointer-events-none absolute right-4 bottom-2.5 bg-white">
                 <Calendar class="text-slate-800 h-5 w-5"/>
             </span>
-        </label>
-        <label class="flex-grow basis-32">
-            Location:
-            <span class="w-full">
+    </label>
+    <label class="flex-grow basis-32">
+      Location:
+      <span class="w-full">
                 <Listbox
-                        v-model="selectedDepartment"
-                        :disabled="isListboxDisabled"
-                        v-slot="{ disabled }">
+                    v-model="state.selectedDepartment"
+                    :disabled="isListboxDisabled"
+                    v-slot="{ disabled }">
                     <div class="relative mt-1">
                         <ListboxButton
-                                class="block border w-full py-2 px-3 rounded-md h-10 mt-2 pr-16 bg-white text-left">
+                            class="block border w-full py-2 px-3 rounded-md h-10 mt-2 pr-16 bg-white text-left">
                             <span class="block truncate"
                                   :class="{'text-slate-400': disabled}">
-                                {{ selectedDepartment }}
+                                {{ state.selectedDepartment }}
                             </span>
                             <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                                 <ChevronsUpDown class="h-5 w-5"
@@ -73,21 +83,21 @@ function handleSubmit() {
                             </span>
                         </ListboxButton>
                         <transition
-                                enter-active-class="transition duration-100 ease-out"
-                                enter-from-class="transform scale-95 opacity-0"
-                                enter-to-class="transform scale-100 opacity-100"
-                                leave-active-class="transition duration-75 ease-out"
-                                leave-from-class="transform scale-100 opacity-100"
-                                leave-to-class="transform scale-95 opacity-0">
+                            enter-active-class="transition duration-100 ease-out"
+                            enter-from-class="transform scale-95 opacity-0"
+                            enter-to-class="transform scale-100 opacity-100"
+                            leave-active-class="transition duration-75 ease-out"
+                            leave-from-class="transform scale-100 opacity-100"
+                            leave-to-class="transform scale-95 opacity-0">
                             <ListboxOptions
-                                    class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                                class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                                 <ListboxOption
-                                        v-for="department in departments"
-                                        v-slot="{ active, selected }"
-                                        :key="department"
-                                        :value="department"
-                                        class="relative cursor-default select-none py-2 pl-10 pr-4 hover:bg-slate-100"
-                                        as="template">
+                                    v-for="department in departments"
+                                    v-slot="{ active, selected }"
+                                    :key="department"
+                                    :value="department"
+                                    class="relative cursor-default select-none py-2 pl-10 pr-4 hover:bg-slate-100"
+                                    as="template">
                                     <li class="relative cursor-default select-none py-2 pl-10 pr-4]">
                                         <span :class="[ selected ? 'font-semibold' : 'font-normal', 'block truncate']">
                                             {{ department }}
@@ -104,10 +114,10 @@ function handleSubmit() {
                     </div>
                 </Listbox>
             </span>
-        </label>
-        <input
-                class="block border py-2 px-3 rounded-md h-10 flex-grow bg-slate-800 text-white border-none hover:bg-slate-700"
-                type="submit"
-                value="Explore!"/>
-    </form>
+    </label>
+    <input
+        class="block border py-2 px-3 rounded-md h-10 flex-grow bg-slate-800 text-white border-none hover:bg-slate-700"
+        type="submit"
+        value="Explore!"/>
+  </form>
 </template>

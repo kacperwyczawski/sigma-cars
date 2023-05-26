@@ -1,4 +1,8 @@
-<script setup>
+<script setup lang="ts">
+import {UserData} from "~/types/UserData";
+
+const router = useRouter();
+const userData = useUserData();
 
 const state = reactive({
   email: '',
@@ -6,8 +10,6 @@ const state = reactive({
   firstName: '',
   lastName: '',
 });
-const router = useRouter();
-const userData = useUserData();
 
 async function HandleLogIn() {
   const {data} = await useFetch("/api/auth/register", {
@@ -19,7 +21,7 @@ async function HandleLogIn() {
       lastName: state.lastName,
     },
   });
-  userData.value = data.value;
+  userData.value = data.value as UserData;
   await router.push("/");
 }
 
