@@ -166,9 +166,9 @@ async function handleCancelRent(id: number) {
                     class="w-32 m-2"
                     v-model="newDepartment.address"/>
               </label>
-              <input type="submit"
-                     value="Add"
-                     class="underline text-orange-600 hover:text-orange-800 ml-2"> <!-- TODO: extract component -->
+              <InputButtonSecondary
+                  value="Add"
+                  class="ml-2"/>
             </form>
           </li>
           <li v-for="department in departments"
