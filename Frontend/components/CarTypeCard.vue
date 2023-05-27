@@ -1,6 +1,7 @@
 ﻿<script setup lang="ts">
 import {User, SlidersHorizontal} from "lucide-vue-next";
 import {useUserData} from "~/composables/useUserData";
+import {Department} from "~/types/Department";
 
 const emits = defineEmits<{
   delete: []
@@ -25,7 +26,7 @@ const endDate = computed(() => {
   return date.toISOString();
 });
 
-const {data: departments} = await useFetch('/api/departments');
+const {data: departments} = await useFetch<Department[]>('/api/departments');
 
 const showDetails = ref(false);
 const addingCar = ref(false);
@@ -132,15 +133,13 @@ async function handleDeleteCarType() {
                   </select>
                 </label>
                 <div class="space-x-2">
-                  <input type="submit"
-                         value="Add"
-                         class="underline text-orange-600 hover:text-orange-800">
-                  <input type="button"
-                         value="Cancel"
-                         @click="addingCar = false"
-                         class="underline text-orange-600 hover:text-orange-800">
+                  <InputButtonSecondary
+                      value="Add"/>
+                  <InputButtonSecondary
+                      @click="addingCar = false"
+                      type="reset"
+                      value="Cancel"/>
                 </div>
-
               </form>
             </template>
             <template #footer>
