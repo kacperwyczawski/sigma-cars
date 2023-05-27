@@ -11,7 +11,7 @@ const state = reactive({
   lastName: '',
 });
 
-async function HandleLogIn() {
+async function HandleSignUp() {
   const {data} = await useFetch("/api/auth/register", {
     method: "POST",
     body: {
@@ -82,7 +82,7 @@ async function HandleLogIn() {
               required/>
         </div>
         <div class="flex items-center justify-between">
-          <ButtonPrimary>
+          <ButtonPrimary @click="HandleSignUp">
             Sign up
           </ButtonPrimary>
           <NuxtLink
