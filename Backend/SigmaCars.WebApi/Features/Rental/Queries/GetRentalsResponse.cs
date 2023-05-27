@@ -6,7 +6,7 @@ public record GetRentalsResponse(
 public record GetRentalResponse(
     int Id,
     string CarMake,
-    string CarType,
+    string CarModel,
     string CarRegistrationNumber,
     string DepartmentCity,
     DateTime StartDate,

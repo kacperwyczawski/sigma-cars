@@ -2,6 +2,7 @@
 import {ShieldCheck} from "lucide-vue-next";
 import {Ref} from "vue";
 import {Department} from "~/types/Department";
+import {Rental} from "~/types/Rental";
 
 const userData = useUserData();
 const router = useRouter();
@@ -22,7 +23,7 @@ const {data: rentals} = await useFetch(
           return date.toDateString();
         }
 
-        result.forEach((rental: any) => { // TODO: add type
+        result.forEach((rental: Rental) => {
           rental.startDate = formatDate(rental.startDate);
           rental.endDate = formatDate(rental.endDate);
         });
@@ -63,7 +64,7 @@ async function handleCancelRent(id: number) {
   await useFetch(`/api/rentals/${id}`, {
     method: 'DELETE',
   });
-  rentals.value = rentals.value.filter((r: any) => r.id !== id); // TODO: add type
+  rentals.value = rentals.value.filter((r: Rental) => r.id !== id);
 }
 </script>
 <template>
