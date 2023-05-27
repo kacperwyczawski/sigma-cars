@@ -21,24 +21,32 @@ async function handleDeleteCar(id: number) {
 }
 </script>
 <template>
-  <ul v-if="cars && cars.length !== 0"
-      class="space-y-2"> <!--TODO: this should be table-->
-    <li v-for="car in cars"
+  <table
+      v-if="cars && cars.length !== 0"
+      class="w-full">
+    <tr
+        v-for="car in cars"
         :key="car.id"
-        class="flex gap-6 text-lg items-center justify-between">
-      <span>
-        <Hash class="inline text-slate-400 -top-0.5 relative"/>
+        class="flex p-2 even:bg-gray-100 rounded-md">
+      <td class="pl-2 rotate-180">
+        <Delete
+            @click="handleDeleteCar(car.id)"
+            class="text-red-500 hover:text-red-700"/>
+      </td>
+      <td>
+        <Hash class="text-slate-400"/>
+      </td>
+      <td class="pr-4">
         {{ car.registrationNumber }}
-      </span>
-      <span>
-        <MapPin class="inline text-slate-400"/>
+      </td>
+      <td>
+        <MapPin class="text-slate-400"/>
+      </td>
+      <td>
         {{ car.departmentCity }}
-      </span>
-      <Delete
-          @click="handleDeleteCar(car.id)"
-          class="inline text-red-500 hover:text-red-800"/>
-    </li>
-  </ul>
+      </td>
+    </tr>
+  </table>
   <p v-else
      class="text-lg text-center text-slate-500">
     No cars registered
