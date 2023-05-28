@@ -2,7 +2,7 @@
 
 > **Note**
 >
-> Currently, application is still under development. Stay tuned for updates!
+> Application is under constant development. Stay tuned for updates!
 
 ## 📝 Description
 
@@ -10,15 +10,22 @@ Sigma Cars is a car rental application. This is a learning
 project that was created to practice and demonstrate the development of a full stack web application. Users can search
 for cars by location, price, and availability, and make reservations for the selected car.
 
-Technologies used are listed [here](#-technologies)
+- Sigma Cars is containerized using **Docker**, providing easy deployments and scalability.
+- The backend is developed using **ASP.NET Core**, a high-performance framework, and utilizes a **PostgreSQL** database for efficient data storage and retrieval.
+- The website is built using **Nuxt** and **Vue**, resulting in an interactive and visually appealing user interface. It is developed with a focus on type-safety by using **TypeScript**
+- Project utilizes an **Nginx** proxy server, which acts as a reverse proxy, handling incoming requests and forwarding them to the appropriate services.
+- This repository leverages **GitHub Actions** to automate the **CI/CD** process. This ensures that up-to-date images are pushed to **Docker Hub**, making it easy to deploy the latest version of the project.
+- Users can choose to access the system via the **REST API** documented by **OpenAPI** schema, allowing programmatic interactions, or use the website for a user-friendly graphical interface.
 
 ![Mockup](Assets/sigma-mockup.png)
 
 ## 🚀 How to run
 
-1. Install [Docker](https://www.docker.com/) on your machine. (PowerShell: `winget install Docker.DockerDesktop`).
-2. Download [this](docker-compose.yml) file. (PowerShell: `Invoke-WebRequest https://raw.githubusercontent.com/kacperwyczawski/SigmaCars/main/docker-compose.yml -OutFile docker-compose.yml`).
-3. Run with `docker compose up`.
+1. Install and set up [Docker](https://www.docker.com/) on your machine.
+2. Download [this](docker-compose.yml) file from repository. In PowerShell you can use: `Invoke-WebRequest https://raw.githubusercontent.com/kacperwyczawski/sigma-cars/main/docker-compose.yml -OutFile docker-compose.yml`.
+3. Open Docker Desktop, ensuring that it is properly installed and running.
+4. In your terminal or command prompt, navigate to the directory where you downloaded the docker-compose.yml file.
+5. Run `docker compose up` to start the project.
 
 ## ⭐ How to use
 
@@ -39,7 +46,7 @@ If you want to use hot reload for frontend:
 1. `cd SigmaCars/Frontend`.
 2. `npm run dev`.
 3. `docker compose up -f ../docker-compose.dev.frontend.yml`.
-4. Website is now available at `http://localhost:3000`.
+4. Website is now available at `http://localhost`.
 
 <details>
     <summary>
@@ -49,58 +56,25 @@ If you want to use hot reload for frontend:
         This stackoverflow answer may help: https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach/43541681#43541681
 </details>
 
-## ℹ️ Other info
-
-### 💻 Technologies
-
-The following technologies were used in the development of this project:
-
-- Backend: **Asp.Net Core**, **PostgreSQL**, EF Core, OpenAPI, FluentValidation, MediatR
-- Frontend: **Nuxt**, **Vue**, TypeScript/JavaScript, TailwindCSS, HeadlessUI
-- Other tools: **Docker**, **Nginx**, Postman, Rider
-
-### 🐋 Docker
-
-This project uses some docker configuration files:
-
-1. ⭐ [docker-compose.yml](docker-compose.yml) for production
-2. 🛠️ [docker-compose.dev.frontend.yml](docker-compose.dev.frontend.yml) for development (serving frontend locally)
-3. ⭐ Backend [Dockerfile](Backend/Dockerfile)
-4. ⭐ Database [Dockerfile](Database/Dockerfile)
-5. ⭐ Frontend [Dockerfile](Frontend/Dockerfile)
-6. ⭐ Reverse proxy [Dockerfile](ReverseProxy/Dockerfile)
-7. 🛠️ Reverse proxy [DevFrontend/Dockerfile](ReverseProxy/DevFrontend/Dockerfile) for development (serving frontend
-   locally)
-
-### 🔗 Application schema
+## 🔗 Application schema
 
 ```mermaid
 flowchart TD
     user([End user]) --- nginx{{Nginx reverse proxy}}
-    nginx --- backend(Asp.Net Core http api)
-    backend --- database[(Postgres db)]
-    nginx --- frontend(Vue with Nuxt website)
+    nginx --- backend(ASP.NET Core HTTP API)
+    backend --- database[(Postgres database)]
+    nginx --- frontend(Vue + Nuxt website)
 ```
 
-### 🗃️ Simplified database schema
+## 🗃️ Simplified database schema
 
 ```mermaid
 erDiagram
-    carType ||--o{ Car : x
+    CarType ||--o{ Car : x
     Department ||--o{ Car : x
     Car ||--o{ Rental : x
     User ||--o{ Rental : x
 ```
-
-## 🤔 FAQ
-
-**Q: Why postgres instead of for example mssql?**
-
-A: Because postgres works better with Docker, I can put SQL script inside special directory and it's automatically run when container is ready.
-
-**Q: Does somebody realy asks these questions?**
-
-A: No.
 
 ## 📫 Feedback
 
