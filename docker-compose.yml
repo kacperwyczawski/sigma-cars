@@ -2,12 +2,14 @@
   database:
     build:
       context: ./Database
+    image: kacperwyczawski/sigma-cars-database:latest
     ports:
       - "5432:5432"
     container_name: sigma-cars-database
   backend:
     build:
       context: ./Backend
+    image: kacperwyczawski/sigma-cars-backend:latest
     ports:
       - "5000:5000"
     depends_on:
@@ -16,12 +18,14 @@
   frontend:
     build:
       context: ./Frontend
+    image: kacperwyczawski/sigma-cars-frontend:latest
     ports:
       - "3000:3000"
     container_name: sigma-cars-frontend
   reverse-proxy:
     build:
       context: ./ReverseProxy
+    image: kacperwyczawski/sigma-cars-reverse-proxy:latest
     ports:
       - "80:80"
     depends_on:

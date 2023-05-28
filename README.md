@@ -16,9 +16,9 @@ Technologies used are listed [here](#-technologies)
 
 ## 🚀 How to run
 
-1. Install [Docker](https://www.docker.com/) and [Git](https://git-scm.com/downloads) on your machine.
-2. Clone this repository by running `git clone https://github.com/kacperwyczawski/sigma-cars.git SigmaCars`.
-3. Run with `docker compose up -f SigmaCars/docker-compose.yml`.
+1. Install [Docker](https://www.docker.com/) on your machine. (PowerShell: `winget install Docker.DockerDesktop`).
+2. Download [this](docker-compose.yml) file. (PowerShell: `Invoke-WebRequest https://raw.githubusercontent.com/kacperwyczawski/SigmaCars/main/docker-compose.yml -OutFile docker-compose.yml`).
+3. Run with `docker compose up`.
 
 ## ⭐ How to use
 
@@ -32,13 +32,13 @@ Technologies used are listed [here](#-technologies)
 
 ## ⚒️ How to develop
 
-To apply changes to the codebase, append `--build` to the docker compose commands.
+First you need to clone this repository. After making changes, you can run the application with `docker compose up --build`.
 
 If you want to use hot reload for frontend:
 
-2. `cd SigmaCars/Frontend`.
-3. `npm run dev`.
-1. `docker compose up -f ../docker-compose.dev.frontend.yml`.
+1. `cd SigmaCars/Frontend`.
+2. `npm run dev`.
+3. `docker compose up -f ../docker-compose.dev.frontend.yml`.
 4. Website is now available at `http://localhost:3000`.
 
 <details>
