@@ -10,6 +10,6 @@ public record GetCarTypesQuery(
         string? Make,
         string? Model,
         string? OrderByPropertyName,
-        bool Ascending, bool AvailableOnly,
+        bool Ascending, bool ShowAll,
         int DepartmentId)
     : IRequest<GetCarTypesResponse>;

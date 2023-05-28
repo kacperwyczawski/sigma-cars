@@ -5,7 +5,7 @@ import {Switch} from "@headlessui/vue";
 const route = useRoute();
 const userData = useUserData();
 
-const availableOnly = ref(true);
+const showAll = ref(false);
 const addingCarType = ref(false);
 const newCarType = reactive({
   make: '',
@@ -22,12 +22,12 @@ const {data: carTypes, refresh} = await useAsyncData(
           query: {
             "start-date": route.query.startDate,
             "end-date": route.query.endDate,
-            "available-only": availableOnly.value,
+            "show-all": showAll.value,
             "department": route.query.department,
           },
         }),
     {
-      watch: [availableOnly],
+      watch: [showAll],
       transform: (data) => {
         return data.carTypes;
       },
@@ -67,14 +67,14 @@ function handleAddCarModel() {
           v-if="userData && userData.role === 'admin'"
           class="rounded bg-slate-800 p-2 text-white flex-grow md:flex-grow-0 flex items-center">
         <Switch
-            v-model="availableOnly"
-            :class="availableOnly ? 'bg-orange-600' : 'bg-slate-400'"
+            v-model="showAll"
+            :class="showAll ? 'bg-orange-600' : 'bg-slate-400'"
             class="relative inline-flex h-5 w-11 items-center rounded-full">
           <span
-              :class="availableOnly ? 'translate-x-6' : 'translate-x-1'"
+              :class="showAll ? 'translate-x-6' : 'translate-x-1'"
               class="inline-block h-4 w-4 transform rounded-full bg-white transition"/>
         </Switch>
-        <span class="ml-2">Available only</span>
+        <span class="ml-2">Show all</span>
       </div>
       <ButtonPrimary
           v-if="userData && userData.role === 'admin'"

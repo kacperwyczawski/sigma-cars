@@ -55,16 +55,12 @@ public class GetCarTypesHandler : IRequestHandler<GetCarTypesQuery, GetCarTypesR
             .ThenInclude(car => car.Rentals)
             .ToListAsync(cancellationToken);
 
-        // filter departments
-        carTypesQueried = carTypesQueried
-            .Where(carType => carType.Cars
-                .Any(car => car.DepartmentId == query.DepartmentId)).ToList();
-
-        // filter available cars
-        if (query.AvailableOnly)
+        // filter by availability
+        if (!query.ShowAll)
         {
             carTypesQueried = carTypesQueried
                 .Where(carType => carType.Cars
+                    .Where(car => car.DepartmentId == query.DepartmentId)
                     .Any(car => car.Rentals
                         .All(rental =>
                             rental.EndDate < query.StartDate
