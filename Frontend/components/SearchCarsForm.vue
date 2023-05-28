@@ -5,12 +5,7 @@ import {Department} from "~/types/Department";
 
 const router = useRouter();
 
-const {data: departments} = await useFetch(
-    "/api/departments",
-    {
-      transform: (data: Department[]): string[] => data.map((x: Department) => x.city),
-    }
-)
+const {data: departments} = await useFetch<Department[]>("/api/departments");
 
 const isListboxDisabled = computed(
     () => departments?.value?.length === 1
@@ -21,7 +16,7 @@ const defaultEndDate = new Date();
 defaultEndDate.setDate(defaultEndDate.getDate() + 7);
 
 const state = reactive({
-  selectedDepartment: departments?.value?.[0] as string,
+  selectedDepartment: departments?.value?.[0] ?? {city: "No deps. available"} as Department,
   startDate: defaultStartDate.toISOString().slice(0, 10),
   endDate: defaultEndDate.toISOString().slice(0, 10),
 });
@@ -32,7 +27,7 @@ function handleSubmit() {
     query: {
       startDate: state.startDate,
       endDate: state.endDate,
-      location: state.selectedDepartment,
+      department: state.selectedDepartment.departmentId,
     },
   });
 }
@@ -76,7 +71,7 @@ function handleSubmit() {
                             class="block border w-full py-2 px-3 rounded-md h-10 mt-2 pr-16 bg-white text-left">
                             <span class="block truncate"
                                   :class="{'text-slate-400': disabled}">
-                                {{ state.selectedDepartment }}
+                                {{ state.selectedDepartment.city }}
                             </span>
                             <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                                 <ChevronsUpDown class="h-5 w-5"
@@ -94,15 +89,15 @@ function handleSubmit() {
                             <ListboxOptions
                                 class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                                 <ListboxOption
-                                    v-for="department in departments"
+                                    v-for="department in (departments as Department[])"
                                     v-slot="{ active, selected }"
-                                    :key="department"
+                                    :key="department.departmentId"
                                     :value="department"
                                     class="relative cursor-default select-none py-2 pl-10 pr-4 hover:bg-slate-100"
                                     as="template">
                                     <li class="relative cursor-default select-none py-2 pl-10 pr-4]">
                                         <span :class="[ selected ? 'font-semibold' : 'font-normal', 'block truncate']">
-                                            {{ department }}
+                                            {{ department.city }}
                                         </span>
                                         <span v-if="selected"
                                               class="absolute inset-y-0 left-0 flex items-center pl-3 text-orange-600">

@@ -23,11 +23,14 @@ const {data: carTypes, refresh} = await useAsyncData(
             "start-date": route.query.startDate,
             "end-date": route.query.endDate,
             "available-only": availableOnly.value,
+            "department": route.query.department,
           },
         }),
     {
       watch: [availableOnly],
-      transform: (data) => data.carTypes,
+      transform: (data) => {
+        return data.carTypes;
+      },
     },
 );
 

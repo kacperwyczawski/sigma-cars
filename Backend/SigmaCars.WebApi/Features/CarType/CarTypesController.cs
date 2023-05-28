@@ -38,7 +38,8 @@ public class CarTypesController : Controller
         [FromQuery(Name = "model")] string? model,
         [FromQuery(Name = "order-by")] string? orderByPropertyName,
         [FromQuery(Name = "ascending")] bool ascending = true,
-        [FromQuery(Name = "available-only")] bool availableOnly = true)
+        [FromQuery(Name = "available-only")] bool availableOnly = true,
+        [FromQuery(Name = "department")] int departmentId = 0)
     {
         var request = new GetCarTypesQuery(
             startDate, endDate,
@@ -47,7 +48,8 @@ public class CarTypesController : Controller
             minSeats, maxSeats,
             make, model,
             orderByPropertyName, ascending,
-            availableOnly);
+            availableOnly,
+            departmentId);
 
         var result = await _mediator.Send(request);
 

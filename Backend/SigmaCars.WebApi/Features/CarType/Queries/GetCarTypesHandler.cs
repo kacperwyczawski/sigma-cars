@@ -19,6 +19,7 @@ public class GetCarTypesHandler : IRequestHandler<GetCarTypesQuery, GetCarTypesR
     {
         var carTypes = _dbContext.Set<Domain.Models.CarType>().AsQueryable();
 
+        // basic filters
         if (query.MinYear != null)
             carTypes = carTypes.Where(carType => carType.ProductionYear >= query.MinYear);
         if (query.MaxYear != null)
@@ -36,6 +37,7 @@ public class GetCarTypesHandler : IRequestHandler<GetCarTypesQuery, GetCarTypesR
         if (query.Model != null)
             carTypes = carTypes.Where(carType => carType.Model == query.Model);
 
+        // order by
         carTypes = query.OrderByPropertyName switch
         {
             "production_year" => query.Ascending
@@ -47,17 +49,24 @@ public class GetCarTypesHandler : IRequestHandler<GetCarTypesQuery, GetCarTypesR
             _ => carTypes
         };
 
+        // query database
         var carTypesQueried = await carTypes
             .Include(carType => carType.Cars)
             .ThenInclude(car => car.Rentals)
             .ToListAsync(cancellationToken);
 
+        // filter departments
+        carTypesQueried = carTypesQueried
+            .Where(carType => carType.Cars
+                .Any(car => car.DepartmentId == query.DepartmentId)).ToList();
+
+        // filter available cars
         if (query.AvailableOnly)
         {
             carTypesQueried = carTypesQueried
-                .Where(carType =>
-                    carType.Cars.Any(car =>
-                        car.Rentals.All(rental =>
+                .Where(carType => carType.Cars
+                    .Any(car => car.Rentals
+                        .All(rental =>
                             rental.EndDate < query.StartDate
                             || rental.StartDate > query.EndDate))).ToList();
         }
