@@ -2,7 +2,7 @@
 
 > **Note**
 >
-> Currently, application is still under development. Stay tuned for updates!
+> Application is under constant development. Stay tuned for updates!
 
 ## 📝 Description
 
@@ -16,9 +16,11 @@ Technologies used are listed [here](#-technologies)
 
 ## 🚀 How to run
 
-1. Install [Docker](https://www.docker.com/) on your machine. (PowerShell: `winget install Docker.DockerDesktop`).
-2. Download [this](docker-compose.yml) file. (PowerShell: `Invoke-WebRequest https://raw.githubusercontent.com/kacperwyczawski/SigmaCars/main/docker-compose.yml -OutFile docker-compose.yml`).
-3. Run with `docker compose up`.
+1. Install and set up [Docker](https://www.docker.com/) on your machine.
+2. Download [this](docker-compose.yml) file from Sigma Cars repository. In PowerShell you can use this command: `Invoke-WebRequest https://raw.githubusercontent.com/kacperwyczawski/sigma-cars/main/docker-compose.yml -OutFile docker-compose.yml`.
+3. Open Docker Desktop, ensuring that it is properly installed and running.
+4. In your terminal or command prompt, navigate to the directory where you downloaded the docker-compose.yml file.
+5. Run `docker compose up` to start the project.
 
 ## ⭐ How to use
 
