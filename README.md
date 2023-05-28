@@ -76,16 +76,6 @@ erDiagram
     User ||--o{ Rental : x
 ```
 
-## 🤔 FAQ
-
-**Q: Why postgres instead of for example mssql?**
-
-A: Because postgres works better with Docker, I can put SQL script inside special directory and it's automatically run when container is ready.
-
-**Q: Does somebody realy asks these questions?**
-
-A: No.
-
 ## 📫 Feedback
 
 I hope you find Sigma Cars project helpful! If you encounter any issues or have any feedback, please don't hesitate to
