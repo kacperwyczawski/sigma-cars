@@ -42,25 +42,27 @@ function handleSubmit() {
         @submit.prevent="handleSubmit">
     <label class="flex-grow relative basis-32">
       From:
-      <input v-model="state.startDate"
-             class="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
-             type="date"
-             max="01-01-2200"
-             min="01-01-2000"/>
-      <span class="pointer-events-none absolute right-4 bottom-2.5 bg-white">
-                <Calendar class="text-slate-800 h-5 w-5"/>
-            </span>
+      <input
+          v-model="state.startDate"
+          class="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
+          type="date"
+          max="01-01-2200"
+          min="01-01-2000"/>
+      <span class="pointer-events-none touch-none absolute right-4 bottom-2.5 bg-white">
+        <Calendar class="text-slate-800 h-5 w-5"/>
+      </span>
     </label>
     <label class="flex-grow relative basis-32">
       To:
-      <input v-model="state.endDate"
-             class="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
-             type="date"
-             max="01-01-2200"
-             min="01-01-2000"/>
-      <span class="pointer-events-none absolute right-4 bottom-2.5 bg-white">
-                <Calendar class="text-slate-800 h-5 w-5"/>
-            </span>
+      <input
+          v-model="state.endDate"
+          class="block border w-full py-2 px-3 rounded-md h-10 mt-2 bg-white"
+          type="date"
+          max="01-01-2200"
+          min="01-01-2000"/>
+      <span class="pointer-events-none touch-none absolute right-4 bottom-2.5 bg-white">
+          <Calendar class="text-slate-800 h-5 w-5"/>
+      </span>
     </label>
     <label class="flex-grow basis-32">
       Location:
