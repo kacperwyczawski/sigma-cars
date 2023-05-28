@@ -61,19 +61,6 @@ The following technologies were used in the development of this project:
 - Frontend: **Nuxt**, **Vue**, TypeScript/JavaScript, TailwindCSS, HeadlessUI
 - Other tools: **Docker**, **Nginx**, Postman, Rider
 
-### 🐋 Docker
-
-This project uses some docker configuration files:
-
-1. ⭐ [docker-compose.yml](docker-compose.yml) for production
-2. 🛠️ [docker-compose.dev.frontend.yml](docker-compose.dev.frontend.yml) for development (serving frontend locally)
-3. ⭐ Backend [Dockerfile](Backend/Dockerfile)
-4. ⭐ Database [Dockerfile](Database/Dockerfile)
-5. ⭐ Frontend [Dockerfile](Frontend/Dockerfile)
-6. ⭐ Reverse proxy [Dockerfile](ReverseProxy/Dockerfile)
-7. 🛠️ Reverse proxy [DevFrontend/Dockerfile](ReverseProxy/DevFrontend/Dockerfile) for development (serving frontend
-   locally)
-
 ### 🔗 Application schema
 
 ```mermaid
