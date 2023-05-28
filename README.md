@@ -66,16 +66,16 @@ The following technologies were used in the development of this project:
 ```mermaid
 flowchart TD
     user([End user]) --- nginx{{Nginx reverse proxy}}
-    nginx --- backend(Asp.Net Core http api)
-    backend --- database[(Postgres db)]
-    nginx --- frontend(Vue with Nuxt website)
+    nginx --- backend(ASP.NET Core HTTP API)
+    backend --- database[(Postgres database)]
+    nginx --- frontend(Vue + Nuxt website)
 ```
 
 ### 🗃️ Simplified database schema
 
 ```mermaid
 erDiagram
-    carType ||--o{ Car : x
+    CarType ||--o{ Car : x
     Department ||--o{ Car : x
     Car ||--o{ Rental : x
     User ||--o{ Rental : x
