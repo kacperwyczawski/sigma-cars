@@ -10,7 +10,12 @@ Sigma Cars is a car rental application. This is a learning
 project that was created to practice and demonstrate the development of a full stack web application. Users can search
 for cars by location, price, and availability, and make reservations for the selected car.
 
-Technologies used are listed [here](#-technologies)
+- Sigma Cars is containerized using **Docker**, providing easy deployments and scalability.
+- The backend is developed using **ASP.NET Core**, a high-performance framework, and utilizes a **PostgreSQL** database for efficient data storage and retrieval.
+- The website is built using **Nuxt** and **Vue**, resulting in an interactive and visually appealing user interface. It is developed with a focus on type-safety by using **TypeScript**
+- Project utilizes an **Nginx** proxy server, which acts as a reverse proxy, handling incoming requests and forwarding them to the appropriate services.
+- This repository leverages **GitHub Actions** to automate the **CI/CD** process. This ensures that up-to-date images are pushed to **Docker Hub**, making it easy to deploy the latest version of the project.
+- Users can choose to access the system via the **REST API** documented by **OpenAPI** schema, allowing programmatic interactions, or use the website for a user-friendly graphical interface.
 
 ![Mockup](Assets/sigma-mockup.png)
 
@@ -41,7 +46,7 @@ If you want to use hot reload for frontend:
 1. `cd SigmaCars/Frontend`.
 2. `npm run dev`.
 3. `docker compose up -f ../docker-compose.dev.frontend.yml`.
-4. Website is now available at `http://localhost:3000`.
+4. Website is now available at `http://localhost`.
 
 <details>
     <summary>
@@ -51,17 +56,7 @@ If you want to use hot reload for frontend:
         This stackoverflow answer may help: https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach/43541681#43541681
 </details>
 
-## ℹ️ Other info
-
-### 💻 Technologies
-
-The following technologies were used in the development of this project:
-
-- Backend: **Asp.Net Core**, **PostgreSQL**, EF Core, OpenAPI, FluentValidation, MediatR
-- Frontend: **Nuxt**, **Vue**, TypeScript/JavaScript, TailwindCSS, HeadlessUI
-- Other tools: **Docker**, **Nginx**, Postman, Rider
-
-### 🔗 Application schema
+## 🔗 Application schema
 
 ```mermaid
 flowchart TD
@@ -71,7 +66,7 @@ flowchart TD
     nginx --- frontend(Vue + Nuxt website)
 ```
 
-### 🗃️ Simplified database schema
+## 🗃️ Simplified database schema
 
 ```mermaid
 erDiagram
