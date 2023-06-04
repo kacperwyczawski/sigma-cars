@@ -45,6 +45,7 @@ public class SigmaCarsDbContext : DbContext
             e.Property(x => x.ProductionYear).HasColumnName("production_year");
             e.Property(x => x.PricePerDay).HasColumnName("price_per_day");
             e.Property(x => x.SeatCount).HasColumnName("seat_count");
+            e.Property(x => x.Image).HasColumnName("image");
             e.HasMany(x => x.Cars)
                 .WithOne(x => x.CarType)
                 .HasPrincipalKey(x => x.Id)

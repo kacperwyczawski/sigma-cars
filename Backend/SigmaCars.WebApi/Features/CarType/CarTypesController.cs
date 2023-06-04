@@ -5,7 +5,7 @@ using SigmaCars.WebApi.Features.Car.Commands;
 using SigmaCars.WebApi.Features.Car.Queries;
 using SigmaCars.WebApi.Features.CarType.Commands;
 using SigmaCars.WebApi.Features.CarType.Queries;
-using SigmaCars.WebApi.Features.CarType.Requests;
+using SigmaCars.WebApi.Features.CarType.RequestsAndResponses;
 using SigmaCars.WebApi.Persistence;
 
 namespace SigmaCars.WebApi.Features.CarType;
@@ -60,11 +60,28 @@ public class CarTypesController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] CreateCarTypeCommand request)
+    [DisableRequestSizeLimit]
+    public async Task<IActionResult> Post([FromForm] CreateCarTypeRequest request)
     {
-        var created = await _mediator.Send(request);
-
-        return Created($"car-types/{created.Id}", created);
+        await using var memoryStream = new MemoryStream();
+        await request.Image.CopyToAsync(memoryStream);
+        var imageBytes = memoryStream.ToArray();
+        
+        var carType = new Domain.Models.CarType
+        {
+            Id = 0,
+            Make = request.Make,
+            Model = request.Model,
+            ProductionYear = request.ProductionYear,
+            PricePerDay = request.PricePerDay,
+            SeatCount = request.SeatCount,
+            Image = imageBytes
+        };
+          
+        _dbContext.Set<Domain.Models.CarType>().Add(carType);
+        await _dbContext.SaveChangesAsync();
+    
+        return Created($"car-types/{carType.Id}", CreateCarTypeResponse.FromCarType(carType));
     }
 
     [HttpDelete("{id:int}")]
@@ -73,6 +90,15 @@ public class CarTypesController : Controller
         await _mediator.Send(new DeleteCarTypeCommand(id));
 
         return NoContent();
+    }
+
+    [HttpGet("{id:int}/image")]
+    public async Task<IActionResult> GetImage(int id)
+    {
+        var carType = await _dbContext.CarTypes.FindAsync(id);
+        if (carType == null)
+            return NotFound();
+        return Ok(carType.Image);
     }
 
     [HttpGet("{id:int}/cars")]
@@ -99,7 +125,7 @@ public class CarTypesController : Controller
             RegistrationNumber = request.RegistrationNumber,
             Vin = new string('0', 17) // TODO: remove vin
         };
-          
+
         _dbContext.Cars.Add(newCar);
         await _dbContext.SaveChangesAsync();
 

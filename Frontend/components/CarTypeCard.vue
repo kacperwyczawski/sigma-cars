@@ -28,6 +28,8 @@ const endDate = computed(() => {
 
 const {data: departments} = await useFetch<Department[]>('/api/departments');
 
+const {data: image} = await useFetch(`/api/car-types/${props.car.id}/image`);
+
 const showDetails = ref(false);
 const addingCar = ref(false);
 const newCar = reactive({
@@ -56,6 +58,7 @@ function handleRent() {
 
   router.push('/profile');
 }
+
 async function handleAddCar() {
   addingCar.value = false;
   await useFetch(`/api/car-types/${props.car.id}/cars`, {
@@ -71,6 +74,7 @@ async function handleAddCar() {
   newCar.registrationNumber = "";
   newCar.departmentId = 1;
 }
+
 async function handleDeleteCarType() {
   await useFetch(`/api/car-types/${props.car.id}`, {
     method: "DELETE",
@@ -86,7 +90,10 @@ async function handleDeleteCarType() {
       <div>${{ car.pricePerDay }}</div>
     </div>
     <div class="p-2">
-      <div class="aspect-video bg-slate-200 animate-pulse rounded-md"/>
+      <img
+          :src="'data:image/jpeg;base64,' + image"
+          :alt="`${car.make} ${car.model}`"
+          class="rounded-md w-full aspect-video object-cover">
     </div>
     <div class="text-slate-600 text-xl p-2 flex justify-between items-center">
       <div class="flex gap-1">

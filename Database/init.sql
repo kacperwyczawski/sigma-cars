@@ -14,7 +14,8 @@ create table car_types
     model           varchar(50) not null,
     production_year int         not null,
     price_per_day   real        not null,
-    seat_count      int         not null
+    seat_count      int         not null,
+    image           bytea       not null
 );
 
 create table departments
@@ -44,10 +45,10 @@ create table users
     role          varchar(50)  not null
 );
 
-insert into car_types (make, model, production_year, price_per_day, seat_count)
-values ('DeLorean', 'DMC-12', 1981, 350, 2),
-       ('Aston Martin', 'DB5', 1964, 300, 2),
-       ('Volkswagen', 'Passat', 2019, 99.99, 5);
+insert into car_types (make, model, production_year, price_per_day, seat_count, image)
+values ('DeLorean', 'DMC-12', 1981, 350, 2, pg_read_binary_file('/images/delorean.jpg')),
+       ('Aston Martin', 'DB5', 1964, 300, 2 , pg_read_binary_file('/images/astonmartin.jpg')),
+       ('Volkswagen', 'Passat', 2019, 99.99, 5 , pg_read_binary_file('/images/volkswagen.jpg'));
 
 insert into departments (country_code, city, address)
 values ('US', 'Boston', 'August St. 1976');

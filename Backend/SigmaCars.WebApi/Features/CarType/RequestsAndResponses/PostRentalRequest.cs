@@ -1,4 +1,4 @@
-namespace SigmaCars.WebApi.Features.CarType.Requests;
+namespace SigmaCars.WebApi.Features.CarType.RequestsAndResponses;
 
 public record PostRentalRequest(
     int UserId,

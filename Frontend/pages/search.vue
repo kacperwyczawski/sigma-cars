@@ -11,9 +11,9 @@ const newCarType = reactive({
   make: '',
   model: '',
   productionYear: 0,
-  color: '',
   pricePerDay: 0,
   seatCount: 0,
+  image: null,
 });
 
 const {data: carTypes, refresh} = await useAsyncData(
@@ -27,7 +27,7 @@ const {data: carTypes, refresh} = await useAsyncData(
           },
         }),
     {
-      watch: [showAll],
+      watch: [showAll, addingCarType],
       transform: (data) => {
         return data.carTypes;
       },
@@ -36,13 +36,21 @@ const {data: carTypes, refresh} = await useAsyncData(
 
 function handleAddCarModel() {
   addingCarType.value = false;
+  const formData = new FormData();
+  
+  formData.append("make", newCarType.make);
+  formData.append("model", newCarType.model);
+  formData.append("productionYear", newCarType.productionYear);
+  formData.append("pricePerDay", newCarType.pricePerDay);
+  formData.append("seatCount", newCarType.seatCount);
+  formData.append("image", newCarType.image);
+  
   useFetch("/api/car-types", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: newCarType,
+    body: formData,
   });
+  
+  refresh();
 }
 </script>
 <template>
@@ -121,15 +129,6 @@ function handleAddCarModel() {
                     required/>
               </label>
               <label>
-                Color:
-                <InputPrimary
-                    v-model="newCarType.color"
-                    class="w-full"
-                    type="text"
-                    maxlength="50"
-                    required/>
-              </label>
-              <label>
                 Price per day:
                 <InputPrimary
                     v-model="newCarType.pricePerDay"
@@ -148,6 +147,15 @@ function handleAddCarModel() {
                     min="0"
                     max="100"
                     required/>
+              </label>
+              <label>
+                Select image:
+                <input
+                  @change="newCarType.image = $event.target.files[0]"
+                  class="w-full border rounded-md text-gray-700 leading-tight focus:outline outline-orange-400 outline-2 file:hidden py-2 px-3"
+                  type="file"
+                  accept="image/*"
+                  required/>
               </label>
             </div>
             <div class="flex justify-end p-2 mt-2 gap-2 border-t">

@@ -1,4 +1,4 @@
-﻿namespace SigmaCars.WebApi.Features.CarType.Commands;
+﻿namespace SigmaCars.WebApi.Features.CarType.RequestsAndResponses;
 
 public record CreateCarTypeResponse(
     int Id,
@@ -6,7 +6,8 @@ public record CreateCarTypeResponse(
     string Model,
     int ProductionYear,
     float PricePerDay,
-    int SeatCount)
+    int SeatCount,
+    string ImageUrl)
 {
     public static CreateCarTypeResponse FromCarType(Domain.Models.CarType carType) => new(
         carType.Id,
@@ -14,5 +15,6 @@ public record CreateCarTypeResponse(
         carType.Model,
         carType.ProductionYear,
         carType.PricePerDay,
-        carType.SeatCount);
+        carType.SeatCount,
+        $"/api/car-types/{carType.Id}/image");
 }

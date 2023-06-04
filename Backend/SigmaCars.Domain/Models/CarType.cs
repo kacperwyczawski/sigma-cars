@@ -13,6 +13,8 @@ public class CarType
     public float PricePerDay { get; set; }
     
     public int SeatCount { get; set; }
+    
+    public byte[] Image { get; set; }
 
     public override string ToString()
     {

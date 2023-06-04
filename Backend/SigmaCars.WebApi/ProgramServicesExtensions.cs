@@ -8,6 +8,7 @@ using Microsoft.OpenApi.Models;
 using SigmaCars.WebApi.Behaviors;
 using SigmaCars.WebApi.Features.Authentication.Shared;
 using SigmaCars.WebApi.Features.CarType.Commands;
+using SigmaCars.WebApi.Features.CarType.Queries;
 using SigmaCars.WebApi.Middlewares;
 using SigmaCars.WebApi.Persistence;
 
@@ -42,7 +43,7 @@ internal static class ProgramServicesExtensions
     internal static void AddMediator(this IServiceCollection services)
     {
         services.AddMediatR(configuration =>
-            configuration.RegisterServicesFromAssemblyContaining<CreateCarTypeHandler>());
+            configuration.RegisterServicesFromAssemblyContaining<GetCarTypesHandler>());
 
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
     }
