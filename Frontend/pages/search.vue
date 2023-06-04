@@ -68,9 +68,11 @@ function handleAddCarModel() {
       <div class="rounded bg-slate-800 p-2 text-white flex-grow md:flex-grow-0">
         Placeholder
       </div>
-      <div class="rounded bg-slate-800 p-2 text-white flex-grow md:flex-grow-0">
-        Placeholder
-      </div>
+      <ButtonPrimary
+          :show-arrow="false"
+          @click="refresh">
+        Refresh
+      </ButtonPrimary>
       <div
           v-if="userData && userData.role === 'admin'"
           class="rounded bg-slate-800 p-2 text-white flex-grow md:flex-grow-0 flex items-center">
