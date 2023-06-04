@@ -1,5 +1,7 @@
 # Sigma Cars
 
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/kacperwyczawski/sigma-cars/publish-to-hub.yml?label=publish%20to%20docker%20hub)
+
 > **Note**
 >
 > Application is under constant development. Stay tuned for updates!
