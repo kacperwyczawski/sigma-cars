@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ShieldCheck} from "lucide-vue-next";
+import {ShieldCheck, RefreshCcw} from "lucide-vue-next";
 import {Ref} from "vue";
 import {Department} from "~/types/Department";
 import {Rental} from "~/types/Rental";
@@ -11,7 +11,7 @@ if (userData.value === null) {
   router.push('/auth/login');
 }
 
-const {data: rentals} = await useFetch(
+const {data: rentals, refresh: refreshRentals} = await useFetch(
     `/api/users/${userData.value?.userId}/rentals`, {
       transform: (data: any) => {
         let result = data.rentals === undefined
@@ -27,7 +27,7 @@ const {data: rentals} = await useFetch(
           rental.startDate = formatDate(rental.startDate);
           rental.endDate = formatDate(rental.endDate);
         });
-
+        
         return result;
       },
     },
@@ -93,9 +93,14 @@ async function handleCancelRent(id: number) {
       </div>
       <div v-if="rentals.length !== 0"
            class="rounded-md border p-4 mt-4">
-        <h2 class="text-xl">
-          Your rentals:
-        </h2>
+        <div class="flex justify-between">
+          <h2 class="text-2xl">
+            Your rentals:
+          </h2>
+          <RefreshCcw 
+              @click="refreshRentals"
+              class="inline-block text-slate-300 hover:text-slate-400"/>
+        </div>
         <ul class="mt-4 divide-y">
           <li v-for="rental in rentals"
               class="flex py-2 flex-col md:flex-row md:justify-between">
@@ -122,7 +127,7 @@ async function handleCancelRent(id: number) {
       <div v-if="userData?.role === 'admin'"
            class="rounded-md border p-4 mt-4">
         <div class="flex justify-between">
-          <h2 class="text-xl">
+          <h2 class="text-2xl">
             Departments:
           </h2>
           <button v-if="!adding"
