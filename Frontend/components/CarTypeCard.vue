@@ -78,8 +78,6 @@ async function handleAddCar() {
       departmentId: newCar.departmentId,
     },
   });
-  console.log("added car:");
-  console.log(addedCar);
   cars.value.push(addedCar.value);
   newCar.registrationNumber = "";
   newCar.departmentId = 1;
