@@ -19,7 +19,7 @@ for cars by location, price, and availability, and make reservations for the sel
 - This repository leverages **GitHub Actions** to automate the **CI/CD** process. This ensures that up-to-date images are pushed to **Docker Hub**, making it easy to deploy the latest version of the project.
 - Users can choose to access the system via the **REST API** documented by **OpenAPI** schema, allowing programmatic interactions, or use the website for a user-friendly graphical interface.
 
-![Mockup](Assets/sigma-mockup.png)
+![Mockup](Assets/screenshot.png)
 
 ## 🚀 How to run
 
@@ -31,12 +31,12 @@ for cars by location, price, and availability, and make reservations for the sel
 
 ## ⭐ How to use
 
-- After running the application, open `http://localhost` in your preferred web browser.
+- After running the application, open [`http://localhost`](http://localhost) in your preferred web browser.
 - There is default admin account with email: `admin@sigma.cars` and password: `admin`.
 
 #### 💭 Optional
 
-- You can access OpenAPI schema at `http://localhost/api/schema/v1` (can be imported into Postman).
+- You can access OpenAPI schema at [`http://localhost/api/schema/v1`](http://localhost/api/schema/v1) (can be imported into Postman).
 - Base path for all REST API endpoints is `http://localhost/api`.
 
 ## ⚒️ How to develop
@@ -48,7 +48,7 @@ If you want to use hot reload for frontend:
 1. `cd SigmaCars/Frontend`.
 2. `npm run dev`.
 3. `docker compose up -f ../docker-compose.dev.frontend.yml`.
-4. Website is now available at `http://localhost`.
+4. Website is now available at [`http://localhost`](http://localhost).
 
 <details>
     <summary>
