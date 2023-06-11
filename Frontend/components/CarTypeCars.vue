@@ -1,24 +1,12 @@
 <script setup lang="ts">
 import {Hash, MapPin, Delete} from "lucide-vue-next"
 
-const props = defineProps<{
-  carTypeId: number
+const emits = defineEmits<{
+  delete: [id: number]
 }>();
-
-const {data: cars} = await useFetch(
-    `/api/car-types/${props.carTypeId}/cars`,
-    {
-      transform: (data: any) => data.cars
-    }
-);
-
-async function handleDeleteCar(id: number) {
-  // TODO: create endpoint for deleting car directly, not through car type
-  await useFetch(`/api/car-types/${props.carTypeId}/cars/${id}`, {
-    method: "DELETE"
-  });
-  cars.value = cars.value.filter((car: any) => car.id !== id);
-}
+const props = defineProps<{
+  cars: any
+}>();
 </script>
 <template>
   <table
@@ -30,7 +18,7 @@ async function handleDeleteCar(id: number) {
         class="flex p-2 even:bg-gray-100 rounded-md">
       <td class="pl-2 rotate-180">
         <Delete
-            @click="handleDeleteCar(car.id)"
+            @click="$emit('delete', car.id)"
             class="text-red-500 hover:text-red-700"/>
       </td>
       <td>

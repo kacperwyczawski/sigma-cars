@@ -30,6 +30,13 @@ const {data: departments} = await useFetch<Department[]>('/api/departments');
 
 const {data: image} = await useFetch(`/api/car-types/${props.car.id}/image`);
 
+const {data: cars} = await useFetch(
+    `/api/car-types/${props.car.id}/cars`,
+    {
+      transform: (data: any) => data.cars
+    }
+);
+
 const showDetails = ref(false);
 const addingCar = ref(false);
 const newCar = reactive({
@@ -61,7 +68,7 @@ function handleRent() {
 
 async function handleAddCar() {
   addingCar.value = false;
-  await useFetch(`/api/car-types/${props.car.id}/cars`, {
+  const {data: addedCar} = await useFetch(`/api/car-types/${props.car.id}/cars`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -71,8 +78,20 @@ async function handleAddCar() {
       departmentId: newCar.departmentId,
     },
   });
+  console.log("added car:");
+  console.log(addedCar);
+  cars.value.push(addedCar.value);
   newCar.registrationNumber = "";
   newCar.departmentId = 1;
+}
+
+async function handleDeleteCar(id: number) {
+  // TODO: create endpoint for deleting car directly, not through car type
+  await useFetch(`/api/car-types/${props.car.id}/cars/${id}`, {
+    method: "DELETE"
+  });
+  console.log("deleting car");
+  cars.value = cars.value.filter((car: any) => car.id !== id);
 }
 
 async function handleDeleteCarType() {
@@ -113,7 +132,9 @@ async function handleDeleteCarType() {
             <template #body>
               <CarTypeCars
                   :carTypeId="car.id"
-                  :key="addingCar"/>
+                  :cars="cars"
+                  :key="addingCar"
+                  @delete="handleDeleteCar"/>
               <form class="caret-orange-600 mt-2 pt-2 border-t border-dashed flex flex-col gap-2"
                     v-if="addingCar"
                     @submit.prevent="handleAddCar">
