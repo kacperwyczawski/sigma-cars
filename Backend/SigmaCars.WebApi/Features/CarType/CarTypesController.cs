@@ -129,7 +129,19 @@ public class CarTypesController : Controller
         _dbContext.Cars.Add(newCar);
         await _dbContext.SaveChangesAsync();
 
-        return Created($"car-types/{id}/cars/{newCar.Id}", newCar);
+        var departmentCity = await _dbContext
+            .Departments
+            .Where(x => x.Id == request.DepartmentId)
+            .Select(x => x.City)
+            .FirstAsync();
+        
+        var response = new
+        {
+            newCar.Id,
+            DepartmentCity = departmentCity,
+            newCar.RegistrationNumber
+        };
+        return Created($"car-types/{id}/cars/{newCar.Id}", response);
     }
 
     [HttpDelete("{id:int}/cars/{carId:int}")]
