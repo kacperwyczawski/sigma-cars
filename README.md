@@ -4,7 +4,7 @@
 
 > **Note**
 >
-> Application is under constant development. Stay tuned for updates!
+> Application is in beta.
 
 ## 📝 Description
 
